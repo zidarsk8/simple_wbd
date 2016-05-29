@@ -1,0 +1,14 @@
+# vim cache files
+.*.swp
+.*.swo
+
+# python cache files
+__pycache__
+*.pyc
+
+# Python code coverage report file
+.coverage
+
+# generated egg folders
+simple_wbd.egg-info
+.eggs
