@@ -38,6 +38,7 @@ if __name__ == "__main__":
             "dev": ["pylint"],
             "test": [
                 "coverage",
+                "codecov",
                 "nose",
             ],
         },
