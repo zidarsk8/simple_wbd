@@ -40,6 +40,7 @@ if __name__ == "__main__":
                 "coverage",
                 "codecov",
                 "nose",
+                "mock",
             ],
         },
         test_suite="tests",
