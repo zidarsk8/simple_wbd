@@ -6,6 +6,7 @@ import tempfile
 import time
 
 import requests
+from pycountry import countries
 
 logger = logging.getLogger(__name__)
 
@@ -62,3 +63,30 @@ def fetch(url, use_cache=True):
         cache_file.write(response.encode("utf-8"))
 
     return response
+
+
+def to_alpha3(country, code_map={}):
+    """Get ISO alpha3 country code from alpha2 or country name.
+
+    Args:
+        country (str): ISO alpah3 or alpha2 country code or country name.
+        code_map (dict): Key value store where keys are expected country names
+            or ids and the values contain the propper alpha3 code. Defaults to
+            map generated from pycountry using alpha2, alpha3 and country
+            names.
+
+    Returns:
+        str: ISO alpha3 code for the given country.
+    """
+    # pylint: disable=dangerous-default-value
+    # Code_map is mutable default value that is used as a cache.
+    if not code_map:
+        code_map.update({i.name.lower(): i.alpha3 for i in countries})
+        code_map.update({i.alpha2.lower(): i.alpha3 for i in countries})
+        code_map.update({i.alpha3.lower(): i.alpha3 for i in countries})
+
+    alpha3 = code_map.get(country.lower())
+    if not alpha3:
+        raise ValueError("`country` is not a valid country name or alpha-2 or "
+                         "alpha-3 code")
+    return alpha3

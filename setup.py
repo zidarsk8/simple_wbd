@@ -33,7 +33,7 @@ if __name__ == "__main__":
         url="https://github.com/zidarsk8/simple_wbd",
         packages=["simple_wbd"],
         provides=["simple_wbd"],
-        install_requires=[],
+        install_requires=["pycountry"],
         extras_require={
             "dev": ["pylint"],
             "test": [

@@ -6,6 +6,7 @@ import shutil
 import time
 
 import mock
+import pycountry
 
 from simple_wbd import utils
 
@@ -79,3 +80,16 @@ class TestUtils(unittest.TestCase):
         get().text = "Third dummy result."
         res_2 = utils.fetch("http://google.com", use_cache=False)
         self.assertEqual("Third dummy result.", res_2)
+
+    def test_to_alpha3(self):
+        """Test getting countries ISO alpha3 code."""
+        self.assertEqual("SVN", utils.to_alpha3("Slovenia"))
+        self.assertEqual("SVN", utils.to_alpha3("SLOVENIA"))
+        self.assertEqual("USA", utils.to_alpha3("US"))
+
+        for country in pycountry.countries:
+            self.assertEqual(country.alpha3, utils.to_alpha3(country.name))
+            self.assertEqual(country.alpha3, utils.to_alpha3(country.alpha3))
+            self.assertEqual(country.alpha3, utils.to_alpha3(country.alpha2))
+
+        self.assertRaises(ValueError, lambda: utils.to_alpha3("NOT EXISTING"))
