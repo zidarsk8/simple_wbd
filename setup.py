@@ -37,10 +37,11 @@ if __name__ == "__main__":
         extras_require={
             "dev": ["pylint"],
             "test": [
-                "coverage",
                 "codecov",
-                "nose",
+                "coverage",
                 "mock",
+                "nose",
+                "vcrpy",
             ],
         },
         test_suite="tests",
