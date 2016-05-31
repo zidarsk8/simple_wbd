@@ -34,6 +34,16 @@ class TestUtils(unittest.TestCase):
         os.makedirs(self.TEST_TEMP_DIR)
 
     @mock.patch("tempfile.gettempdir")
+    def test_remove_cache_dir(self, gettempdir):
+        """Test removing temp folder."""
+        # pylint: disable=protected-access
+        gettempdir.return_value = self.TEST_TEMP_DIR
+        cache_dir = utils._get_cache_dir()
+        self.assertTrue(os.path.exists(cache_dir))
+        utils.remove_cache_dir()
+        self.assertFalse(os.path.exists(cache_dir))
+
+    @mock.patch("tempfile.gettempdir")
     def test_get_cache_dir(self, gettempdir):
         """Test creating and retrieving temp folder."""
         # pylint: disable=protected-access

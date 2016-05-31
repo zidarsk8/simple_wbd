@@ -4,6 +4,7 @@ import logging
 import os
 import tempfile
 import time
+import shutil
 
 import requests
 from pycountry import countries
@@ -30,6 +31,20 @@ def _get_cache_dir():
 
     return cache_dir
 
+
+def remove_cache_dir():
+    """Get the temporary cache directory.
+
+    Get a directory for temporary cache. If one does not exist create a new one
+    and return that.
+
+    Returns:
+        str: path to the current cache directory
+    """
+    cache_dir = os.path.join(tempfile.gettempdir(), CACHE_DIR_NAME)
+    if os.path.exists(cache_dir):
+        shutil.rmtree(cache_dir)
+        logger.debug("Removed cache directory: %s", cache_dir)
 
 def fetch(url, use_cache=True):
     """Return response from a URL, and cache results for CACHE_TIME.
