@@ -6,6 +6,7 @@ import os
 import vcr
 
 import simple_wbd
+from simple_wbd import utils
 
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -14,7 +15,7 @@ VCR_CASSETTES = os.path.join(CURRENT_DIR, "vcr_cassettes")
 MY_VCR = vcr.VCR(
     serializer="json",
     cassette_library_dir=VCR_CASSETTES,
-    record_mode="all",  # none - used for testing, all - used for updating
+    record_mode="none",  # none - used for testing, all - used for updating
 )
 
 
@@ -22,6 +23,7 @@ class TestUtils(unittest.TestCase):
     """Tests for functions in simple_wbd.utils module."""
 
     def setUp(self):
+        utils.remove_cache_dir()
         self.api = simple_wbd.ClimateAPI()
 
     @MY_VCR.use_cassette("climate.json")
