@@ -25,8 +25,24 @@ class TestUtils(unittest.TestCase):
         self.api = simple_wbd.ClimateAPI()
 
     @MY_VCR.use_cassette("climate.json")
-    def test_get_instrumental(self):
-        pass
+    def test_get_instrumental_specific(self):
+        """Test specific instrumental data query."""
+        response = self.api.get_instrumental(
+            ["SVN"], data_types=["pr"], intervals=["month"])
+        self.assertIn("SVN", response.api_responses)
+        self.assertIn("pr", response.api_responses["SVN"])
+        self.assertIn("month", response.api_responses["SVN"]["pr"])
+
+    @MY_VCR.use_cassette("climate.json")
+    def test_get_instrumental_generic(self):
+        """Test generic instrumental data query."""
+        locations = ["SVN", "TUN"]
+        response = self.api.get_instrumental(locations)
+        self.assertEqual(set(locations), set(response.api_responses))
+        self.assertEqual(set(self.api.INSTRUMENTAL_TYPES),
+                         set(response.api_responses["SVN"]))
+        self.assertEqual(set(self.api.INSTRUMENTAL_INTERVALS),
+                         set(response.api_responses["SVN"]["pr"]))
 
     def test_get_location_good(self):
         """Test get location with proper locations."""
@@ -36,7 +52,6 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(("country", "USA"), self.api._get_location("us"))
         self.assertEqual(("basin", "1"), self.api._get_location("1"))
         self.assertEqual(("basin", "28"), self.api._get_location("28"))
-
 
     def test_get_location_bad(self):
         """Test get location with invalid locations."""
