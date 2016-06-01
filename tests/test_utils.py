@@ -1,8 +1,6 @@
 """Unit tests for wbd utility functions."""
 
-import unittest
 import os
-import shutil
 import time
 
 import mock
@@ -47,7 +45,6 @@ class TestUtils(tests.TestCase):
 
         result = utils.fetch("http://api.worldbank.org/indicators?format=json")
         self.assertEqual("dummy result", result)
-
 
     @mock.patch("requests.get")
     @mock.patch("os.path.getmtime")

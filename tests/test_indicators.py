@@ -1,17 +1,12 @@
 """Unit tests for world bank data indicator API."""
 
 import pycountry
-import os
-
-import vcr
 
 import simple_wbd
-from simple_wbd import utils
-
 import tests
 
 
-class TestUtils(tests.TestCase):
+class TestIndicators(tests.TestCase):
     """Tests for functions in simple_wbd.utils module."""
 
     def setUp(self):
