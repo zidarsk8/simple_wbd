@@ -73,6 +73,7 @@ class IndicatorAPI(object):
         url = urllib.parse.urljoin(self.BASE_URL, country_query)
         indicators = json.loads(utils.fetch(url))[1]
 
-        filtered = self._filter_indicators(indicators, filter_)
+        if filter_:
+            return self._filter_indicators(indicators, filter_)
 
-        return filtered
+        return indicators
