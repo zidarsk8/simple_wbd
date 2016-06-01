@@ -28,6 +28,7 @@ class TestCase(unittest.TestCase):
 
     def setUp(self):
         self.clear_temp_dir()
+        utils.remove_cache_dir()
 
     def tearDown(self):
         self.remove_temp_dir()
