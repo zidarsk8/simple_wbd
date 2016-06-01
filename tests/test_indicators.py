@@ -1,6 +1,5 @@
 """Unit tests for world bank data indicator API."""
 
-import unittest
 import pycountry
 import os
 
@@ -9,25 +8,17 @@ import vcr
 import simple_wbd
 from simple_wbd import utils
 
-
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-VCR_CASSETTES = os.path.join(CURRENT_DIR, "vcr_cassettes")
-
-MY_VCR = vcr.VCR(
-    serializer="json",
-    cassette_library_dir=VCR_CASSETTES,
-    record_mode="all",  # none - used for testing, all - used for updating
-)
+import tests
 
 
-class TestUtils(unittest.TestCase):
+class TestUtils(tests.TestCase):
     """Tests for functions in simple_wbd.utils module."""
 
     def setUp(self):
-        utils.remove_cache_dir()
+        super().setUp()
         self.api = simple_wbd.IndicatorAPI()
 
-    @MY_VCR.use_cassette("indicators.json")
+    @tests.MY_VCR.use_cassette("indicators.json")
     def test_get_countries(self):
         """Test fetching all country and region codes."""
         all_codes = self.api.get_countries()

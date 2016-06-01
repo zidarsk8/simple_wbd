@@ -8,30 +8,15 @@ import time
 import mock
 import pycountry
 
+import tests
 from simple_wbd import utils
 
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
-class TestUtils(unittest.TestCase):
+class TestUtils(tests.TestCase):
     """Tests for functions in simple_wbd.utils module."""
-
-    TEST_TEMP_DIR = os.path.join(CURRENT_DIR, "test_temp_folder")
-
-    def setUp(self):
-        self.clear_cache_dir()
-
-    def tearDown(self):
-        self.remove_cache_dir()
-
-    def remove_cache_dir(self):
-        if os.path.exists(self.TEST_TEMP_DIR):
-            shutil.rmtree(self.TEST_TEMP_DIR)
-
-    def clear_cache_dir(self):
-        self.remove_cache_dir()
-        os.makedirs(self.TEST_TEMP_DIR)
 
     @mock.patch("tempfile.gettempdir")
     def test_remove_cache_dir(self, gettempdir):
@@ -48,7 +33,7 @@ class TestUtils(unittest.TestCase):
         """Test creating and retrieving temp folder."""
         # pylint: disable=protected-access
         gettempdir.return_value = self.TEST_TEMP_DIR
-        self.remove_cache_dir()
+        self.remove_temp_dir()
         self.assertFalse(os.path.exists(self.TEST_TEMP_DIR))
         cache_dir = utils._get_cache_dir()
         self.assertTrue(os.path.exists(cache_dir))

@@ -1,32 +1,17 @@
 """Unit tests for wbd climate api."""
 
-import unittest
-import os
-
-import vcr
-
 import simple_wbd
-from simple_wbd import utils
+import tests
 
 
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-VCR_CASSETTES = os.path.join(CURRENT_DIR, "vcr_cassettes")
-
-MY_VCR = vcr.VCR(
-    serializer="json",
-    cassette_library_dir=VCR_CASSETTES,
-    record_mode="none",  # none - used for testing, all - used for updating
-)
-
-
-class TestUtils(unittest.TestCase):
+class TestUtils(tests.TestCase):
     """Tests for functions in simple_wbd.utils module."""
 
     def setUp(self):
-        utils.remove_cache_dir()
+        super().setUp()
         self.api = simple_wbd.ClimateAPI()
 
-    @MY_VCR.use_cassette("climate.json")
+    @tests.MY_VCR.use_cassette("climate.json")
     def test_get_instrumental_specific(self):
         """Test specific instrumental data query."""
         response = self.api.get_instrumental(
@@ -35,7 +20,7 @@ class TestUtils(unittest.TestCase):
         self.assertIn("pr", response.api_responses["SVN"])
         self.assertIn("month", response.api_responses["SVN"]["pr"])
 
-    @MY_VCR.use_cassette("climate.json")
+    @tests.MY_VCR.use_cassette("climate.json")
     def test_get_instrumental_generic(self):
         """Test generic instrumental data query."""
         locations = ["SVN", "TUN"]
