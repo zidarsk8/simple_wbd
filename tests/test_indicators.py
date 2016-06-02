@@ -14,7 +14,7 @@ class TestIndicators(tests.TestCase):
         super().setUp()
         self.api = simple_wbd.IndicatorAPI()
 
-    @tests.MY_VCR.use_cassette("indicators.json")
+    @tests.MY_VCR.use_cassette("countries.json")
     def test_get_countries(self):
         """Test fetching all country and region codes."""
         all_codes = self.api.get_countries()
@@ -63,6 +63,7 @@ class TestIndicators(tests.TestCase):
             set(i.get("id").lower() for i in filtered),
         )
 
+    @tests.MY_VCR.use_cassette("indicators.json")
     def test_get_indicators(self):
         """Test fetching indicators with and without filters."""
         all_indicators = self.api.get_indicators(filter_=None)
@@ -79,6 +80,7 @@ class TestIndicators(tests.TestCase):
         self.assertNotIn("EG.ELC.ACCS.RU.ZS".lower(), featured_codes)
         self.assertIn("EG.ELC.ACCS.RU.ZS".lower(), common_codes)
 
+    @tests.MY_VCR.use_cassette("datasets.json")
     def test_get_dataset(self):
         """Test fetching datasests."""
         res = self.api.get_dataset("SL.MNF.0714.FE.ZS")
@@ -94,10 +96,33 @@ class TestIndicators(tests.TestCase):
 
         ind_data = res.api_responses["SL.MNF.0714.FE.ZS".lower()]
         response_countries = set(i["country"]["value"] for i in ind_data)
-        self.assertEquals(
+        self.assertEqual(
             set(["United States", "Slovenia", "World"]),
             response_countries
         )
 
+    @tests.MY_VCR.use_cassette("datasets2.json")
+    def test_get_dataset_with_errors(self):
+        """Test fetching datasests with bad parameters."""
+        res = self.api.get_dataset(
+            ["SL.MNF.0714.FE.ZS", "BAD Indicator"],
+            countries=["Svn", "us", "bad country"]
+        )
+        self.assertIn("SL.MNF.0714.FE.ZS".lower(), res.api_responses)
+        self.assertNotIn("BAD Indicator".lower(), res.api_responses)
 
+        ind_data = res.api_responses["SL.MNF.0714.FE.ZS".lower()]
+        response_countries = set(i["country"]["value"] for i in ind_data)
+        self.assertEqual(
+            set(["United States", "Slovenia"]),
+            response_countries
+        )
 
+        # If there is no good country parameter, we default to all
+        res = self.api.get_dataset("SL.MNF.0714.FE.ZS", countries="badd")
+        ind_data = res.api_responses["SL.MNF.0714.FE.ZS".lower()]
+        response_countries = set(i["country"]["value"] for i in ind_data)
+        self.assertLess(
+            set(["United States", "Slovenia"]),
+            response_countries
+        )
