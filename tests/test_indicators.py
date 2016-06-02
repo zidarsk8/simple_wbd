@@ -78,3 +78,26 @@ class TestIndicators(tests.TestCase):
         self.assertIn("AG.LND.ARBL.HA.PC".lower(), featured_codes)
         self.assertNotIn("EG.ELC.ACCS.RU.ZS".lower(), featured_codes)
         self.assertIn("EG.ELC.ACCS.RU.ZS".lower(), common_codes)
+
+    def test_get_dataset(self):
+        """Test fetching datasests."""
+        res = self.api.get_dataset("SL.MNF.0714.FE.ZS")
+        self.assertIn("SL.MNF.0714.FE.ZS".lower(), res.api_responses)
+
+        res = self.api.get_dataset(
+            ["dp.dod.decx.cr.bc.z1", "SL.MNF.0714.FE.ZS", "2.0.HOI.cEL"],
+            countries=["Svn", "us", "World"]
+        )
+        self.assertIn("SL.MNF.0714.FE.ZS".lower(), res.api_responses)
+        self.assertIn("dp.dod.decx.cr.bc.z1".lower(), res.api_responses)
+        self.assertIn("2.0.HOI.cEL".lower(), res.api_responses)
+
+        ind_data = res.api_responses["SL.MNF.0714.FE.ZS".lower()]
+        response_countries = set(i["country"]["value"] for i in ind_data)
+        self.assertEquals(
+            set(["United States", "Slovenia", "World"]),
+            response_countries
+        )
+
+
+
