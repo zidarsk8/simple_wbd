@@ -7,15 +7,25 @@ wbpy or wbdata packages.
 import urllib
 import json
 import re
+import logging
 
 from simple_wbd import utils
+
+logger = logging.getLogger(__name__)
+
+
+class IndicatorDataset(object):
+    # pylint: disable=too-few-public-methods
+
+    def __init__(self, api_responses):
+        self.api_responses = api_responses
 
 
 class IndicatorAPI(object):
     """Request data from the World Bank Indicator API."""
-    # pylint: disable=too-few-public-methods
 
     BASE_URL = "http://api.worldbank.org/"
+    GET_PARAMS = "?format=json&per_page=100000"
 
     def get_countries(self):
         """Get a list of countries and regions.
@@ -30,7 +40,7 @@ class IndicatorAPI(object):
         Returns:
             list[dict]: A list of countries and aggregate regions.
         """
-        country_query = "countries?format=json&per_page=100000"
+        country_query = "countries" + self.GET_PARAMS
         url = urllib.parse.urljoin(self.BASE_URL, country_query)
         country_result = utils.fetch(url)
         countries = json.loads(country_result)[1]
@@ -69,7 +79,7 @@ class IndicatorAPI(object):
         Returns:
             list[dict]: A list of queryable indicators.
         """
-        country_query = "indicators?format=json&per_page=100000"
+        country_query = "indicators" + self.GET_PARAMS
         url = urllib.parse.urljoin(self.BASE_URL, country_query)
         indicators = json.loads(utils.fetch(url))[1]
 
@@ -77,3 +87,99 @@ class IndicatorAPI(object):
             return self._filter_indicators(indicators, filter_)
 
         return indicators
+
+    def _get_countries_map(self):
+        """Get a map from country name or code to alpha3 code.
+
+        Returns:
+            dict: map of names, alpha2, alpha3 codes to alpha3.
+        """
+        all_countries = self.get_countries()
+        country_map = {c.get("iso2Code"): c.get("id") for c in all_countries}
+        country_map.update({c.get("id"): c.get("id") for c in all_countries})
+        country_map.update({c.get("name"): c.get("id") for c in all_countries})
+
+        return {k.lower():v.lower() for k, v in country_map.items() if k}
+
+    def _countries_to_alpha3(self, countries):
+        """Filter out invalid countries and return a set of alpha3 codes.
+
+        Args:
+            countries (list or str): List of country codes or names, or a
+                single country code/name
+
+        Returns:
+            set[str]: List of alpha3 country codes for all valid countries.
+        """
+
+        if not countries:
+            return set()
+
+        if isinstance(countries, str):
+            countries = [countries]
+
+        countries = [c.lower() for c in countries if c]
+
+        countries_map = self._get_countries_map()
+        alpha3_codes = set()
+        for country in countries:
+            if country in countries_map:
+                alpha3_codes.add(countries_map[country])
+            else:
+                logger.warning("Ignoring invalid country: %s", country)
+        return alpha3_codes
+
+    def _get_indicator_data(self, alpha3_text, indicator):
+
+        query = "countries/{countries}/indicators/{indicator}{params}".format(
+            countries=alpha3_text,
+            indicator=indicator,
+            params="?format=json&per_page=10000",  # lower limit
+        )
+
+        url = urllib.parse.urljoin(self.BASE_URL, query)
+        header, indicator_data = json.loads(utils.fetch(url))
+
+        # loop through the rest of the pages if they exist
+        for page in range(2, header.get("pages", 1) + 1):
+            page_url = "{url}&page={page}".format(url=url, page=page)
+            indicator_data += json.loads(utils.fetch(page_url))[1]
+
+        return indicator_data
+
+    def get_dataset(self, indicators, countries=None):
+        """Get indicator dataset.
+
+        Args:
+            indicators (str or list[str]): A single indicator id, or a list of
+                requested indicator ids.
+            countries (str or list[str]): country id or list of country ids. If
+                None, all countries will be used.
+
+        Returns:
+            IndicatorDataset: all datasets for the requested indicators.
+        """
+        if isinstance(indicators, str):
+            indicators = [indicators]
+
+        alpha3_codes = self._countries_to_alpha3(countries)
+        if alpha3_codes:
+            alpha3_text = ";".join(alpha3_codes).upper()
+        else:
+            alpha3_text = "all"
+
+        indicators_set = set(i.lower() for i in indicators)
+
+        responses = {}
+        # pylint: disable=broad-except
+        for indicator in indicators_set:
+            try:
+                responses[indicator] = self._get_indicator_data(
+                    alpha3_text, indicator)
+            except Exception:
+                # We should avoid any errors that can occur due to api
+                # responses or invalid data.
+                logger.warning(
+                    "Failed to fetch indicator: %s", indicator, exc_info=True)
+
+        return IndicatorDataset(responses)
