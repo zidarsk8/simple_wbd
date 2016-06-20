@@ -12,7 +12,7 @@ from collections import defaultdict
 from simple_wbd import utils
 
 
-class ClimateResponse(object):
+class ClimateDataset(object):
     """Clime API response object.
 
     This object is just a holder for functions to transform climate API
@@ -43,7 +43,6 @@ class ClimateAPI(object):
     BASE_URL = "http://climatedataapi.worldbank.org/climateweb/rest/"
     INSTRUMENTAL_QUERY = "v1/{loc_type}/cru/{data_type}/{interval}/{location}"
     MAX_BASSIN_ID = 468
-
 
     def _get_location(self, location):
         if location.isdigit():
@@ -93,4 +92,4 @@ class ClimateAPI(object):
                 "response": json.loads(utils.fetch(url))
             }
 
-        return ClimateResponse(api_responses)
+        return ClimateDataset(api_responses)
