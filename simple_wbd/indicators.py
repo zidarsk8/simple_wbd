@@ -83,8 +83,10 @@ class IndicatorAPI(object):
 
         if filter_.lower() == "featured":
             url = "http://data.worldbank.org/indicator"
-        else:
+        elif filter_.lower() == "common":
             url = "http://data.worldbank.org/indicator/all"
+        else:
+            return indicators
 
         filter_page = utils.fetch(url)
         codes = re.compile(r"(?<=http://data.worldbank.org/indicator/)"
@@ -125,7 +127,6 @@ class IndicatorAPI(object):
                 )
             ])
         return indicator_list
-
 
     def _get_countries_map(self):
         """Get a map from country name or code to alpha3 code.
