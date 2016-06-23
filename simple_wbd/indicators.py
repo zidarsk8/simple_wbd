@@ -26,6 +26,17 @@ class IndicatorAPI(object):
 
     BASE_URL = "http://api.worldbank.org/"
     GET_PARAMS = "?format=json&per_page=100000"
+    DEFAULT_COUNTRY_FIELDS = [
+        "id",
+        "name",
+        "incomeLevel_text",
+    ]
+
+    _country_field_map = {
+        "id": "Id",
+        "name": "Name",
+        "incomeLevel_text": "Income Level",
+    }
 
     def get_countries(self):
         """Get a list of countries and regions.
@@ -54,6 +65,18 @@ class IndicatorAPI(object):
                 )
 
         return countries
+
+    def get_country_list(self, fields=None, field_map=None):
+        if not field_map:
+            field_map = self._country_field_map
+        if not fields:
+            fields = self.DEFAULT_COUNTRY_FIELDS
+
+        countries = self.get_countries()
+        country_list = [[field_map[field] for field in fields]]
+        for country in countries:
+            country_list.append([country[field] for field in fields])
+        return country_list
 
     @classmethod
     def _filter_indicators(cls, indicators, filter_):
@@ -88,6 +111,22 @@ class IndicatorAPI(object):
 
         return indicators
 
+    def get_indicator_list(self, filter_="Common"):
+        indicators = self.get_indicators(filter_=filter_)
+        indicator_list = [["Id", "Name", "Source", "Topics"]]
+        for indicator in indicators:
+            indicator_list.append([
+                indicator.get("id", "").strip(),
+                indicator.get("name", "").strip(),
+                indicator.get("source", {}).get("value", "").strip(),
+                ", ".join(
+                    topic.get("value", "").strip()
+                    for topic in indicator.get("topics", [])
+                )
+            ])
+        return indicator_list
+
+
     def _get_countries_map(self):
         """Get a map from country name or code to alpha3 code.
 
@@ -99,7 +138,7 @@ class IndicatorAPI(object):
         country_map.update({c.get("id"): c.get("id") for c in all_countries})
         country_map.update({c.get("name"): c.get("id") for c in all_countries})
 
-        return {k.lower():v.lower() for k, v in country_map.items() if k}
+        return {k.lower(): v.lower() for k, v in country_map.items() if k}
 
     def _countries_to_alpha3(self, countries):
         """Filter out invalid countries and return a set of alpha3 codes.
