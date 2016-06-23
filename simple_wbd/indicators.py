@@ -115,16 +115,16 @@ class IndicatorAPI(object):
 
     def get_indicator_list(self, filter_="Common"):
         indicators = self.get_indicators(filter_=filter_)
-        indicator_list = [["Id", "Name", "Source", "Topics"]]
+        indicator_list = [["Id", "Name", "Topics", "Source"]]
         for indicator in indicators:
             indicator_list.append([
                 indicator.get("id", "").strip(),
                 indicator.get("name", "").strip(),
-                indicator.get("source", {}).get("value", "").strip(),
                 ", ".join(
                     topic.get("value", "").strip()
                     for topic in indicator.get("topics", [])
-                )
+                ),
+                indicator.get("source", {}).get("value", "").strip(),
             ])
         return indicator_list
 
