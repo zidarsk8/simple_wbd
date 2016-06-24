@@ -40,13 +40,17 @@ class IndicatorDataset(object):
                 logger.warning("Failed to parse fload value", exc_info=True)
         return None
 
-    def _get_single_response_list(self, data, timeseries=False):
-        headers = ["Country"]
+    def _get_data_map(self, data):
         data_map = defaultdict(lambda: defaultdict(float))
         for datapoint in data:
             country = datapoint.get("country", {}).get("value", "")
             date = datapoint.get("date", "")
             data_map[country][date] = self._parse_value(datapoint.get("value"))
+        return data_map
+
+    def _get_single_response_list(self, data, timeseries=False):
+        headers = ["Country"]
+        data_map = self._get_data_map(data)
 
         country_set = set()
         date_set = set()
@@ -67,11 +71,17 @@ class IndicatorDataset(object):
 
         return response
 
+    def _get_responses_list(self, data, timeseries=False):
+        return []
+
     def as_list(self, timeseries=False):
 
         if len(self.api_responses) == 1:
             value = next(iter(self.api_responses.values()))
             return self._get_single_response_list(value, timeseries)
+
+        if len(self.api_responses) > 1:
+            return self._get_responses_list(self.api_responses)
 
         return []
 
