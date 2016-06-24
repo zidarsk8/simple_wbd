@@ -8,6 +8,7 @@ import urllib
 import json
 import re
 import logging
+from collections import defaultdict
 
 from simple_wbd import utils
 
@@ -19,6 +20,60 @@ class IndicatorDataset(object):
 
     def __init__(self, api_responses):
         self.api_responses = api_responses
+
+    def _get_dates(self, data):
+        """Get all different unique dates from single indicator data.
+
+        Args:
+            data (list[dict]): list of indicator data that contains date.
+
+        Returns:
+            list[str]: sorted list of all unique date entries.
+        """
+        return sorted(set(datapoint.get("date") for datapoint in data))
+
+    def _parse_value(self, value):
+        if value:
+            try:
+                return float(value)
+            except ValueError:
+                logger.warning("Failed to parse fload value", exc_info=True)
+        return None
+
+    def _get_single_response_list(self, data, timeseries=False):
+        headers = ["Country"]
+        data_map = defaultdict(lambda: defaultdict(float))
+        for datapoint in data:
+            country = datapoint.get("country", {}).get("value", "")
+            date = datapoint.get("date", "")
+            data_map[country][date] = self._parse_value(datapoint.get("value"))
+
+        country_set = set()
+        date_set = set()
+        for country, country_data in data_map.items():
+            for date in country_data:
+                country_set.add(country)
+                date_set.add(date)
+
+        all_countries = sorted(country_set)
+        all_dates = sorted(date_set)
+
+        headers.extend(all_dates)
+        response = [headers]
+        for country in all_countries:
+            response.append([country] + [
+                data_map[country][date] for date in all_dates
+            ])
+
+        return response
+
+    def as_list(self, timeseries=False):
+
+        if len(self.api_responses) == 1:
+            value = next(iter(self.api_responses.values()))
+            return self._get_single_response_list(value, timeseries)
+
+        return []
 
 
 class IndicatorAPI(object):
