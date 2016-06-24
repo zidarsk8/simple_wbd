@@ -40,27 +40,34 @@ class IndicatorDataset(object):
                 logger.warning("Failed to parse fload value", exc_info=True)
         return None
 
-    def _get_data_map(self, data):
-        data_map = defaultdict(lambda: defaultdict(float))
+    def _get_data_map(
+            self, data, data_map=None, country_prefix="", date_prefix=""):
+        if data_map is None:
+            data_map = defaultdict(lambda: defaultdict(float))
         for datapoint in data:
             country = datapoint.get("country", {}).get("value", "")
             date = datapoint.get("date", "")
-            data_map[country][date] = self._parse_value(datapoint.get("value"))
+            data_map[country_prefix + country][date_prefix + date] = \
+                self._parse_value(datapoint.get("value"))
         return data_map
+
+    def _get_all_dates(self, data_map):
+        date_set = set()
+        for country_data in data_map.values():
+            for date in country_data:
+                date_set.add(date)
+
+        return sorted(date_set)
+
+    def _get_all_countries(self, data_map):
+        return sorted(data_map.keys())
 
     def _get_single_response_list(self, data, timeseries=False):
         headers = ["Country"]
         data_map = self._get_data_map(data)
 
-        country_set = set()
-        date_set = set()
-        for country, country_data in data_map.items():
-            for date in country_data:
-                country_set.add(country)
-                date_set.add(date)
-
-        all_countries = sorted(country_set)
-        all_dates = sorted(date_set)
+        all_dates = self._get_all_dates(data_map)
+        all_countries = self._get_all_countries(data_map)
 
         headers.extend(all_dates)
         response = [headers]
@@ -71,8 +78,27 @@ class IndicatorDataset(object):
 
         return response
 
-    def _get_responses_list(self, data, timeseries=False):
-        return []
+    def _get_responses_list(self, response_data, timeseries=False):
+        headers = ["Country"]
+        data_map = None
+        for indicator, indicator_data in response_data.items():
+            data_map = self._get_data_map(
+                indicator_data,
+                data_map=data_map,
+                date_prefix=indicator + " - "
+            )
+
+        all_dates = self._get_all_dates(data_map)
+        all_countries = self._get_all_countries(data_map)
+
+        headers.extend(all_dates)
+        response = [headers]
+        for country in all_countries:
+            response.append([country] + [
+                data_map[country][date] for date in all_dates
+            ])
+
+        return response
 
     def as_list(self, timeseries=False):
 
