@@ -30,17 +30,6 @@ For basic usage:
     pip instal git+git://github.com/zidarsk8/simple_wbd.git
 
 
-For development
-
-.. code:: sh
-
-    virtualenv --python=python3 venv3
-    venv3/bin/activate
-    git clone git://github.com/zidarsk8/simple_wbd.git
-    cd simple_wbd
-    pip install -e .[dev,test]
-
-
 Usage
 -----
 
@@ -51,3 +40,23 @@ Usage
     climate = api.get_instrumental("Italy")
 
     climates = api.get_instrumental(["Italy", "Slovenia", "US"])
+
+
+For development
+---------------
+
+Install
+
+.. code:: sh
+
+    virtualenv --python=python3 venv3
+    venv3/bin/activate
+    git clone git://github.com/zidarsk8/simple_wbd.git
+    cd simple_wbd
+    pip install -e .[dev,test]
+
+Run tests
+
+.. code:: sh
+
+    python setup.py test
