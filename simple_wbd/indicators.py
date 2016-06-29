@@ -16,12 +16,17 @@ logger = logging.getLogger(__name__)
 
 
 class IndicatorDataset(object):
+    """Wrapper for indicator dataset.
+
+    This class provides multiple ways of accessing retrieved indicator data.
+    """
     # pylint: disable=too-few-public-methods
 
     def __init__(self, api_responses):
         self.api_responses = api_responses
 
-    def _get_dates(self, data):
+    @staticmethod
+    def _get_dates(data):
         """Get all different unique dates from single indicator data.
 
         Args:
@@ -32,7 +37,8 @@ class IndicatorDataset(object):
         """
         return sorted(set(datapoint.get("date") for datapoint in data))
 
-    def _parse_value(self, value):
+    @staticmethod
+    def _parse_value(value):
         if value:
             try:
                 return float(value)
@@ -40,8 +46,24 @@ class IndicatorDataset(object):
                 logger.warning("Failed to parse fload value", exc_info=True)
         return None
 
-    def _get_data_map(
-            self, data, data_map=None, country_prefix="", date_prefix=""):
+    def _get_data_map(self, data, data_map=None, country_prefix="",
+                      date_prefix=""):
+        """Get data is a nested dictionary.
+
+        This returns data as a nested default dict, with first level containing
+        country data and second level indicator data with dates.
+
+        Args:
+            data: Result dict retrieved from world bank data api.
+            data_map: Existing data map that will be update with missing data.
+                if set to none, a new data_map is created and returned. This
+                used for merging data from different indicators.
+            country_prefix: Prefix string for all country keys.
+            date_prefix: Prefix string for all date keys.
+
+        Returns:
+            nested dict containing data grouped by country, indicator and date.
+        """
         if data_map is None:
             data_map = defaultdict(lambda: defaultdict(float))
         for datapoint in data:
@@ -51,7 +73,8 @@ class IndicatorDataset(object):
                 self._parse_value(datapoint.get("value"))
         return data_map
 
-    def _get_all_dates(self, data_map):
+    @staticmethod
+    def _get_all_dates(data_map):
         date_set = set()
         for country_data in data_map.values():
             for date in country_data:
@@ -59,10 +82,12 @@ class IndicatorDataset(object):
 
         return sorted(date_set)
 
-    def _get_all_countries(self, data_map):
+    @staticmethod
+    def _get_all_countries(data_map):
         return sorted(data_map.keys())
 
     def _get_single_response_list(self, data, timeseries=False):
+        """Get list data for a single indicator."""
         headers = ["Country"]
         data_map = self._get_data_map(data)
 
@@ -79,6 +104,7 @@ class IndicatorDataset(object):
         return response
 
     def _get_responses_list(self, response_data, timeseries=False):
+        """Get list data for multiple indicators."""
         headers = ["Country"]
         data_map = None
         for indicator, indicator_data in response_data.items():
@@ -101,7 +127,12 @@ class IndicatorDataset(object):
         return response
 
     def as_list(self, timeseries=False):
+        """Get data as 2D list.
 
+        This function returns data as a 2D list where rows contain country and
+        all data related to that country, and columns contain indicator and
+        dates.
+        """
         if len(self.api_responses) == 1:
             value = next(iter(self.api_responses.values()))
             return self._get_single_response_list(value, timeseries)
@@ -158,6 +189,7 @@ class IndicatorAPI(object):
         return countries
 
     def get_country_list(self, fields=None, field_map=None):
+        """Get list of all available countries."""
         if not field_map:
             field_map = self._country_field_map
         if not fields:
@@ -205,6 +237,7 @@ class IndicatorAPI(object):
         return indicators
 
     def get_indicator_list(self, filter_="Common"):
+        """Get a list of all possible indicators."""
         indicators = self.get_indicators(filter_=filter_)
         indicator_list = [["Id", "Name", "Topics", "Source"]]
         for indicator in indicators:
