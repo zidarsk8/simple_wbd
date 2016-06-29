@@ -63,6 +63,34 @@ class TestIndicatorDataset(tests.TestCase):
             set(data_map["2 - Low & middle income"].keys())
         )
 
+    def test_get_all_dates(self):
+        """Test collecting all dates from data_map
+
+        - Test if prefixes get prepended to country and date keys.
+        - Test updating existing data_map.
+        """
+        data_map = self.dataset._get_data_map(
+            self.dummy_response["indicator 1"],
+            date_prefix="1 - ",
+        )
+        self.dataset._get_data_map(
+            self.dummy_response["indicator 2"],
+            data_map=data_map,
+            date_prefix="2 - ",
+        )
+        self.assertEqual(
+            [
+                "1 - 1998Q2",
+                "1 - 2000Q1",
+                "1 - 2015Q2",
+                "1 - 2015Q3",
+                "2 - 1970",
+                "2 - 1971",
+                "2 - 1972"
+            ],
+            self.dataset._get_all_dates(data_map)
+        )
+
     dummy_response = {
         "indicator 1": [{
             'country': {'id': 'BR', 'value': 'Brazil'},
