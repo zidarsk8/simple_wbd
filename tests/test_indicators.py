@@ -111,8 +111,8 @@ class TestIndicatorDataset(tests.TestCase):
             self.dataset._get_all_countries(data_map)
         )
 
-    def test_as_list(self):
-        """Test as_list function."""
+    def test_as_list_multiple(self):
+        """Test as_list function for multiple indicators."""
         # pylint: disable=bad-whitespace,line-too-long
         # Disable bad formatting lint warnings for readability.
         expected_list = [
@@ -126,6 +126,26 @@ class TestIndicatorDataset(tests.TestCase):
             self.dataset.as_list()
         )
 
+    def test_as_list_single(self):
+        """Test as_list function for a single indicator."""
+        # pylint: disable=bad-whitespace
+        # Disable bad formatting lint warnings for readability.
+
+        self.dataset.api_responses = {"ind 1": self.dummy_response["ind 1"]}
+        expected_list = [
+            ['Country', '1998Q2', '2000Q1', '2015Q2', '2015Q3'],
+            ['Belgium',  0.0,      0.0,      126.0,    87.0],
+            ['Brazil',   131.0,    97.0,     0.0,      0.0],
+        ]
+        self.assertEqual(
+            expected_list,
+            self.dataset.as_list()
+        )
+
+    def test_as_list_empty(self):
+        """Test as_list function for empty dataset."""
+        self.dataset.api_responses = {}
+        self.assertEqual([], self.dataset.as_list())
 
     dummy_response = {
         "ind 1": [{
