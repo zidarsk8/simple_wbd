@@ -7,6 +7,69 @@ import simple_wbd
 import tests
 
 
+class TestIndicatorDataset(tests.TestCase):
+
+    def setUp(self):
+        self.dataset = simple_wbd.IndicatorDataset(self.dummy_response)
+
+    def test_parse_value(self):
+        """Test parse value function."""
+        bad_values = [None, "uoea", "--2-", ""]
+        for value in bad_values:
+            self.assertEqual(self.dataset._parse_value(value), None)
+
+        bad_values = [0, 55, 753.420, -5]
+        for value in bad_values:
+            self.assertEqual(self.dataset._parse_value(str(value)), value)
+
+    dummy_response = {
+        "indicator 1:": [{
+            'country': {'id': 'BR', 'value': 'Brazil'},
+            'date': '1998Q2',
+            'decimal': '0',
+            'indicator': {'id': 'Indicator 1', 'value': 'description'},
+            'value': "131"
+        }, {
+            'country': {'id': 'BR', 'value': 'Brazil'},
+            'date': '1998Q1',
+            'decimal': '0',
+            'indicator': {'id': 'Indicator 1', 'value': 'description'},
+            'value': "97"
+        }, {
+            'country': {'id': 'BE', 'value': 'Belgium'},
+            'date': '2015Q3',
+            'decimal': '0',
+            'indicator': {'id': 'Indicator 1', 'value': 'description'},
+            'value': "87"
+        }, {
+            'country': {'id': 'BE', 'value': 'Belgium'},
+            'date': '2015Q2',
+            'decimal': '0',
+            'indicator': {'id': 'Indicator 1', 'value': 'description'},
+            'value': "126"
+        }],
+        "indicator 2:": [{
+            'country': {'id': 'XO', 'value': 'Low & middle income'},
+            'date': '1972',
+            'decimal': '1',
+            'indicator': {'id': 'Indicator 2', 'value': 'employment'},
+            'value': "1.23"
+        }, {
+            'country': {'id': 'XO', 'value': 'Low & middle income'},
+            'date': '1971',
+            'decimal': '1',
+            'indicator': {'id': 'Indicator 2', 'value': 'employment'},
+            'value': "12.3"
+        }, {
+            'country': {'id': 'XO', 'value': 'Low & middle income'},
+            'date': '1970',
+            'decimal': '1',
+            'indicator': {'id': 'Indicator 2', 'value': 'employment'},
+            'value': None
+        }],
+    }
+
+
 class TestIndicators(tests.TestCase):
     """Tests for functions in simple_wbd.utils module."""
 
