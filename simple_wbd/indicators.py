@@ -39,12 +39,13 @@ class IndicatorDataset(object):
 
     @staticmethod
     def _parse_value(value):
-        if value:
-            try:
-                return float(value)
-            except ValueError:
-                logger.warning("Failed to parse fload value", exc_info=True)
-        return None
+        """Parse any non empty string value into float."""
+        if value is None:
+            return None
+        try:
+            return float(value)
+        except (ValueError, TypeError):
+            logger.warning("Failed to parse fload value.", exc_info=True)
 
     def _get_data_map(self, data, data_map=None, country_prefix="",
                       date_prefix=""):
