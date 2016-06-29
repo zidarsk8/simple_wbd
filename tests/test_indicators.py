@@ -111,6 +111,18 @@ class TestIndicatorDataset(tests.TestCase):
             self.dataset._get_all_countries(data_map)
         )
 
+    def test_as_list(self):
+        expected_list = [
+            ['Country',             'indicator 1 - 1998Q2', 'indicator 1 - 2000Q1', 'indicator 1 - 2015Q2', 'indicator 1 - 2015Q3', 'indicator 2 - 1970', 'indicator 2 - 1971', 'indicator 2 - 1972'],
+            ['Belgium',             0.0,                    0.0,                    126.0,                  87.0,                   0.0,                  0.0,                  0.0],
+            ['Brazil',              131.0,                  97.0,                   0.0,                    0.0,                    0.0,                  0.0,                  0.0],
+            ['Low & middle income', 0.0,                    0.0,                    0.0,                    0.0,                    None,                 12.3,                 1.23],
+        ]
+        self.assertEqual(
+            expected_list,
+            self.dataset.as_list()
+        )
+
 
     dummy_response = {
         "indicator 1": [{
