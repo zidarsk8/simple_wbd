@@ -30,8 +30,38 @@ class TestIndicatorDataset(tests.TestCase):
     def test_get_dates(self):
         """Test getting all unique dates from single indicator dataset."""
         dates = self.dataset._get_dates(self.dummy_response["indicator 1"])
-        expected_dates = ['1998Q1', '1998Q2', '2015Q2', '2015Q3']
+        expected_dates = ['1998Q2', '2000Q1', '2015Q2', '2015Q3']
         self.assertEqual(dates, expected_dates)
+
+    def test_get_clean_data_map(self):
+        """Test basic get_data_map calls."""
+        data = self.dummy_response["indicator 1"]
+        data_map = self.dataset._get_data_map(data)
+        self.assertEqual({"Brazil", "Belgium"}, set(data_map.keys()))
+        self.assertEqual({"1998Q2", "2000Q1"}, set(data_map["Brazil"].keys()))
+
+    def test_get_updated_data_map(self):
+        """Advanced tests for _get_data_map function.
+
+        - Test if prefixes get prepended to country and date keys.
+        - Test updating existing data_map.
+        """
+        data_map = self.dataset._get_data_map(
+            self.dummy_response["indicator 1"])
+        self.dataset._get_data_map(
+            self.dummy_response["indicator 2"],
+            data_map=data_map,
+            country_prefix="2 - ",
+            date_prefix="2 - ",
+        )
+        self.assertEqual(
+            {"Brazil", "Belgium", "2 - Low & middle income"},
+            set(data_map.keys())
+        )
+        self.assertEqual(
+            {"2 - 1970", "2 - 1971", "2 - 1972"},
+            set(data_map["2 - Low & middle income"].keys())
+        )
 
     dummy_response = {
         "indicator 1": [{
@@ -42,7 +72,7 @@ class TestIndicatorDataset(tests.TestCase):
             'value': "131"
         }, {
             'country': {'id': 'BR', 'value': 'Brazil'},
-            'date': '1998Q1',
+            'date': '2000Q1',
             'decimal': '0',
             'indicator': {'id': 'Indicator 1', 'value': 'description'},
             'value': "97"
@@ -59,7 +89,7 @@ class TestIndicatorDataset(tests.TestCase):
             'indicator': {'id': 'Indicator 1', 'value': 'description'},
             'value': "126"
         }],
-        "indicator 2:": [{
+        "indicator 2": [{
             'country': {'id': 'XO', 'value': 'Low & middle income'},
             'date': '1972',
             'decimal': '1',
