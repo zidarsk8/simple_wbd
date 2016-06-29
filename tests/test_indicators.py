@@ -29,13 +29,13 @@ class TestIndicatorDataset(tests.TestCase):
 
     def test_get_dates(self):
         """Test getting all unique dates from single indicator dataset."""
-        dates = self.dataset._get_dates(self.dummy_response["indicator 1"])
+        dates = self.dataset._get_dates(self.dummy_response["ind 1"])
         expected_dates = ['1998Q2', '2000Q1', '2015Q2', '2015Q3']
         self.assertEqual(dates, expected_dates)
 
     def test_get_clean_data_map(self):
         """Test basic get_data_map calls."""
-        data = self.dummy_response["indicator 1"]
+        data = self.dummy_response["ind 1"]
         data_map = self.dataset._get_data_map(data)
         self.assertEqual({"Brazil", "Belgium"}, set(data_map.keys()))
         self.assertEqual({"1998Q2", "2000Q1"}, set(data_map["Brazil"].keys()))
@@ -47,9 +47,9 @@ class TestIndicatorDataset(tests.TestCase):
         - Test updating existing data_map.
         """
         data_map = self.dataset._get_data_map(
-            self.dummy_response["indicator 1"])
+            self.dummy_response["ind 1"])
         self.dataset._get_data_map(
-            self.dummy_response["indicator 2"],
+            self.dummy_response["ind 2"],
             data_map=data_map,
             country_prefix="2 - ",
             date_prefix="2 - ",
@@ -70,11 +70,11 @@ class TestIndicatorDataset(tests.TestCase):
         - Test updating existing data_map.
         """
         data_map = self.dataset._get_data_map(
-            self.dummy_response["indicator 1"],
+            self.dummy_response["ind 1"],
             date_prefix="1 - ",
         )
         self.dataset._get_data_map(
-            self.dummy_response["indicator 2"],
+            self.dummy_response["ind 2"],
             data_map=data_map,
             date_prefix="2 - ",
         )
@@ -94,11 +94,11 @@ class TestIndicatorDataset(tests.TestCase):
     def test_get_all_countries(self):
         """Test fetching all country keys with prefixes."""
         data_map = self.dataset._get_data_map(
-            self.dummy_response["indicator 1"],
+            self.dummy_response["ind 1"],
             country_prefix="1 - ",
         )
         self.dataset._get_data_map(
-            self.dummy_response["indicator 2"],
+            self.dummy_response["ind 2"],
             data_map=data_map,
             country_prefix="2 - ",
         )
@@ -112,11 +112,14 @@ class TestIndicatorDataset(tests.TestCase):
         )
 
     def test_as_list(self):
+        """Test as_list function."""
+        # pylint: disable=bad-whitespace,line-too-long
+        # Disable bad formatting lint warnings for readability.
         expected_list = [
-            ['Country',             'indicator 1 - 1998Q2', 'indicator 1 - 2000Q1', 'indicator 1 - 2015Q2', 'indicator 1 - 2015Q3', 'indicator 2 - 1970', 'indicator 2 - 1971', 'indicator 2 - 1972'],
-            ['Belgium',             0.0,                    0.0,                    126.0,                  87.0,                   0.0,                  0.0,                  0.0],
-            ['Brazil',              131.0,                  97.0,                   0.0,                    0.0,                    0.0,                  0.0,                  0.0],
-            ['Low & middle income', 0.0,                    0.0,                    0.0,                    0.0,                    None,                 12.3,                 1.23],
+            ['Country',            'ind 1 - 1998Q2', 'ind 1 - 2000Q1', 'ind 1 - 2015Q2', 'ind 1 - 2015Q3', 'ind 2 - 1970', 'ind 2 - 1971', 'ind 2 - 1972'],
+            ['Belgium',             0.0,              0.0,              126.0,            87.0,             0.0,            0.0,            0.0],
+            ['Brazil',              131.0,            97.0,             0.0,              0.0,              0.0,            0.0,            0.0],
+            ['Low & middle income', 0.0,              0.0,              0.0,              0.0,              None,           12.3,           1.23],
         ]
         self.assertEqual(
             expected_list,
@@ -125,48 +128,48 @@ class TestIndicatorDataset(tests.TestCase):
 
 
     dummy_response = {
-        "indicator 1": [{
+        "ind 1": [{
             'country': {'id': 'BR', 'value': 'Brazil'},
             'date': '1998Q2',
             'decimal': '0',
-            'indicator': {'id': 'Indicator 1', 'value': 'description'},
+            'indicator': {'id': 'ind 1', 'value': 'description'},
             'value': "131"
         }, {
             'country': {'id': 'BR', 'value': 'Brazil'},
             'date': '2000Q1',
             'decimal': '0',
-            'indicator': {'id': 'Indicator 1', 'value': 'description'},
+            'indicator': {'id': 'ind 1', 'value': 'description'},
             'value': "97"
         }, {
             'country': {'id': 'BE', 'value': 'Belgium'},
             'date': '2015Q3',
             'decimal': '0',
-            'indicator': {'id': 'Indicator 1', 'value': 'description'},
+            'indicator': {'id': 'ind 1', 'value': 'description'},
             'value': "87"
         }, {
             'country': {'id': 'BE', 'value': 'Belgium'},
             'date': '2015Q2',
             'decimal': '0',
-            'indicator': {'id': 'Indicator 1', 'value': 'description'},
+            'indicator': {'id': 'ind 1', 'value': 'description'},
             'value': "126"
         }],
-        "indicator 2": [{
+        "ind 2": [{
             'country': {'id': 'XO', 'value': 'Low & middle income'},
             'date': '1972',
             'decimal': '1',
-            'indicator': {'id': 'Indicator 2', 'value': 'employment'},
+            'indicator': {'id': 'ind 2', 'value': 'employment'},
             'value': "1.23"
         }, {
             'country': {'id': 'XO', 'value': 'Low & middle income'},
             'date': '1971',
             'decimal': '1',
-            'indicator': {'id': 'Indicator 2', 'value': 'employment'},
+            'indicator': {'id': 'ind 2', 'value': 'employment'},
             'value': "12.3"
         }, {
             'country': {'id': 'XO', 'value': 'Low & middle income'},
             'date': '1970',
             'decimal': '1',
-            'indicator': {'id': 'Indicator 2', 'value': 'employment'},
+            'indicator': {'id': 'ind 2', 'value': 'employment'},
             'value': None
         }],
     }
