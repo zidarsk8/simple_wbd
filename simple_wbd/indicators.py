@@ -54,6 +54,9 @@ class IndicatorDataset(object):
         This returns data as a nested default dict, with first level containing
         country data and second level indicator data with dates.
 
+        Note: prefix is useful when aggregating data from multiple indicators.
+        usually the prefix can be the indicator itself.
+
         Args:
             data: Result dict retrieved from world bank data api.
             data_map: Existing data map that will be update with missing data.
