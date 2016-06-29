@@ -22,8 +22,14 @@ class TestIndicatorDataset(tests.TestCase):
         for value in bad_values:
             self.assertEqual(self.dataset._parse_value(str(value)), value)
 
+    def test_get_dates(self):
+        """Test getting all unique dates from single indicator dataset."""
+        dates = self.dataset._get_dates(self.dummy_response["indicator 1"])
+        expected_dates = ['1998Q1', '1998Q2', '2015Q2', '2015Q3']
+        self.assertEqual(dates, expected_dates)
+
     dummy_response = {
-        "indicator 1:": [{
+        "indicator 1": [{
             'country': {'id': 'BR', 'value': 'Brazil'},
             'date': '1998Q2',
             'decimal': '0',
