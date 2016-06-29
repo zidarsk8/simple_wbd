@@ -86,7 +86,7 @@ class IndicatorDataset(object):
     def _get_all_countries(data_map):
         return sorted(data_map.keys())
 
-    def _get_single_response_list(self, data, timeseries=False):
+    def _get_single_response_list(self, data):
         """Get list data for a single indicator."""
         headers = ["Country"]
         data_map = self._get_data_map(data)
@@ -103,7 +103,7 @@ class IndicatorDataset(object):
 
         return response
 
-    def _get_responses_list(self, response_data, timeseries=False):
+    def _get_responses_list(self, response_data):
         """Get list data for multiple indicators."""
         headers = ["Country"]
         data_map = None
@@ -126,7 +126,7 @@ class IndicatorDataset(object):
 
         return response
 
-    def as_list(self, timeseries=False):
+    def as_list(self):
         """Get data as 2D list.
 
         This function returns data as a 2D list where rows contain country and
@@ -135,7 +135,7 @@ class IndicatorDataset(object):
         """
         if len(self.api_responses) == 1:
             value = next(iter(self.api_responses.values()))
-            return self._get_single_response_list(value, timeseries)
+            return self._get_single_response_list(value)
 
         if len(self.api_responses) > 1:
             return self._get_responses_list(self.api_responses)
