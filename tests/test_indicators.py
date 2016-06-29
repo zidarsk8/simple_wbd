@@ -8,6 +8,11 @@ import tests
 
 
 class TestIndicatorDataset(tests.TestCase):
+    """Tests for IndicatorDataset class and its functions."""
+
+    # pylint: disable=protected-access
+    # Protected access lint warning is disabled so we can test the protected
+    # methods.
 
     def setUp(self):
         self.dataset = simple_wbd.IndicatorDataset(self.dummy_response)
