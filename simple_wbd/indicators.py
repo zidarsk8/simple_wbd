@@ -216,8 +216,7 @@ class IndicatorAPI(object):
             return indicators
 
         filter_page = utils.fetch(url)
-        codes = re.compile(r"(?<=http://data.worldbank.org/indicator/)"
-                           r"[A-Za-z0-9\.-_]+(?=\">)")
+        codes = re.compile(r"\"([^\"?%`&$ <>=]{5,55})\"")
         code_matches = set(code.lower() for code in codes.findall(filter_page))
 
         return [i for i in indicators if i.get("id").lower() in code_matches]
