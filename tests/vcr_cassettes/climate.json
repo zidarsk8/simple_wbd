@@ -1,577 +1,1721 @@
 {
+    "version": 1,
     "interactions": [
         {
             "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/year/SVN",
+                "body": null,
+                "method": "GET",
                 "headers": {
                     "Connection": [
                         "keep-alive"
-                    ],
-                    "Accept-Encoding": [
-                        "gzip, deflate"
                     ],
                     "User-Agent": [
                         "python-requests/2.10.0"
                     ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
                     "Accept": [
                         "*/*"
                     ]
-                },
-                "method": "GET",
-                "body": null,
-                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/year/SVN"
+                }
             },
             "response": {
-                "headers": {
-                    "Connection": [
-                        "keep-alive"
-                    ],
-                    "Server": [
-                        "Apache-Coyote/1.1"
-                    ],
-                    "Content-Type": [
-                        "application/json"
-                    ],
-                    "Date": [
-                        "Tue, 31 May 2016 02:46:34 GMT"
-                    ]
-                },
-                "status": {
-                    "code": 200,
-                    "message": "OK"
-                },
                 "body": {
                     "string": "[{\"year\":1901,\"data\":114.88334},{\"year\":1902,\"data\":102.08733},{\"year\":1903,\"data\":114.19133},{\"year\":1904,\"data\":102.698},{\"year\":1905,\"data\":123.66367},{\"year\":1906,\"data\":114.679},{\"year\":1907,\"data\":104.61867},{\"year\":1908,\"data\":84.48967},{\"year\":1909,\"data\":110.964005},{\"year\":1910,\"data\":129.79134},{\"year\":1911,\"data\":95.189},{\"year\":1912,\"data\":116.69334},{\"year\":1913,\"data\":105.78001},{\"year\":1914,\"data\":115.704},{\"year\":1915,\"data\":141.25133},{\"year\":1916,\"data\":125.838},{\"year\":1917,\"data\":113.96367},{\"year\":1918,\"data\":117.459335},{\"year\":1919,\"data\":128.16034},{\"year\":1920,\"data\":89.52367},{\"year\":1921,\"data\":76.50367},{\"year\":1922,\"data\":105.909996},{\"year\":1923,\"data\":114.727005},{\"year\":1924,\"data\":104.220665},{\"year\":1925,\"data\":124.84534},{\"year\":1926,\"data\":133.68199},{\"year\":1927,\"data\":97.20534},{\"year\":1928,\"data\":114.682335},{\"year\":1929,\"data\":94.705},{\"year\":1930,\"data\":123.468994},{\"year\":1931,\"data\":104.35567},{\"year\":1932,\"data\":101.63},{\"year\":1933,\"data\":130.45},{\"year\":1934,\"data\":124.78434},{\"year\":1935,\"data\":99.306},{\"year\":1936,\"data\":105.751},{\"year\":1937,\"data\":142.89499},{\"year\":1938,\"data\":85.54567},{\"year\":1939,\"data\":101.41133},{\"year\":1940,\"data\":111.32533},{\"year\":1941,\"data\":102.468994},{\"year\":1942,\"data\":73.21467},{\"year\":1943,\"data\":89.82933},{\"year\":1944,\"data\":103.89166},{\"year\":1945,\"data\":81.276665},{\"year\":1946,\"data\":89.494},{\"year\":1947,\"data\":80.49533},{\"year\":1948,\"data\":112.76766},{\"year\":1949,\"data\":87.109},{\"year\":1950,\"data\":103.30501},{\"year\":1951,\"data\":112.281006},{\"year\":1952,\"data\":101.792},{\"year\":1953,\"data\":90.013336},{\"year\":1954,\"data\":107.128334},{\"year\":1955,\"data\":106.126},{\"year\":1956,\"data\":98.471664},{\"year\":1957,\"data\":94.86967},{\"year\":1958,\"data\":110.12933},{\"year\":1959,\"data\":111.817},{\"year\":1960,\"data\":126.93101},{\"year\":1961,\"data\":102.701675},{\"year\":1962,\"data\":114.97134},{\"year\":1963,\"data\":111.571335},{\"year\":1964,\"data\":112.35466},{\"year\":1965,\"data\":134.03},{\"year\":1966,\"data\":120.162674},{\"year\":1967,\"data\":96.43467},{\"year\":1968,\"data\":100.56467},{\"year\":1969,\"data\":113.928},{\"year\":1970,\"data\":117.337},{\"year\":1971,\"data\":88.426},{\"year\":1972,\"data\":121.612},{\"year\":1973,\"data\":91.10433},{\"year\":1974,\"data\":114.17766},{\"year\":1975,\"data\":106.42733},{\"year\":1976,\"data\":103.98733},{\"year\":1977,\"data\":98.85933},{\"year\":1978,\"data\":103.35634},{\"year\":1979,\"data\":119.14734},{\"year\":1980,\"data\":118.267006},{\"year\":1981,\"data\":104.978004},{\"year\":1982,\"data\":105.25366},{\"year\":1983,\"data\":81.461334},{\"year\":1984,\"data\":108.12933},{\"year\":1985,\"data\":101.042},{\"year\":1986,\"data\":98.028},{\"year\":1987,\"data\":112.04967},{\"year\":1988,\"data\":89.405334},{\"year\":1989,\"data\":99.509995},{\"year\":1990,\"data\":95.77167},{\"year\":1991,\"data\":105.170334},{\"year\":1992,\"data\":102.76566},{\"year\":1993,\"data\":100.90133},{\"year\":1994,\"data\":95.420334},{\"year\":1995,\"data\":118.943665},{\"year\":1996,\"data\":125.705666},{\"year\":1997,\"data\":91.747665},{\"year\":1998,\"data\":109.764},{\"year\":1999,\"data\":105.923},{\"year\":2000,\"data\":110.865005},{\"year\":2001,\"data\":96.00467},{\"year\":2002,\"data\":108.790665},{\"year\":2003,\"data\":81.50833},{\"year\":2004,\"data\":117.69767},{\"year\":2005,\"data\":107.680664},{\"year\":2006,\"data\":89.107},{\"year\":2007,\"data\":97.072334},{\"year\":2008,\"data\":104.121666},{\"year\":2009,\"data\":104.67533},{\"year\":2010,\"data\":130.19028},{\"year\":2011,\"data\":78.031944},{\"year\":2012,\"data\":100.034256}]"
-                }
-            }
-        },
-        {
-            "request": {
-                "headers": {
-                    "Connection": [
-                        "keep-alive"
-                    ],
-                    "Accept-Encoding": [
-                        "gzip, deflate"
-                    ],
-                    "User-Agent": [
-                        "python-requests/2.10.0"
-                    ],
-                    "Accept": [
-                        "*/*"
-                    ]
                 },
-                "method": "GET",
-                "body": null,
-                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/month/SVN"
-            },
-            "response": {
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
                 "headers": {
-                    "Connection": [
-                        "keep-alive"
-                    ],
-                    "Server": [
-                        "Apache-Coyote/1.1"
-                    ],
                     "Content-Type": [
                         "application/json"
                     ],
                     "Date": [
                         "Tue, 31 May 2016 02:46:34 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
                     ]
-                },
-                "status": {
-                    "code": 200,
-                    "message": "OK"
-                },
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/month/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
                 "body": {
                     "string": "[{\"month\":0,\"data\":68.93643},{\"month\":1,\"data\":64.23069},{\"month\":2,\"data\":81.098724},{\"month\":3,\"data\":102.28083},{\"month\":4,\"data\":110.0369},{\"month\":5,\"data\":127.69851},{\"month\":6,\"data\":118.47258},{\"month\":7,\"data\":120.37205},{\"month\":8,\"data\":121.70347},{\"month\":9,\"data\":135.76472},{\"month\":10,\"data\":130.21431},{\"month\":11,\"data\":94.149704}]"
-                }
-            }
-        },
-        {
-            "request": {
-                "headers": {
-                    "Connection": [
-                        "keep-alive"
-                    ],
-                    "Accept-Encoding": [
-                        "gzip, deflate"
-                    ],
-                    "User-Agent": [
-                        "python-requests/2.10.0"
-                    ],
-                    "Accept": [
-                        "*/*"
-                    ]
-                },
-                "method": "GET",
-                "body": null,
-                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/decade/SVN"
-            },
-            "response": {
-                "headers": {
-                    "Connection": [
-                        "keep-alive"
-                    ],
-                    "Server": [
-                        "Apache-Coyote/1.1"
-                    ],
-                    "Content-Type": [
-                        "application/json"
-                    ],
-                    "Date": [
-                        "Tue, 31 May 2016 02:46:35 GMT"
-                    ]
                 },
                 "status": {
                     "code": 200,
                     "message": "OK"
                 },
+                "headers": {
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Date": [
+                        "Tue, 31 May 2016 02:46:34 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/decade/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
                 "body": {
                     "string": "[{\"year\":1900,\"data\":108.030556},{\"year\":1910,\"data\":118.98303},{\"year\":1920,\"data\":105.6005},{\"year\":1930,\"data\":111.9598},{\"year\":1940,\"data\":93.18727},{\"year\":1950,\"data\":103.59334},{\"year\":1960,\"data\":113.365005},{\"year\":1970,\"data\":106.44347},{\"year\":1980,\"data\":101.81243},{\"year\":1990,\"data\":105.21133},{\"year\":2000,\"data\":101.752335},{\"year\":2010,\"data\":102.75216}]"
-                }
-            }
-        },
-        {
-            "request": {
-                "headers": {
-                    "Connection": [
-                        "keep-alive"
-                    ],
-                    "Accept-Encoding": [
-                        "gzip, deflate"
-                    ],
-                    "User-Agent": [
-                        "python-requests/2.10.0"
-                    ],
-                    "Accept": [
-                        "*/*"
-                    ]
-                },
-                "method": "GET",
-                "body": null,
-                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/year/SVN"
-            },
-            "response": {
-                "headers": {
-                    "Connection": [
-                        "keep-alive"
-                    ],
-                    "Server": [
-                        "Apache-Coyote/1.1"
-                    ],
-                    "Content-Type": [
-                        "application/json"
-                    ],
-                    "Date": [
-                        "Tue, 31 May 2016 02:46:35 GMT"
-                    ]
                 },
                 "status": {
                     "code": 200,
                     "message": "OK"
                 },
+                "headers": {
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Date": [
+                        "Tue, 31 May 2016 02:46:35 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/year/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
                 "body": {
                     "string": "[{\"year\":1901,\"data\":8.219999},{\"year\":1902,\"data\":8.201334},{\"year\":1903,\"data\":8.870333},{\"year\":1904,\"data\":9.259},{\"year\":1905,\"data\":8.629},{\"year\":1906,\"data\":8.601},{\"year\":1907,\"data\":8.664},{\"year\":1908,\"data\":8.143},{\"year\":1909,\"data\":8.365667},{\"year\":1910,\"data\":9.052},{\"year\":1911,\"data\":9.387667},{\"year\":1912,\"data\":8.36},{\"year\":1913,\"data\":8.721},{\"year\":1914,\"data\":8.283},{\"year\":1915,\"data\":8.657667},{\"year\":1916,\"data\":9.624},{\"year\":1917,\"data\":8.5546665},{\"year\":1918,\"data\":8.904333},{\"year\":1919,\"data\":8.381666},{\"year\":1920,\"data\":9.573333},{\"year\":1921,\"data\":9.513333},{\"year\":1922,\"data\":8.515},{\"year\":1923,\"data\":9.299666},{\"year\":1924,\"data\":8.474333},{\"year\":1925,\"data\":8.858999},{\"year\":1926,\"data\":9.383667},{\"year\":1927,\"data\":9.418667},{\"year\":1928,\"data\":9.186},{\"year\":1929,\"data\":8.454},{\"year\":1930,\"data\":9.532},{\"year\":1931,\"data\":8.521667},{\"year\":1932,\"data\":8.918333},{\"year\":1933,\"data\":8.004},{\"year\":1934,\"data\":9.909666},{\"year\":1935,\"data\":8.785334},{\"year\":1936,\"data\":9.288333},{\"year\":1937,\"data\":9.079667},{\"year\":1938,\"data\":8.966001},{\"year\":1939,\"data\":9.047},{\"year\":1940,\"data\":7.5276666},{\"year\":1941,\"data\":8.080334},{\"year\":1942,\"data\":8.639667},{\"year\":1943,\"data\":9.658999},{\"year\":1944,\"data\":8.578},{\"year\":1945,\"data\":9.457},{\"year\":1946,\"data\":9.625},{\"year\":1947,\"data\":9.511},{\"year\":1948,\"data\":9.483334},{\"year\":1949,\"data\":9.670333},{\"year\":1950,\"data\":9.907667},{\"year\":1951,\"data\":9.837999},{\"year\":1952,\"data\":8.994333},{\"year\":1953,\"data\":9.197333},{\"year\":1954,\"data\":8.290667},{\"year\":1955,\"data\":8.531667},{\"year\":1956,\"data\":8.049},{\"year\":1957,\"data\":9.2873335},{\"year\":1958,\"data\":9.481333},{\"year\":1959,\"data\":9.395666},{\"year\":1960,\"data\":9.2456665},{\"year\":1961,\"data\":9.803667},{\"year\":1962,\"data\":8.307667},{\"year\":1963,\"data\":8.577666},{\"year\":1964,\"data\":8.911667},{\"year\":1965,\"data\":8.453},{\"year\":1966,\"data\":9.511667},{\"year\":1967,\"data\":9.452666},{\"year\":1968,\"data\":9.129},{\"year\":1969,\"data\":8.638},{\"year\":1970,\"data\":8.693334},{\"year\":1971,\"data\":8.993667},{\"year\":1972,\"data\":8.916666},{\"year\":1973,\"data\":8.833},{\"year\":1974,\"data\":9.3463335},{\"year\":1975,\"data\":9.536667},{\"year\":1976,\"data\":8.8116665},{\"year\":1977,\"data\":9.390667},{\"year\":1978,\"data\":8.218333},{\"year\":1979,\"data\":9.116333},{\"year\":1980,\"data\":8.247667},{\"year\":1981,\"data\":9.020333},{\"year\":1982,\"data\":9.503},{\"year\":1983,\"data\":9.571667},{\"year\":1984,\"data\":8.735666},{\"year\":1985,\"data\":8.663333},{\"year\":1986,\"data\":8.851999},{\"year\":1987,\"data\":8.856333},{\"year\":1988,\"data\":9.565001},{\"year\":1989,\"data\":9.617666},{\"year\":1990,\"data\":9.989},{\"year\":1991,\"data\":9.062},{\"year\":1992,\"data\":10.179},{\"year\":1993,\"data\":9.604334},{\"year\":1994,\"data\":10.889667},{\"year\":1995,\"data\":9.586333},{\"year\":1996,\"data\":8.919333},{\"year\":1997,\"data\":9.774667},{\"year\":1998,\"data\":9.953667},{\"year\":1999,\"data\":9.95},{\"year\":2000,\"data\":10.910334},{\"year\":2001,\"data\":10.101999},{\"year\":2002,\"data\":10.566333},{\"year\":2003,\"data\":10.150667},{\"year\":2004,\"data\":9.596666},{\"year\":2005,\"data\":9.215},{\"year\":2006,\"data\":10.154667},{\"year\":2007,\"data\":10.930334},{\"year\":2008,\"data\":10.643},{\"year\":2009,\"data\":10.658667},{\"year\":2010,\"data\":9.153704},{\"year\":2011,\"data\":10.116667},{\"year\":2012,\"data\":10.281019}]"
-                }
-            }
-        },
-        {
-            "request": {
-                "headers": {
-                    "Connection": [
-                        "keep-alive"
-                    ],
-                    "Accept-Encoding": [
-                        "gzip, deflate"
-                    ],
-                    "User-Agent": [
-                        "python-requests/2.10.0"
-                    ],
-                    "Accept": [
-                        "*/*"
-                    ]
-                },
-                "method": "GET",
-                "body": null,
-                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/month/SVN"
-            },
-            "response": {
-                "headers": {
-                    "Connection": [
-                        "keep-alive"
-                    ],
-                    "Server": [
-                        "Apache-Coyote/1.1"
-                    ],
-                    "Content-Type": [
-                        "application/json"
-                    ],
-                    "Date": [
-                        "Tue, 31 May 2016 02:46:35 GMT"
-                    ]
                 },
                 "status": {
                     "code": 200,
                     "message": "OK"
                 },
-                "body": {
-                    "string": "[{\"month\":0,\"data\":-1.0069841},{\"month\":1,\"data\":0.65000993},{\"month\":2,\"data\":4.5536966},{\"month\":3,\"data\":8.748871},{\"month\":4,\"data\":13.374265},{\"month\":5,\"data\":16.728075},{\"month\":6,\"data\":18.732298},{\"month\":7,\"data\":18.362186},{\"month\":8,\"data\":14.850774},{\"month\":9,\"data\":9.99226},{\"month\":10,\"data\":4.640859},{\"month\":11,\"data\":0.48651785}]"
-                }
-            }
-        },
-        {
-            "request": {
                 "headers": {
-                    "Connection": [
-                        "keep-alive"
+                    "Content-Type": [
+                        "application/json"
                     ],
-                    "Accept-Encoding": [
-                        "gzip, deflate"
+                    "Date": [
+                        "Tue, 31 May 2016 02:46:35 GMT"
                     ],
-                    "User-Agent": [
-                        "python-requests/2.10.0"
-                    ],
-                    "Accept": [
-                        "*/*"
-                    ]
-                },
-                "method": "GET",
-                "body": null,
-                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/decade/SVN"
-            },
-            "response": {
-                "headers": {
                     "Connection": [
                         "keep-alive"
                     ],
                     "Server": [
                         "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/month/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
                     ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"month\":0,\"data\":-1.0069841},{\"month\":1,\"data\":0.65000993},{\"month\":2,\"data\":4.5536966},{\"month\":3,\"data\":8.748871},{\"month\":4,\"data\":13.374265},{\"month\":5,\"data\":16.728075},{\"month\":6,\"data\":18.732298},{\"month\":7,\"data\":18.362186},{\"month\":8,\"data\":14.850774},{\"month\":9,\"data\":9.99226},{\"month\":10,\"data\":4.640859},{\"month\":11,\"data\":0.48651785}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Date": [
+                        "Tue, 31 May 2016 02:46:35 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/decade/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1900,\"data\":8.55037},{\"year\":1910,\"data\":8.792601},{\"year\":1920,\"data\":9.0677},{\"year\":1930,\"data\":9.0052},{\"year\":1940,\"data\":9.023133},{\"year\":1950,\"data\":9.0973},{\"year\":1960,\"data\":9.003067},{\"year\":1970,\"data\":8.985666},{\"year\":1980,\"data\":9.063267},{\"year\":1990,\"data\":9.7908},{\"year\":2000,\"data\":10.292767},{\"year\":2010,\"data\":9.850463}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
                     "Content-Type": [
                         "application/json"
                     ],
                     "Date": [
                         "Tue, 31 May 2016 02:46:36 GMT"
-                    ]
-                },
-                "status": {
-                    "code": 200,
-                    "message": "OK"
-                },
-                "body": {
-                    "string": "[{\"year\":1900,\"data\":8.55037},{\"year\":1910,\"data\":8.792601},{\"year\":1920,\"data\":9.0677},{\"year\":1930,\"data\":9.0052},{\"year\":1940,\"data\":9.023133},{\"year\":1950,\"data\":9.0973},{\"year\":1960,\"data\":9.003067},{\"year\":1970,\"data\":8.985666},{\"year\":1980,\"data\":9.063267},{\"year\":1990,\"data\":9.7908},{\"year\":2000,\"data\":10.292767},{\"year\":2010,\"data\":9.850463}]"
-                }
-            }
-        },
-        {
-            "request": {
-                "headers": {
-                    "Connection": [
-                        "keep-alive"
                     ],
-                    "Accept-Encoding": [
-                        "gzip, deflate"
-                    ],
-                    "User-Agent": [
-                        "python-requests/2.10.0"
-                    ],
-                    "Accept": [
-                        "*/*"
-                    ]
-                },
-                "method": "GET",
-                "body": null,
-                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/year/TUN"
-            },
-            "response": {
-                "headers": {
                     "Connection": [
                         "keep-alive"
                     ],
                     "Server": [
                         "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/year/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
                     ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1901,\"data\":20.656004},{\"year\":1902,\"data\":19.401165},{\"year\":1903,\"data\":21.191397},{\"year\":1904,\"data\":19.43414},{\"year\":1905,\"data\":18.11362},{\"year\":1906,\"data\":21.780197},{\"year\":1907,\"data\":17.986649},{\"year\":1908,\"data\":17.69749},{\"year\":1909,\"data\":19.160664},{\"year\":1910,\"data\":18.893908},{\"year\":1911,\"data\":23.62312},{\"year\":1912,\"data\":20.324642},{\"year\":1913,\"data\":16.569176},{\"year\":1914,\"data\":18.287457},{\"year\":1915,\"data\":23.548746},{\"year\":1916,\"data\":18.70923},{\"year\":1917,\"data\":17.248837},{\"year\":1918,\"data\":20.509409},{\"year\":1919,\"data\":19.971865},{\"year\":1920,\"data\":16.040592},{\"year\":1921,\"data\":22.280645},{\"year\":1922,\"data\":15.173746},{\"year\":1923,\"data\":19.910036},{\"year\":1924,\"data\":16.885216},{\"year\":1925,\"data\":18.708244},{\"year\":1926,\"data\":16.216667},{\"year\":1927,\"data\":18.67285},{\"year\":1928,\"data\":25.19785},{\"year\":1929,\"data\":19.959318},{\"year\":1930,\"data\":18.88414},{\"year\":1931,\"data\":22.257885},{\"year\":1932,\"data\":17.312725},{\"year\":1933,\"data\":19.73629},{\"year\":1934,\"data\":23.40672},{\"year\":1935,\"data\":17.65179},{\"year\":1936,\"data\":19.687098},{\"year\":1937,\"data\":14.64991},{\"year\":1938,\"data\":18.611649},{\"year\":1939,\"data\":20.374193},{\"year\":1940,\"data\":19.010036},{\"year\":1941,\"data\":19.382706},{\"year\":1942,\"data\":17.180555},{\"year\":1943,\"data\":17.889427},{\"year\":1944,\"data\":18.543728},{\"year\":1945,\"data\":14.082974},{\"year\":1946,\"data\":18.764696},{\"year\":1947,\"data\":12.468279},{\"year\":1948,\"data\":19.412186},{\"year\":1949,\"data\":18.346325},{\"year\":1950,\"data\":22.048029},{\"year\":1951,\"data\":19.222311},{\"year\":1952,\"data\":20.112276},{\"year\":1953,\"data\":25.191668},{\"year\":1954,\"data\":19.366577},{\"year\":1955,\"data\":17.254301},{\"year\":1956,\"data\":21.85905},{\"year\":1957,\"data\":24.28396},{\"year\":1958,\"data\":20.317831},{\"year\":1959,\"data\":22.01819},{\"year\":1960,\"data\":15.973387},{\"year\":1961,\"data\":15.962544},{\"year\":1962,\"data\":21.067114},{\"year\":1963,\"data\":23.523655},{\"year\":1964,\"data\":19.967564},{\"year\":1965,\"data\":21.74095},{\"year\":1966,\"data\":17.498837},{\"year\":1967,\"data\":16.023478},{\"year\":1968,\"data\":16.361828},{\"year\":1969,\"data\":24.318012},{\"year\":1970,\"data\":13.710304},{\"year\":1971,\"data\":21.583782},{\"year\":1972,\"data\":23.354748},{\"year\":1973,\"data\":22.427958},{\"year\":1974,\"data\":17.170252},{\"year\":1975,\"data\":21.108513},{\"year\":1976,\"data\":24.737904},{\"year\":1977,\"data\":15.002688},{\"year\":1978,\"data\":19.54543},{\"year\":1979,\"data\":20.863798},{\"year\":1980,\"data\":21.087276},{\"year\":1981,\"data\":13.572133},{\"year\":1982,\"data\":26.20448},{\"year\":1983,\"data\":17.457973},{\"year\":1984,\"data\":24.091755},{\"year\":1985,\"data\":17.123655},{\"year\":1986,\"data\":22.268639},{\"year\":1987,\"data\":16.00242},{\"year\":1988,\"data\":16.931004},{\"year\":1989,\"data\":16.318727},{\"year\":1990,\"data\":21.975178},{\"year\":1991,\"data\":22.57052},{\"year\":1992,\"data\":23.115591},{\"year\":1993,\"data\":16.431183},{\"year\":1994,\"data\":16.847134},{\"year\":1995,\"data\":22.79104},{\"year\":1996,\"data\":23.17509},{\"year\":1997,\"data\":20.513083},{\"year\":1998,\"data\":18.05009},{\"year\":1999,\"data\":19.112724},{\"year\":2000,\"data\":14.669981},{\"year\":2001,\"data\":17.230106},{\"year\":2002,\"data\":17.451077},{\"year\":2003,\"data\":28.808334},{\"year\":2004,\"data\":19.464336},{\"year\":2005,\"data\":20.352062},{\"year\":2006,\"data\":22.327688},{\"year\":2007,\"data\":18.752956},{\"year\":2008,\"data\":13.97491},{\"year\":2009,\"data\":21.287365},{\"year\":2010,\"data\":21.999838},{\"year\":2011,\"data\":26.42775},{\"year\":2012,\"data\":18.30259}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
                     "Content-Type": [
                         "application/json"
                     ],
                     "Date": [
                         "Tue, 31 May 2016 02:46:37 GMT"
-                    ]
-                },
-                "status": {
-                    "code": 200,
-                    "message": "OK"
-                },
-                "body": {
-                    "string": "[{\"year\":1901,\"data\":20.656004},{\"year\":1902,\"data\":19.401165},{\"year\":1903,\"data\":21.191397},{\"year\":1904,\"data\":19.43414},{\"year\":1905,\"data\":18.11362},{\"year\":1906,\"data\":21.780197},{\"year\":1907,\"data\":17.986649},{\"year\":1908,\"data\":17.69749},{\"year\":1909,\"data\":19.160664},{\"year\":1910,\"data\":18.893908},{\"year\":1911,\"data\":23.62312},{\"year\":1912,\"data\":20.324642},{\"year\":1913,\"data\":16.569176},{\"year\":1914,\"data\":18.287457},{\"year\":1915,\"data\":23.548746},{\"year\":1916,\"data\":18.70923},{\"year\":1917,\"data\":17.248837},{\"year\":1918,\"data\":20.509409},{\"year\":1919,\"data\":19.971865},{\"year\":1920,\"data\":16.040592},{\"year\":1921,\"data\":22.280645},{\"year\":1922,\"data\":15.173746},{\"year\":1923,\"data\":19.910036},{\"year\":1924,\"data\":16.885216},{\"year\":1925,\"data\":18.708244},{\"year\":1926,\"data\":16.216667},{\"year\":1927,\"data\":18.67285},{\"year\":1928,\"data\":25.19785},{\"year\":1929,\"data\":19.959318},{\"year\":1930,\"data\":18.88414},{\"year\":1931,\"data\":22.257885},{\"year\":1932,\"data\":17.312725},{\"year\":1933,\"data\":19.73629},{\"year\":1934,\"data\":23.40672},{\"year\":1935,\"data\":17.65179},{\"year\":1936,\"data\":19.687098},{\"year\":1937,\"data\":14.64991},{\"year\":1938,\"data\":18.611649},{\"year\":1939,\"data\":20.374193},{\"year\":1940,\"data\":19.010036},{\"year\":1941,\"data\":19.382706},{\"year\":1942,\"data\":17.180555},{\"year\":1943,\"data\":17.889427},{\"year\":1944,\"data\":18.543728},{\"year\":1945,\"data\":14.082974},{\"year\":1946,\"data\":18.764696},{\"year\":1947,\"data\":12.468279},{\"year\":1948,\"data\":19.412186},{\"year\":1949,\"data\":18.346325},{\"year\":1950,\"data\":22.048029},{\"year\":1951,\"data\":19.222311},{\"year\":1952,\"data\":20.112276},{\"year\":1953,\"data\":25.191668},{\"year\":1954,\"data\":19.366577},{\"year\":1955,\"data\":17.254301},{\"year\":1956,\"data\":21.85905},{\"year\":1957,\"data\":24.28396},{\"year\":1958,\"data\":20.317831},{\"year\":1959,\"data\":22.01819},{\"year\":1960,\"data\":15.973387},{\"year\":1961,\"data\":15.962544},{\"year\":1962,\"data\":21.067114},{\"year\":1963,\"data\":23.523655},{\"year\":1964,\"data\":19.967564},{\"year\":1965,\"data\":21.74095},{\"year\":1966,\"data\":17.498837},{\"year\":1967,\"data\":16.023478},{\"year\":1968,\"data\":16.361828},{\"year\":1969,\"data\":24.318012},{\"year\":1970,\"data\":13.710304},{\"year\":1971,\"data\":21.583782},{\"year\":1972,\"data\":23.354748},{\"year\":1973,\"data\":22.427958},{\"year\":1974,\"data\":17.170252},{\"year\":1975,\"data\":21.108513},{\"year\":1976,\"data\":24.737904},{\"year\":1977,\"data\":15.002688},{\"year\":1978,\"data\":19.54543},{\"year\":1979,\"data\":20.863798},{\"year\":1980,\"data\":21.087276},{\"year\":1981,\"data\":13.572133},{\"year\":1982,\"data\":26.20448},{\"year\":1983,\"data\":17.457973},{\"year\":1984,\"data\":24.091755},{\"year\":1985,\"data\":17.123655},{\"year\":1986,\"data\":22.268639},{\"year\":1987,\"data\":16.00242},{\"year\":1988,\"data\":16.931004},{\"year\":1989,\"data\":16.318727},{\"year\":1990,\"data\":21.975178},{\"year\":1991,\"data\":22.57052},{\"year\":1992,\"data\":23.115591},{\"year\":1993,\"data\":16.431183},{\"year\":1994,\"data\":16.847134},{\"year\":1995,\"data\":22.79104},{\"year\":1996,\"data\":23.17509},{\"year\":1997,\"data\":20.513083},{\"year\":1998,\"data\":18.05009},{\"year\":1999,\"data\":19.112724},{\"year\":2000,\"data\":14.669981},{\"year\":2001,\"data\":17.230106},{\"year\":2002,\"data\":17.451077},{\"year\":2003,\"data\":28.808334},{\"year\":2004,\"data\":19.464336},{\"year\":2005,\"data\":20.352062},{\"year\":2006,\"data\":22.327688},{\"year\":2007,\"data\":18.752956},{\"year\":2008,\"data\":13.97491},{\"year\":2009,\"data\":21.287365},{\"year\":2010,\"data\":21.999838},{\"year\":2011,\"data\":26.42775},{\"year\":2012,\"data\":18.30259}]"
-                }
-            }
-        },
-        {
-            "request": {
-                "headers": {
-                    "Connection": [
-                        "keep-alive"
                     ],
-                    "Accept-Encoding": [
-                        "gzip, deflate"
-                    ],
-                    "User-Agent": [
-                        "python-requests/2.10.0"
-                    ],
-                    "Accept": [
-                        "*/*"
-                    ]
-                },
-                "method": "GET",
-                "body": null,
-                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/month/TUN"
-            },
-            "response": {
-                "headers": {
                     "Connection": [
                         "keep-alive"
                     ],
                     "Server": [
                         "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/month/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
                     ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"month\":0,\"data\":30.95466},{\"month\":1,\"data\":27.744547},{\"month\":2,\"data\":25.907572},{\"month\":3,\"data\":20.267841},{\"month\":4,\"data\":13.014418},{\"month\":5,\"data\":5.8183227},{\"month\":6,\"data\":2.3155859},{\"month\":7,\"data\":4.0897865},{\"month\":8,\"data\":16.865564},{\"month\":9,\"data\":29.273123},{\"month\":10,\"data\":27.220123},{\"month\":11,\"data\":31.183294}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
                     "Content-Type": [
                         "application/json"
                     ],
                     "Date": [
                         "Tue, 31 May 2016 02:46:38 GMT"
-                    ]
-                },
-                "status": {
-                    "code": 200,
-                    "message": "OK"
-                },
-                "body": {
-                    "string": "[{\"month\":0,\"data\":30.95466},{\"month\":1,\"data\":27.744547},{\"month\":2,\"data\":25.907572},{\"month\":3,\"data\":20.267841},{\"month\":4,\"data\":13.014418},{\"month\":5,\"data\":5.8183227},{\"month\":6,\"data\":2.3155859},{\"month\":7,\"data\":4.0897865},{\"month\":8,\"data\":16.865564},{\"month\":9,\"data\":29.273123},{\"month\":10,\"data\":27.220123},{\"month\":11,\"data\":31.183294}]"
-                }
-            }
-        },
-        {
-            "request": {
-                "headers": {
-                    "Connection": [
-                        "keep-alive"
                     ],
-                    "Accept-Encoding": [
-                        "gzip, deflate"
-                    ],
-                    "User-Agent": [
-                        "python-requests/2.10.0"
-                    ],
-                    "Accept": [
-                        "*/*"
-                    ]
-                },
-                "method": "GET",
-                "body": null,
-                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/decade/TUN"
-            },
-            "response": {
-                "headers": {
                     "Connection": [
                         "keep-alive"
                     ],
                     "Server": [
                         "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/decade/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
                     ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1900,\"data\":19.491259},{\"year\":1910,\"data\":19.768639},{\"year\":1920,\"data\":18.904516},{\"year\":1930,\"data\":19.25724},{\"year\":1940,\"data\":17.508091},{\"year\":1950,\"data\":21.16742},{\"year\":1960,\"data\":19.243736},{\"year\":1970,\"data\":19.950537},{\"year\":1980,\"data\":19.105806},{\"year\":1990,\"data\":20.458164},{\"year\":2000,\"data\":19.43188},{\"year\":2010,\"data\":22.243393}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
                     "Content-Type": [
                         "application/json"
                     ],
                     "Date": [
                         "Tue, 31 May 2016 02:46:43 GMT"
-                    ]
-                },
-                "status": {
-                    "code": 200,
-                    "message": "OK"
-                },
-                "body": {
-                    "string": "[{\"year\":1900,\"data\":19.491259},{\"year\":1910,\"data\":19.768639},{\"year\":1920,\"data\":18.904516},{\"year\":1930,\"data\":19.25724},{\"year\":1940,\"data\":17.508091},{\"year\":1950,\"data\":21.16742},{\"year\":1960,\"data\":19.243736},{\"year\":1970,\"data\":19.950537},{\"year\":1980,\"data\":19.105806},{\"year\":1990,\"data\":20.458164},{\"year\":2000,\"data\":19.43188},{\"year\":2010,\"data\":22.243393}]"
-                }
-            }
-        },
-        {
-            "request": {
-                "headers": {
-                    "Connection": [
-                        "keep-alive"
                     ],
-                    "Accept-Encoding": [
-                        "gzip, deflate"
-                    ],
-                    "User-Agent": [
-                        "python-requests/2.10.0"
-                    ],
-                    "Accept": [
-                        "*/*"
-                    ]
-                },
-                "method": "GET",
-                "body": null,
-                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/year/TUN"
-            },
-            "response": {
-                "headers": {
                     "Connection": [
                         "keep-alive"
                     ],
                     "Server": [
                         "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/year/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
                     ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1901,\"data\":18.808332},{\"year\":1902,\"data\":18.94543},{\"year\":1903,\"data\":18.41353},{\"year\":1904,\"data\":18.64059},{\"year\":1905,\"data\":18.40887},{\"year\":1906,\"data\":18.093369},{\"year\":1907,\"data\":18.370161},{\"year\":1908,\"data\":18.394176},{\"year\":1909,\"data\":18.44749},{\"year\":1910,\"data\":18.567204},{\"year\":1911,\"data\":19.166128},{\"year\":1912,\"data\":18.885843},{\"year\":1913,\"data\":19.022938},{\"year\":1914,\"data\":19.214516},{\"year\":1915,\"data\":18.676344},{\"year\":1916,\"data\":18.596775},{\"year\":1917,\"data\":18.580734},{\"year\":1918,\"data\":18.158781},{\"year\":1919,\"data\":18.617382},{\"year\":1920,\"data\":19.05466},{\"year\":1921,\"data\":18.653675},{\"year\":1922,\"data\":19.434677},{\"year\":1923,\"data\":18.271685},{\"year\":1924,\"data\":19.197311},{\"year\":1925,\"data\":18.475807},{\"year\":1926,\"data\":19.203854},{\"year\":1927,\"data\":19.23441},{\"year\":1928,\"data\":18.92007},{\"year\":1929,\"data\":18.225718},{\"year\":1930,\"data\":19.164606},{\"year\":1931,\"data\":19.78629},{\"year\":1932,\"data\":19.204033},{\"year\":1933,\"data\":19.17545},{\"year\":1934,\"data\":19.051523},{\"year\":1935,\"data\":19.037365},{\"year\":1936,\"data\":18.987186},{\"year\":1937,\"data\":19.42724},{\"year\":1938,\"data\":19.10027},{\"year\":1939,\"data\":19.13638},{\"year\":1940,\"data\":18.902958},{\"year\":1941,\"data\":19.127598},{\"year\":1942,\"data\":19.935932},{\"year\":1943,\"data\":20.20466},{\"year\":1944,\"data\":19.376614},{\"year\":1945,\"data\":19.735304},{\"year\":1946,\"data\":19.994534},{\"year\":1947,\"data\":20.457886},{\"year\":1948,\"data\":19.82455},{\"year\":1949,\"data\":19.596594},{\"year\":1950,\"data\":19.40905},{\"year\":1951,\"data\":19.084587},{\"year\":1952,\"data\":19.708155},{\"year\":1953,\"data\":19.002598},{\"year\":1954,\"data\":18.614069},{\"year\":1955,\"data\":19.961828},{\"year\":1956,\"data\":18.551075},{\"year\":1957,\"data\":18.87043},{\"year\":1958,\"data\":19.440413},{\"year\":1959,\"data\":19.340322},{\"year\":1960,\"data\":19.60224},{\"year\":1961,\"data\":19.562992},{\"year\":1962,\"data\":19.282528},{\"year\":1963,\"data\":19.289068},{\"year\":1964,\"data\":19.287006},{\"year\":1965,\"data\":19.212185},{\"year\":1966,\"data\":19.458782},{\"year\":1967,\"data\":19.190592},{\"year\":1968,\"data\":19.452688},{\"year\":1969,\"data\":19.087725},{\"year\":1970,\"data\":19.34767},{\"year\":1971,\"data\":19.02276},{\"year\":1972,\"data\":19.037098},{\"year\":1973,\"data\":19.179302},{\"year\":1974,\"data\":18.881361},{\"year\":1975,\"data\":18.995789},{\"year\":1976,\"data\":18.535305},{\"year\":1977,\"data\":19.85681},{\"year\":1978,\"data\":19.074192},{\"year\":1979,\"data\":19.572939},{\"year\":1980,\"data\":18.91801},{\"year\":1981,\"data\":19.63889},{\"year\":1982,\"data\":20.044712},{\"year\":1983,\"data\":19.727509},{\"year\":1984,\"data\":19.294981},{\"year\":1985,\"data\":19.848835},{\"year\":1986,\"data\":19.811829},{\"year\":1987,\"data\":20.133602},{\"year\":1988,\"data\":20.39803},{\"year\":1989,\"data\":20.11371},{\"year\":1990,\"data\":20.20233},{\"year\":1991,\"data\":19.255733},{\"year\":1992,\"data\":19.323029},{\"year\":1993,\"data\":19.898746},{\"year\":1994,\"data\":20.849014},{\"year\":1995,\"data\":20.103674},{\"year\":1996,\"data\":19.955555},{\"year\":1997,\"data\":20.595251},{\"year\":1998,\"data\":20.339336},{\"year\":1999,\"data\":20.903584},{\"year\":2000,\"data\":20.421595},{\"year\":2001,\"data\":20.963171},{\"year\":2002,\"data\":20.703316},{\"year\":2003,\"data\":20.928585},{\"year\":2004,\"data\":20.429928},{\"year\":2005,\"data\":20.342741},{\"year\":2006,\"data\":20.700985},{\"year\":2007,\"data\":20.667831},{\"year\":2008,\"data\":20.797132},{\"year\":2009,\"data\":20.698746},{\"year\":2010,\"data\":20.838593},{\"year\":2011,\"data\":20.450647},{\"year\":2012,\"data\":20.905338}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
                     "Content-Type": [
                         "application/json"
                     ],
                     "Date": [
                         "Tue, 31 May 2016 02:46:44 GMT"
-                    ]
-                },
-                "status": {
-                    "code": 200,
-                    "message": "OK"
-                },
-                "body": {
-                    "string": "[{\"year\":1901,\"data\":18.808332},{\"year\":1902,\"data\":18.94543},{\"year\":1903,\"data\":18.41353},{\"year\":1904,\"data\":18.64059},{\"year\":1905,\"data\":18.40887},{\"year\":1906,\"data\":18.093369},{\"year\":1907,\"data\":18.370161},{\"year\":1908,\"data\":18.394176},{\"year\":1909,\"data\":18.44749},{\"year\":1910,\"data\":18.567204},{\"year\":1911,\"data\":19.166128},{\"year\":1912,\"data\":18.885843},{\"year\":1913,\"data\":19.022938},{\"year\":1914,\"data\":19.214516},{\"year\":1915,\"data\":18.676344},{\"year\":1916,\"data\":18.596775},{\"year\":1917,\"data\":18.580734},{\"year\":1918,\"data\":18.158781},{\"year\":1919,\"data\":18.617382},{\"year\":1920,\"data\":19.05466},{\"year\":1921,\"data\":18.653675},{\"year\":1922,\"data\":19.434677},{\"year\":1923,\"data\":18.271685},{\"year\":1924,\"data\":19.197311},{\"year\":1925,\"data\":18.475807},{\"year\":1926,\"data\":19.203854},{\"year\":1927,\"data\":19.23441},{\"year\":1928,\"data\":18.92007},{\"year\":1929,\"data\":18.225718},{\"year\":1930,\"data\":19.164606},{\"year\":1931,\"data\":19.78629},{\"year\":1932,\"data\":19.204033},{\"year\":1933,\"data\":19.17545},{\"year\":1934,\"data\":19.051523},{\"year\":1935,\"data\":19.037365},{\"year\":1936,\"data\":18.987186},{\"year\":1937,\"data\":19.42724},{\"year\":1938,\"data\":19.10027},{\"year\":1939,\"data\":19.13638},{\"year\":1940,\"data\":18.902958},{\"year\":1941,\"data\":19.127598},{\"year\":1942,\"data\":19.935932},{\"year\":1943,\"data\":20.20466},{\"year\":1944,\"data\":19.376614},{\"year\":1945,\"data\":19.735304},{\"year\":1946,\"data\":19.994534},{\"year\":1947,\"data\":20.457886},{\"year\":1948,\"data\":19.82455},{\"year\":1949,\"data\":19.596594},{\"year\":1950,\"data\":19.40905},{\"year\":1951,\"data\":19.084587},{\"year\":1952,\"data\":19.708155},{\"year\":1953,\"data\":19.002598},{\"year\":1954,\"data\":18.614069},{\"year\":1955,\"data\":19.961828},{\"year\":1956,\"data\":18.551075},{\"year\":1957,\"data\":18.87043},{\"year\":1958,\"data\":19.440413},{\"year\":1959,\"data\":19.340322},{\"year\":1960,\"data\":19.60224},{\"year\":1961,\"data\":19.562992},{\"year\":1962,\"data\":19.282528},{\"year\":1963,\"data\":19.289068},{\"year\":1964,\"data\":19.287006},{\"year\":1965,\"data\":19.212185},{\"year\":1966,\"data\":19.458782},{\"year\":1967,\"data\":19.190592},{\"year\":1968,\"data\":19.452688},{\"year\":1969,\"data\":19.087725},{\"year\":1970,\"data\":19.34767},{\"year\":1971,\"data\":19.02276},{\"year\":1972,\"data\":19.037098},{\"year\":1973,\"data\":19.179302},{\"year\":1974,\"data\":18.881361},{\"year\":1975,\"data\":18.995789},{\"year\":1976,\"data\":18.535305},{\"year\":1977,\"data\":19.85681},{\"year\":1978,\"data\":19.074192},{\"year\":1979,\"data\":19.572939},{\"year\":1980,\"data\":18.91801},{\"year\":1981,\"data\":19.63889},{\"year\":1982,\"data\":20.044712},{\"year\":1983,\"data\":19.727509},{\"year\":1984,\"data\":19.294981},{\"year\":1985,\"data\":19.848835},{\"year\":1986,\"data\":19.811829},{\"year\":1987,\"data\":20.133602},{\"year\":1988,\"data\":20.39803},{\"year\":1989,\"data\":20.11371},{\"year\":1990,\"data\":20.20233},{\"year\":1991,\"data\":19.255733},{\"year\":1992,\"data\":19.323029},{\"year\":1993,\"data\":19.898746},{\"year\":1994,\"data\":20.849014},{\"year\":1995,\"data\":20.103674},{\"year\":1996,\"data\":19.955555},{\"year\":1997,\"data\":20.595251},{\"year\":1998,\"data\":20.339336},{\"year\":1999,\"data\":20.903584},{\"year\":2000,\"data\":20.421595},{\"year\":2001,\"data\":20.963171},{\"year\":2002,\"data\":20.703316},{\"year\":2003,\"data\":20.928585},{\"year\":2004,\"data\":20.429928},{\"year\":2005,\"data\":20.342741},{\"year\":2006,\"data\":20.700985},{\"year\":2007,\"data\":20.667831},{\"year\":2008,\"data\":20.797132},{\"year\":2009,\"data\":20.698746},{\"year\":2010,\"data\":20.838593},{\"year\":2011,\"data\":20.450647},{\"year\":2012,\"data\":20.905338}]"
-                }
-            }
-        },
-        {
-            "request": {
-                "headers": {
-                    "Connection": [
-                        "keep-alive"
                     ],
-                    "Accept-Encoding": [
-                        "gzip, deflate"
-                    ],
-                    "User-Agent": [
-                        "python-requests/2.10.0"
-                    ],
-                    "Accept": [
-                        "*/*"
-                    ]
-                },
-                "method": "GET",
-                "body": null,
-                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/month/TUN"
-            },
-            "response": {
-                "headers": {
                     "Connection": [
                         "keep-alive"
                     ],
                     "Server": [
                         "Apache-Coyote/1.1"
-                    ],
-                    "Content-Type": [
-                        "application/json"
-                    ],
-                    "Date": [
-                        "Tue, 31 May 2016 02:46:45 GMT"
                     ]
-                },
-                "status": {
-                    "code": 200,
-                    "message": "OK"
-                },
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/month/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
                 "body": {
                     "string": "[{\"month\":0,\"data\":10.239565},{\"month\":1,\"data\":11.576739},{\"month\":2,\"data\":14.459531},{\"month\":3,\"data\":17.687132},{\"month\":4,\"data\":21.670462},{\"month\":5,\"data\":26.041798},{\"month\":6,\"data\":28.633968},{\"month\":7,\"data\":28.749126},{\"month\":8,\"data\":25.875525},{\"month\":9,\"data\":21.04827},{\"month\":10,\"data\":15.643389},{\"month\":11,\"data\":11.627062}]"
-                }
-            }
-        },
-        {
-            "request": {
-                "headers": {
-                    "Connection": [
-                        "keep-alive"
-                    ],
-                    "Accept-Encoding": [
-                        "gzip, deflate"
-                    ],
-                    "User-Agent": [
-                        "python-requests/2.10.0"
-                    ],
-                    "Accept": [
-                        "*/*"
-                    ]
-                },
-                "method": "GET",
-                "body": null,
-                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/decade/TUN"
-            },
-            "response": {
-                "headers": {
-                    "Connection": [
-                        "keep-alive"
-                    ],
-                    "Server": [
-                        "Apache-Coyote/1.1"
-                    ],
-                    "Content-Type": [
-                        "application/json"
-                    ],
-                    "Date": [
-                        "Tue, 31 May 2016 02:46:45 GMT"
-                    ]
                 },
                 "status": {
                     "code": 200,
                     "message": "OK"
                 },
-                "body": {
-                    "string": "[{\"year\":1900,\"data\":18.50244},{\"year\":1910,\"data\":18.748665},{\"year\":1920,\"data\":18.867186},{\"year\":1930,\"data\":19.207035},{\"year\":1940,\"data\":19.715664},{\"year\":1950,\"data\":19.198254},{\"year\":1960,\"data\":19.34258},{\"year\":1970,\"data\":19.150322},{\"year\":1980,\"data\":19.79301},{\"year\":1990,\"data\":20.142626},{\"year\":2000,\"data\":20.665403},{\"year\":2010,\"data\":20.731525}]"
-                }
-            }
-        },
-        {
-            "request": {
                 "headers": {
-                    "Connection": [
-                        "keep-alive"
+                    "Content-Type": [
+                        "application/json"
                     ],
-                    "Accept-Encoding": [
-                        "gzip, deflate"
+                    "Date": [
+                        "Tue, 31 May 2016 02:46:45 GMT"
                     ],
-                    "User-Agent": [
-                        "python-requests/2.10.0"
-                    ],
-                    "Accept": [
-                        "*/*"
-                    ]
-                },
-                "method": "GET",
-                "body": null,
-                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/month/SVN"
-            },
-            "response": {
-                "headers": {
                     "Connection": [
                         "keep-alive"
                     ],
                     "Server": [
                         "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/decade/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
                     ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1900,\"data\":18.50244},{\"year\":1910,\"data\":18.748665},{\"year\":1920,\"data\":18.867186},{\"year\":1930,\"data\":19.207035},{\"year\":1940,\"data\":19.715664},{\"year\":1950,\"data\":19.198254},{\"year\":1960,\"data\":19.34258},{\"year\":1970,\"data\":19.150322},{\"year\":1980,\"data\":19.79301},{\"year\":1990,\"data\":20.142626},{\"year\":2000,\"data\":20.665403},{\"year\":2010,\"data\":20.731525}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Date": [
+                        "Tue, 31 May 2016 02:46:45 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/month/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"month\":0,\"data\":68.93643},{\"month\":1,\"data\":64.23069},{\"month\":2,\"data\":81.098724},{\"month\":3,\"data\":102.28083},{\"month\":4,\"data\":110.0369},{\"month\":5,\"data\":127.69851},{\"month\":6,\"data\":118.47258},{\"month\":7,\"data\":120.37205},{\"month\":8,\"data\":121.70347},{\"month\":9,\"data\":135.76472},{\"month\":10,\"data\":130.21431},{\"month\":11,\"data\":94.149704}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
                     "Content-Type": [
                         "application/json"
                     ],
                     "Date": [
                         "Tue, 31 May 2016 02:46:46 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
                     ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/year/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1901,\"data\":114.88334},{\"year\":1902,\"data\":102.08733},{\"year\":1903,\"data\":114.19133},{\"year\":1904,\"data\":102.698},{\"year\":1905,\"data\":123.66367},{\"year\":1906,\"data\":114.679},{\"year\":1907,\"data\":104.61867},{\"year\":1908,\"data\":84.48967},{\"year\":1909,\"data\":110.964005},{\"year\":1910,\"data\":129.79134},{\"year\":1911,\"data\":95.189},{\"year\":1912,\"data\":116.69334},{\"year\":1913,\"data\":105.78001},{\"year\":1914,\"data\":115.704},{\"year\":1915,\"data\":141.25133},{\"year\":1916,\"data\":125.838},{\"year\":1917,\"data\":113.96367},{\"year\":1918,\"data\":117.459335},{\"year\":1919,\"data\":128.16034},{\"year\":1920,\"data\":89.52367},{\"year\":1921,\"data\":76.50367},{\"year\":1922,\"data\":105.909996},{\"year\":1923,\"data\":114.727005},{\"year\":1924,\"data\":104.220665},{\"year\":1925,\"data\":124.84534},{\"year\":1926,\"data\":133.68199},{\"year\":1927,\"data\":97.20534},{\"year\":1928,\"data\":114.682335},{\"year\":1929,\"data\":94.705},{\"year\":1930,\"data\":123.468994},{\"year\":1931,\"data\":104.35567},{\"year\":1932,\"data\":101.63},{\"year\":1933,\"data\":130.45},{\"year\":1934,\"data\":124.78434},{\"year\":1935,\"data\":99.306},{\"year\":1936,\"data\":105.751},{\"year\":1937,\"data\":142.89499},{\"year\":1938,\"data\":85.54567},{\"year\":1939,\"data\":101.41133},{\"year\":1940,\"data\":111.32533},{\"year\":1941,\"data\":102.468994},{\"year\":1942,\"data\":73.21467},{\"year\":1943,\"data\":89.82933},{\"year\":1944,\"data\":103.89166},{\"year\":1945,\"data\":81.276665},{\"year\":1946,\"data\":89.494},{\"year\":1947,\"data\":80.49533},{\"year\":1948,\"data\":112.76766},{\"year\":1949,\"data\":87.109},{\"year\":1950,\"data\":103.30501},{\"year\":1951,\"data\":112.281006},{\"year\":1952,\"data\":101.792},{\"year\":1953,\"data\":90.013336},{\"year\":1954,\"data\":107.128334},{\"year\":1955,\"data\":106.126},{\"year\":1956,\"data\":98.471664},{\"year\":1957,\"data\":94.86967},{\"year\":1958,\"data\":110.12933},{\"year\":1959,\"data\":111.817},{\"year\":1960,\"data\":126.93101},{\"year\":1961,\"data\":102.701675},{\"year\":1962,\"data\":114.97134},{\"year\":1963,\"data\":111.571335},{\"year\":1964,\"data\":112.35466},{\"year\":1965,\"data\":134.03},{\"year\":1966,\"data\":120.162674},{\"year\":1967,\"data\":96.43467},{\"year\":1968,\"data\":100.56467},{\"year\":1969,\"data\":113.928},{\"year\":1970,\"data\":117.337},{\"year\":1971,\"data\":88.426},{\"year\":1972,\"data\":121.612},{\"year\":1973,\"data\":91.10433},{\"year\":1974,\"data\":114.17766},{\"year\":1975,\"data\":106.42733},{\"year\":1976,\"data\":103.98733},{\"year\":1977,\"data\":98.85933},{\"year\":1978,\"data\":103.35634},{\"year\":1979,\"data\":119.14734},{\"year\":1980,\"data\":118.267006},{\"year\":1981,\"data\":104.978004},{\"year\":1982,\"data\":105.25366},{\"year\":1983,\"data\":81.461334},{\"year\":1984,\"data\":108.12933},{\"year\":1985,\"data\":101.042},{\"year\":1986,\"data\":98.028},{\"year\":1987,\"data\":112.04967},{\"year\":1988,\"data\":89.405334},{\"year\":1989,\"data\":99.509995},{\"year\":1990,\"data\":95.77167},{\"year\":1991,\"data\":105.170334},{\"year\":1992,\"data\":102.76566},{\"year\":1993,\"data\":100.90133},{\"year\":1994,\"data\":95.420334},{\"year\":1995,\"data\":118.943665},{\"year\":1996,\"data\":125.705666},{\"year\":1997,\"data\":91.747665},{\"year\":1998,\"data\":109.764},{\"year\":1999,\"data\":105.923},{\"year\":2000,\"data\":110.865005},{\"year\":2001,\"data\":96.00467},{\"year\":2002,\"data\":108.790665},{\"year\":2003,\"data\":81.50833},{\"year\":2004,\"data\":117.69767},{\"year\":2005,\"data\":107.680664},{\"year\":2006,\"data\":89.107},{\"year\":2007,\"data\":97.072334},{\"year\":2008,\"data\":104.121666},{\"year\":2009,\"data\":104.67533},{\"year\":2010,\"data\":130.19028},{\"year\":2011,\"data\":78.031944},{\"year\":2012,\"data\":100.034256}]"
                 },
                 "status": {
                     "code": 200,
                     "message": "OK"
                 },
+                "headers": {
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:27:30 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/month/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
                 "body": {
                     "string": "[{\"month\":0,\"data\":68.93643},{\"month\":1,\"data\":64.23069},{\"month\":2,\"data\":81.098724},{\"month\":3,\"data\":102.28083},{\"month\":4,\"data\":110.0369},{\"month\":5,\"data\":127.69851},{\"month\":6,\"data\":118.47258},{\"month\":7,\"data\":120.37205},{\"month\":8,\"data\":121.70347},{\"month\":9,\"data\":135.76472},{\"month\":10,\"data\":130.21431},{\"month\":11,\"data\":94.149704}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:27:30 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/decade/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1900,\"data\":108.030556},{\"year\":1910,\"data\":118.98303},{\"year\":1920,\"data\":105.6005},{\"year\":1930,\"data\":111.9598},{\"year\":1940,\"data\":93.18727},{\"year\":1950,\"data\":103.59334},{\"year\":1960,\"data\":113.365005},{\"year\":1970,\"data\":106.44347},{\"year\":1980,\"data\":101.81243},{\"year\":1990,\"data\":105.21133},{\"year\":2000,\"data\":101.752335},{\"year\":2010,\"data\":102.75216}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:27:31 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/year/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1901,\"data\":8.219999},{\"year\":1902,\"data\":8.201334},{\"year\":1903,\"data\":8.870333},{\"year\":1904,\"data\":9.259},{\"year\":1905,\"data\":8.629},{\"year\":1906,\"data\":8.601},{\"year\":1907,\"data\":8.664},{\"year\":1908,\"data\":8.143},{\"year\":1909,\"data\":8.365667},{\"year\":1910,\"data\":9.052},{\"year\":1911,\"data\":9.387667},{\"year\":1912,\"data\":8.36},{\"year\":1913,\"data\":8.721},{\"year\":1914,\"data\":8.283},{\"year\":1915,\"data\":8.657667},{\"year\":1916,\"data\":9.624},{\"year\":1917,\"data\":8.5546665},{\"year\":1918,\"data\":8.904333},{\"year\":1919,\"data\":8.381666},{\"year\":1920,\"data\":9.573333},{\"year\":1921,\"data\":9.513333},{\"year\":1922,\"data\":8.515},{\"year\":1923,\"data\":9.299666},{\"year\":1924,\"data\":8.474333},{\"year\":1925,\"data\":8.858999},{\"year\":1926,\"data\":9.383667},{\"year\":1927,\"data\":9.418667},{\"year\":1928,\"data\":9.186},{\"year\":1929,\"data\":8.454},{\"year\":1930,\"data\":9.532},{\"year\":1931,\"data\":8.521667},{\"year\":1932,\"data\":8.918333},{\"year\":1933,\"data\":8.004},{\"year\":1934,\"data\":9.909666},{\"year\":1935,\"data\":8.785334},{\"year\":1936,\"data\":9.288333},{\"year\":1937,\"data\":9.079667},{\"year\":1938,\"data\":8.966001},{\"year\":1939,\"data\":9.047},{\"year\":1940,\"data\":7.5276666},{\"year\":1941,\"data\":8.080334},{\"year\":1942,\"data\":8.639667},{\"year\":1943,\"data\":9.658999},{\"year\":1944,\"data\":8.578},{\"year\":1945,\"data\":9.457},{\"year\":1946,\"data\":9.625},{\"year\":1947,\"data\":9.511},{\"year\":1948,\"data\":9.483334},{\"year\":1949,\"data\":9.670333},{\"year\":1950,\"data\":9.907667},{\"year\":1951,\"data\":9.837999},{\"year\":1952,\"data\":8.994333},{\"year\":1953,\"data\":9.197333},{\"year\":1954,\"data\":8.290667},{\"year\":1955,\"data\":8.531667},{\"year\":1956,\"data\":8.049},{\"year\":1957,\"data\":9.2873335},{\"year\":1958,\"data\":9.481333},{\"year\":1959,\"data\":9.395666},{\"year\":1960,\"data\":9.2456665},{\"year\":1961,\"data\":9.803667},{\"year\":1962,\"data\":8.307667},{\"year\":1963,\"data\":8.577666},{\"year\":1964,\"data\":8.911667},{\"year\":1965,\"data\":8.453},{\"year\":1966,\"data\":9.511667},{\"year\":1967,\"data\":9.452666},{\"year\":1968,\"data\":9.129},{\"year\":1969,\"data\":8.638},{\"year\":1970,\"data\":8.693334},{\"year\":1971,\"data\":8.993667},{\"year\":1972,\"data\":8.916666},{\"year\":1973,\"data\":8.833},{\"year\":1974,\"data\":9.3463335},{\"year\":1975,\"data\":9.536667},{\"year\":1976,\"data\":8.8116665},{\"year\":1977,\"data\":9.390667},{\"year\":1978,\"data\":8.218333},{\"year\":1979,\"data\":9.116333},{\"year\":1980,\"data\":8.247667},{\"year\":1981,\"data\":9.020333},{\"year\":1982,\"data\":9.503},{\"year\":1983,\"data\":9.571667},{\"year\":1984,\"data\":8.735666},{\"year\":1985,\"data\":8.663333},{\"year\":1986,\"data\":8.851999},{\"year\":1987,\"data\":8.856333},{\"year\":1988,\"data\":9.565001},{\"year\":1989,\"data\":9.617666},{\"year\":1990,\"data\":9.989},{\"year\":1991,\"data\":9.062},{\"year\":1992,\"data\":10.179},{\"year\":1993,\"data\":9.604334},{\"year\":1994,\"data\":10.889667},{\"year\":1995,\"data\":9.586333},{\"year\":1996,\"data\":8.919333},{\"year\":1997,\"data\":9.774667},{\"year\":1998,\"data\":9.953667},{\"year\":1999,\"data\":9.95},{\"year\":2000,\"data\":10.910334},{\"year\":2001,\"data\":10.101999},{\"year\":2002,\"data\":10.566333},{\"year\":2003,\"data\":10.150667},{\"year\":2004,\"data\":9.596666},{\"year\":2005,\"data\":9.215},{\"year\":2006,\"data\":10.154667},{\"year\":2007,\"data\":10.930334},{\"year\":2008,\"data\":10.643},{\"year\":2009,\"data\":10.658667},{\"year\":2010,\"data\":9.153704},{\"year\":2011,\"data\":10.116667},{\"year\":2012,\"data\":10.281019}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:27:31 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/month/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"month\":0,\"data\":-1.0069841},{\"month\":1,\"data\":0.65000993},{\"month\":2,\"data\":4.5536966},{\"month\":3,\"data\":8.748871},{\"month\":4,\"data\":13.374265},{\"month\":5,\"data\":16.728075},{\"month\":6,\"data\":18.732298},{\"month\":7,\"data\":18.362186},{\"month\":8,\"data\":14.850774},{\"month\":9,\"data\":9.99226},{\"month\":10,\"data\":4.640859},{\"month\":11,\"data\":0.48651785}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:27:31 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/decade/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1900,\"data\":8.55037},{\"year\":1910,\"data\":8.792601},{\"year\":1920,\"data\":9.0677},{\"year\":1930,\"data\":9.0052},{\"year\":1940,\"data\":9.023133},{\"year\":1950,\"data\":9.0973},{\"year\":1960,\"data\":9.003067},{\"year\":1970,\"data\":8.985666},{\"year\":1980,\"data\":9.063267},{\"year\":1990,\"data\":9.7908},{\"year\":2000,\"data\":10.292767},{\"year\":2010,\"data\":9.850463}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:27:32 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/year/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1901,\"data\":20.656004},{\"year\":1902,\"data\":19.401165},{\"year\":1903,\"data\":21.191397},{\"year\":1904,\"data\":19.43414},{\"year\":1905,\"data\":18.11362},{\"year\":1906,\"data\":21.780197},{\"year\":1907,\"data\":17.986649},{\"year\":1908,\"data\":17.69749},{\"year\":1909,\"data\":19.160664},{\"year\":1910,\"data\":18.893908},{\"year\":1911,\"data\":23.62312},{\"year\":1912,\"data\":20.324642},{\"year\":1913,\"data\":16.569176},{\"year\":1914,\"data\":18.287457},{\"year\":1915,\"data\":23.548746},{\"year\":1916,\"data\":18.70923},{\"year\":1917,\"data\":17.248837},{\"year\":1918,\"data\":20.509409},{\"year\":1919,\"data\":19.971865},{\"year\":1920,\"data\":16.040592},{\"year\":1921,\"data\":22.280645},{\"year\":1922,\"data\":15.173746},{\"year\":1923,\"data\":19.910036},{\"year\":1924,\"data\":16.885216},{\"year\":1925,\"data\":18.708244},{\"year\":1926,\"data\":16.216667},{\"year\":1927,\"data\":18.67285},{\"year\":1928,\"data\":25.19785},{\"year\":1929,\"data\":19.959318},{\"year\":1930,\"data\":18.88414},{\"year\":1931,\"data\":22.257885},{\"year\":1932,\"data\":17.312725},{\"year\":1933,\"data\":19.73629},{\"year\":1934,\"data\":23.40672},{\"year\":1935,\"data\":17.65179},{\"year\":1936,\"data\":19.687098},{\"year\":1937,\"data\":14.64991},{\"year\":1938,\"data\":18.611649},{\"year\":1939,\"data\":20.374193},{\"year\":1940,\"data\":19.010036},{\"year\":1941,\"data\":19.382706},{\"year\":1942,\"data\":17.180555},{\"year\":1943,\"data\":17.889427},{\"year\":1944,\"data\":18.543728},{\"year\":1945,\"data\":14.082974},{\"year\":1946,\"data\":18.764696},{\"year\":1947,\"data\":12.468279},{\"year\":1948,\"data\":19.412186},{\"year\":1949,\"data\":18.346325},{\"year\":1950,\"data\":22.048029},{\"year\":1951,\"data\":19.222311},{\"year\":1952,\"data\":20.112276},{\"year\":1953,\"data\":25.191668},{\"year\":1954,\"data\":19.366577},{\"year\":1955,\"data\":17.254301},{\"year\":1956,\"data\":21.85905},{\"year\":1957,\"data\":24.28396},{\"year\":1958,\"data\":20.317831},{\"year\":1959,\"data\":22.01819},{\"year\":1960,\"data\":15.973387},{\"year\":1961,\"data\":15.962544},{\"year\":1962,\"data\":21.067114},{\"year\":1963,\"data\":23.523655},{\"year\":1964,\"data\":19.967564},{\"year\":1965,\"data\":21.74095},{\"year\":1966,\"data\":17.498837},{\"year\":1967,\"data\":16.023478},{\"year\":1968,\"data\":16.361828},{\"year\":1969,\"data\":24.318012},{\"year\":1970,\"data\":13.710304},{\"year\":1971,\"data\":21.583782},{\"year\":1972,\"data\":23.354748},{\"year\":1973,\"data\":22.427958},{\"year\":1974,\"data\":17.170252},{\"year\":1975,\"data\":21.108513},{\"year\":1976,\"data\":24.737904},{\"year\":1977,\"data\":15.002688},{\"year\":1978,\"data\":19.54543},{\"year\":1979,\"data\":20.863798},{\"year\":1980,\"data\":21.087276},{\"year\":1981,\"data\":13.572133},{\"year\":1982,\"data\":26.20448},{\"year\":1983,\"data\":17.457973},{\"year\":1984,\"data\":24.091755},{\"year\":1985,\"data\":17.123655},{\"year\":1986,\"data\":22.268639},{\"year\":1987,\"data\":16.00242},{\"year\":1988,\"data\":16.931004},{\"year\":1989,\"data\":16.318727},{\"year\":1990,\"data\":21.975178},{\"year\":1991,\"data\":22.57052},{\"year\":1992,\"data\":23.115591},{\"year\":1993,\"data\":16.431183},{\"year\":1994,\"data\":16.847134},{\"year\":1995,\"data\":22.79104},{\"year\":1996,\"data\":23.17509},{\"year\":1997,\"data\":20.513083},{\"year\":1998,\"data\":18.05009},{\"year\":1999,\"data\":19.112724},{\"year\":2000,\"data\":14.669981},{\"year\":2001,\"data\":17.230106},{\"year\":2002,\"data\":17.451077},{\"year\":2003,\"data\":28.808334},{\"year\":2004,\"data\":19.464336},{\"year\":2005,\"data\":20.352062},{\"year\":2006,\"data\":22.327688},{\"year\":2007,\"data\":18.752956},{\"year\":2008,\"data\":13.97491},{\"year\":2009,\"data\":21.287365},{\"year\":2010,\"data\":21.999838},{\"year\":2011,\"data\":26.42775},{\"year\":2012,\"data\":18.30259}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:27:32 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/month/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"month\":0,\"data\":30.95466},{\"month\":1,\"data\":27.744547},{\"month\":2,\"data\":25.907572},{\"month\":3,\"data\":20.267841},{\"month\":4,\"data\":13.014418},{\"month\":5,\"data\":5.8183227},{\"month\":6,\"data\":2.3155859},{\"month\":7,\"data\":4.0897865},{\"month\":8,\"data\":16.865564},{\"month\":9,\"data\":29.273123},{\"month\":10,\"data\":27.220123},{\"month\":11,\"data\":31.183294}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:27:32 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/decade/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1900,\"data\":19.491259},{\"year\":1910,\"data\":19.768639},{\"year\":1920,\"data\":18.904516},{\"year\":1930,\"data\":19.25724},{\"year\":1940,\"data\":17.508091},{\"year\":1950,\"data\":21.16742},{\"year\":1960,\"data\":19.243736},{\"year\":1970,\"data\":19.950537},{\"year\":1980,\"data\":19.105806},{\"year\":1990,\"data\":20.458164},{\"year\":2000,\"data\":19.43188},{\"year\":2010,\"data\":22.243393}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:27:33 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/year/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1901,\"data\":18.808332},{\"year\":1902,\"data\":18.94543},{\"year\":1903,\"data\":18.41353},{\"year\":1904,\"data\":18.64059},{\"year\":1905,\"data\":18.40887},{\"year\":1906,\"data\":18.093369},{\"year\":1907,\"data\":18.370161},{\"year\":1908,\"data\":18.394176},{\"year\":1909,\"data\":18.44749},{\"year\":1910,\"data\":18.567204},{\"year\":1911,\"data\":19.166128},{\"year\":1912,\"data\":18.885843},{\"year\":1913,\"data\":19.022938},{\"year\":1914,\"data\":19.214516},{\"year\":1915,\"data\":18.676344},{\"year\":1916,\"data\":18.596775},{\"year\":1917,\"data\":18.580734},{\"year\":1918,\"data\":18.158781},{\"year\":1919,\"data\":18.617382},{\"year\":1920,\"data\":19.05466},{\"year\":1921,\"data\":18.653675},{\"year\":1922,\"data\":19.434677},{\"year\":1923,\"data\":18.271685},{\"year\":1924,\"data\":19.197311},{\"year\":1925,\"data\":18.475807},{\"year\":1926,\"data\":19.203854},{\"year\":1927,\"data\":19.23441},{\"year\":1928,\"data\":18.92007},{\"year\":1929,\"data\":18.225718},{\"year\":1930,\"data\":19.164606},{\"year\":1931,\"data\":19.78629},{\"year\":1932,\"data\":19.204033},{\"year\":1933,\"data\":19.17545},{\"year\":1934,\"data\":19.051523},{\"year\":1935,\"data\":19.037365},{\"year\":1936,\"data\":18.987186},{\"year\":1937,\"data\":19.42724},{\"year\":1938,\"data\":19.10027},{\"year\":1939,\"data\":19.13638},{\"year\":1940,\"data\":18.902958},{\"year\":1941,\"data\":19.127598},{\"year\":1942,\"data\":19.935932},{\"year\":1943,\"data\":20.20466},{\"year\":1944,\"data\":19.376614},{\"year\":1945,\"data\":19.735304},{\"year\":1946,\"data\":19.994534},{\"year\":1947,\"data\":20.457886},{\"year\":1948,\"data\":19.82455},{\"year\":1949,\"data\":19.596594},{\"year\":1950,\"data\":19.40905},{\"year\":1951,\"data\":19.084587},{\"year\":1952,\"data\":19.708155},{\"year\":1953,\"data\":19.002598},{\"year\":1954,\"data\":18.614069},{\"year\":1955,\"data\":19.961828},{\"year\":1956,\"data\":18.551075},{\"year\":1957,\"data\":18.87043},{\"year\":1958,\"data\":19.440413},{\"year\":1959,\"data\":19.340322},{\"year\":1960,\"data\":19.60224},{\"year\":1961,\"data\":19.562992},{\"year\":1962,\"data\":19.282528},{\"year\":1963,\"data\":19.289068},{\"year\":1964,\"data\":19.287006},{\"year\":1965,\"data\":19.212185},{\"year\":1966,\"data\":19.458782},{\"year\":1967,\"data\":19.190592},{\"year\":1968,\"data\":19.452688},{\"year\":1969,\"data\":19.087725},{\"year\":1970,\"data\":19.34767},{\"year\":1971,\"data\":19.02276},{\"year\":1972,\"data\":19.037098},{\"year\":1973,\"data\":19.179302},{\"year\":1974,\"data\":18.881361},{\"year\":1975,\"data\":18.995789},{\"year\":1976,\"data\":18.535305},{\"year\":1977,\"data\":19.85681},{\"year\":1978,\"data\":19.074192},{\"year\":1979,\"data\":19.572939},{\"year\":1980,\"data\":18.91801},{\"year\":1981,\"data\":19.63889},{\"year\":1982,\"data\":20.044712},{\"year\":1983,\"data\":19.727509},{\"year\":1984,\"data\":19.294981},{\"year\":1985,\"data\":19.848835},{\"year\":1986,\"data\":19.811829},{\"year\":1987,\"data\":20.133602},{\"year\":1988,\"data\":20.39803},{\"year\":1989,\"data\":20.11371},{\"year\":1990,\"data\":20.20233},{\"year\":1991,\"data\":19.255733},{\"year\":1992,\"data\":19.323029},{\"year\":1993,\"data\":19.898746},{\"year\":1994,\"data\":20.849014},{\"year\":1995,\"data\":20.103674},{\"year\":1996,\"data\":19.955555},{\"year\":1997,\"data\":20.595251},{\"year\":1998,\"data\":20.339336},{\"year\":1999,\"data\":20.903584},{\"year\":2000,\"data\":20.421595},{\"year\":2001,\"data\":20.963171},{\"year\":2002,\"data\":20.703316},{\"year\":2003,\"data\":20.928585},{\"year\":2004,\"data\":20.429928},{\"year\":2005,\"data\":20.342741},{\"year\":2006,\"data\":20.700985},{\"year\":2007,\"data\":20.667831},{\"year\":2008,\"data\":20.797132},{\"year\":2009,\"data\":20.698746},{\"year\":2010,\"data\":20.838593},{\"year\":2011,\"data\":20.450647},{\"year\":2012,\"data\":20.905338}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:27:33 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/month/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"month\":0,\"data\":10.239565},{\"month\":1,\"data\":11.576739},{\"month\":2,\"data\":14.459531},{\"month\":3,\"data\":17.687132},{\"month\":4,\"data\":21.670462},{\"month\":5,\"data\":26.041798},{\"month\":6,\"data\":28.633968},{\"month\":7,\"data\":28.749126},{\"month\":8,\"data\":25.875525},{\"month\":9,\"data\":21.04827},{\"month\":10,\"data\":15.643389},{\"month\":11,\"data\":11.627062}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:27:34 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/decade/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1900,\"data\":18.50244},{\"year\":1910,\"data\":18.748665},{\"year\":1920,\"data\":18.867186},{\"year\":1930,\"data\":19.207035},{\"year\":1940,\"data\":19.715664},{\"year\":1950,\"data\":19.198254},{\"year\":1960,\"data\":19.34258},{\"year\":1970,\"data\":19.150322},{\"year\":1980,\"data\":19.79301},{\"year\":1990,\"data\":20.142626},{\"year\":2000,\"data\":20.665403},{\"year\":2010,\"data\":20.731525}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:27:34 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/month/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"month\":0,\"data\":68.93643},{\"month\":1,\"data\":64.23069},{\"month\":2,\"data\":81.098724},{\"month\":3,\"data\":102.28083},{\"month\":4,\"data\":110.0369},{\"month\":5,\"data\":127.69851},{\"month\":6,\"data\":118.47258},{\"month\":7,\"data\":120.37205},{\"month\":8,\"data\":121.70347},{\"month\":9,\"data\":135.76472},{\"month\":10,\"data\":130.21431},{\"month\":11,\"data\":94.149704}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:27:34 GMT"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/year/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1901,\"data\":8.219999},{\"year\":1902,\"data\":8.201334},{\"year\":1903,\"data\":8.870333},{\"year\":1904,\"data\":9.259},{\"year\":1905,\"data\":8.629},{\"year\":1906,\"data\":8.601},{\"year\":1907,\"data\":8.664},{\"year\":1908,\"data\":8.143},{\"year\":1909,\"data\":8.365667},{\"year\":1910,\"data\":9.052},{\"year\":1911,\"data\":9.387667},{\"year\":1912,\"data\":8.36},{\"year\":1913,\"data\":8.721},{\"year\":1914,\"data\":8.283},{\"year\":1915,\"data\":8.657667},{\"year\":1916,\"data\":9.624},{\"year\":1917,\"data\":8.5546665},{\"year\":1918,\"data\":8.904333},{\"year\":1919,\"data\":8.381666},{\"year\":1920,\"data\":9.573333},{\"year\":1921,\"data\":9.513333},{\"year\":1922,\"data\":8.515},{\"year\":1923,\"data\":9.299666},{\"year\":1924,\"data\":8.474333},{\"year\":1925,\"data\":8.858999},{\"year\":1926,\"data\":9.383667},{\"year\":1927,\"data\":9.418667},{\"year\":1928,\"data\":9.186},{\"year\":1929,\"data\":8.454},{\"year\":1930,\"data\":9.532},{\"year\":1931,\"data\":8.521667},{\"year\":1932,\"data\":8.918333},{\"year\":1933,\"data\":8.004},{\"year\":1934,\"data\":9.909666},{\"year\":1935,\"data\":8.785334},{\"year\":1936,\"data\":9.288333},{\"year\":1937,\"data\":9.079667},{\"year\":1938,\"data\":8.966001},{\"year\":1939,\"data\":9.047},{\"year\":1940,\"data\":7.5276666},{\"year\":1941,\"data\":8.080334},{\"year\":1942,\"data\":8.639667},{\"year\":1943,\"data\":9.658999},{\"year\":1944,\"data\":8.578},{\"year\":1945,\"data\":9.457},{\"year\":1946,\"data\":9.625},{\"year\":1947,\"data\":9.511},{\"year\":1948,\"data\":9.483334},{\"year\":1949,\"data\":9.670333},{\"year\":1950,\"data\":9.907667},{\"year\":1951,\"data\":9.837999},{\"year\":1952,\"data\":8.994333},{\"year\":1953,\"data\":9.197333},{\"year\":1954,\"data\":8.290667},{\"year\":1955,\"data\":8.531667},{\"year\":1956,\"data\":8.049},{\"year\":1957,\"data\":9.2873335},{\"year\":1958,\"data\":9.481333},{\"year\":1959,\"data\":9.395666},{\"year\":1960,\"data\":9.2456665},{\"year\":1961,\"data\":9.803667},{\"year\":1962,\"data\":8.307667},{\"year\":1963,\"data\":8.577666},{\"year\":1964,\"data\":8.911667},{\"year\":1965,\"data\":8.453},{\"year\":1966,\"data\":9.511667},{\"year\":1967,\"data\":9.452666},{\"year\":1968,\"data\":9.129},{\"year\":1969,\"data\":8.638},{\"year\":1970,\"data\":8.693334},{\"year\":1971,\"data\":8.993667},{\"year\":1972,\"data\":8.916666},{\"year\":1973,\"data\":8.833},{\"year\":1974,\"data\":9.3463335},{\"year\":1975,\"data\":9.536667},{\"year\":1976,\"data\":8.8116665},{\"year\":1977,\"data\":9.390667},{\"year\":1978,\"data\":8.218333},{\"year\":1979,\"data\":9.116333},{\"year\":1980,\"data\":8.247667},{\"year\":1981,\"data\":9.020333},{\"year\":1982,\"data\":9.503},{\"year\":1983,\"data\":9.571667},{\"year\":1984,\"data\":8.735666},{\"year\":1985,\"data\":8.663333},{\"year\":1986,\"data\":8.851999},{\"year\":1987,\"data\":8.856333},{\"year\":1988,\"data\":9.565001},{\"year\":1989,\"data\":9.617666},{\"year\":1990,\"data\":9.989},{\"year\":1991,\"data\":9.062},{\"year\":1992,\"data\":10.179},{\"year\":1993,\"data\":9.604334},{\"year\":1994,\"data\":10.889667},{\"year\":1995,\"data\":9.586333},{\"year\":1996,\"data\":8.919333},{\"year\":1997,\"data\":9.774667},{\"year\":1998,\"data\":9.953667},{\"year\":1999,\"data\":9.95},{\"year\":2000,\"data\":10.910334},{\"year\":2001,\"data\":10.101999},{\"year\":2002,\"data\":10.566333},{\"year\":2003,\"data\":10.150667},{\"year\":2004,\"data\":9.596666},{\"year\":2005,\"data\":9.215},{\"year\":2006,\"data\":10.154667},{\"year\":2007,\"data\":10.930334},{\"year\":2008,\"data\":10.643},{\"year\":2009,\"data\":10.658667},{\"year\":2010,\"data\":9.153704},{\"year\":2011,\"data\":10.116667},{\"year\":2012,\"data\":10.281019}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:27:58 GMT"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/month/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"month\":0,\"data\":-1.0069841},{\"month\":1,\"data\":0.65000993},{\"month\":2,\"data\":4.5536966},{\"month\":3,\"data\":8.748871},{\"month\":4,\"data\":13.374265},{\"month\":5,\"data\":16.728075},{\"month\":6,\"data\":18.732298},{\"month\":7,\"data\":18.362186},{\"month\":8,\"data\":14.850774},{\"month\":9,\"data\":9.99226},{\"month\":10,\"data\":4.640859},{\"month\":11,\"data\":0.48651785}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:27:59 GMT"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/decade/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1900,\"data\":8.55037},{\"year\":1910,\"data\":8.792601},{\"year\":1920,\"data\":9.0677},{\"year\":1930,\"data\":9.0052},{\"year\":1940,\"data\":9.023133},{\"year\":1950,\"data\":9.0973},{\"year\":1960,\"data\":9.003067},{\"year\":1970,\"data\":8.985666},{\"year\":1980,\"data\":9.063267},{\"year\":1990,\"data\":9.7908},{\"year\":2000,\"data\":10.292767},{\"year\":2010,\"data\":9.850463}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:27:59 GMT"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/year/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1901,\"data\":114.88334},{\"year\":1902,\"data\":102.08733},{\"year\":1903,\"data\":114.19133},{\"year\":1904,\"data\":102.698},{\"year\":1905,\"data\":123.66367},{\"year\":1906,\"data\":114.679},{\"year\":1907,\"data\":104.61867},{\"year\":1908,\"data\":84.48967},{\"year\":1909,\"data\":110.964005},{\"year\":1910,\"data\":129.79134},{\"year\":1911,\"data\":95.189},{\"year\":1912,\"data\":116.69334},{\"year\":1913,\"data\":105.78001},{\"year\":1914,\"data\":115.704},{\"year\":1915,\"data\":141.25133},{\"year\":1916,\"data\":125.838},{\"year\":1917,\"data\":113.96367},{\"year\":1918,\"data\":117.459335},{\"year\":1919,\"data\":128.16034},{\"year\":1920,\"data\":89.52367},{\"year\":1921,\"data\":76.50367},{\"year\":1922,\"data\":105.909996},{\"year\":1923,\"data\":114.727005},{\"year\":1924,\"data\":104.220665},{\"year\":1925,\"data\":124.84534},{\"year\":1926,\"data\":133.68199},{\"year\":1927,\"data\":97.20534},{\"year\":1928,\"data\":114.682335},{\"year\":1929,\"data\":94.705},{\"year\":1930,\"data\":123.468994},{\"year\":1931,\"data\":104.35567},{\"year\":1932,\"data\":101.63},{\"year\":1933,\"data\":130.45},{\"year\":1934,\"data\":124.78434},{\"year\":1935,\"data\":99.306},{\"year\":1936,\"data\":105.751},{\"year\":1937,\"data\":142.89499},{\"year\":1938,\"data\":85.54567},{\"year\":1939,\"data\":101.41133},{\"year\":1940,\"data\":111.32533},{\"year\":1941,\"data\":102.468994},{\"year\":1942,\"data\":73.21467},{\"year\":1943,\"data\":89.82933},{\"year\":1944,\"data\":103.89166},{\"year\":1945,\"data\":81.276665},{\"year\":1946,\"data\":89.494},{\"year\":1947,\"data\":80.49533},{\"year\":1948,\"data\":112.76766},{\"year\":1949,\"data\":87.109},{\"year\":1950,\"data\":103.30501},{\"year\":1951,\"data\":112.281006},{\"year\":1952,\"data\":101.792},{\"year\":1953,\"data\":90.013336},{\"year\":1954,\"data\":107.128334},{\"year\":1955,\"data\":106.126},{\"year\":1956,\"data\":98.471664},{\"year\":1957,\"data\":94.86967},{\"year\":1958,\"data\":110.12933},{\"year\":1959,\"data\":111.817},{\"year\":1960,\"data\":126.93101},{\"year\":1961,\"data\":102.701675},{\"year\":1962,\"data\":114.97134},{\"year\":1963,\"data\":111.571335},{\"year\":1964,\"data\":112.35466},{\"year\":1965,\"data\":134.03},{\"year\":1966,\"data\":120.162674},{\"year\":1967,\"data\":96.43467},{\"year\":1968,\"data\":100.56467},{\"year\":1969,\"data\":113.928},{\"year\":1970,\"data\":117.337},{\"year\":1971,\"data\":88.426},{\"year\":1972,\"data\":121.612},{\"year\":1973,\"data\":91.10433},{\"year\":1974,\"data\":114.17766},{\"year\":1975,\"data\":106.42733},{\"year\":1976,\"data\":103.98733},{\"year\":1977,\"data\":98.85933},{\"year\":1978,\"data\":103.35634},{\"year\":1979,\"data\":119.14734},{\"year\":1980,\"data\":118.267006},{\"year\":1981,\"data\":104.978004},{\"year\":1982,\"data\":105.25366},{\"year\":1983,\"data\":81.461334},{\"year\":1984,\"data\":108.12933},{\"year\":1985,\"data\":101.042},{\"year\":1986,\"data\":98.028},{\"year\":1987,\"data\":112.04967},{\"year\":1988,\"data\":89.405334},{\"year\":1989,\"data\":99.509995},{\"year\":1990,\"data\":95.77167},{\"year\":1991,\"data\":105.170334},{\"year\":1992,\"data\":102.76566},{\"year\":1993,\"data\":100.90133},{\"year\":1994,\"data\":95.420334},{\"year\":1995,\"data\":118.943665},{\"year\":1996,\"data\":125.705666},{\"year\":1997,\"data\":91.747665},{\"year\":1998,\"data\":109.764},{\"year\":1999,\"data\":105.923},{\"year\":2000,\"data\":110.865005},{\"year\":2001,\"data\":96.00467},{\"year\":2002,\"data\":108.790665},{\"year\":2003,\"data\":81.50833},{\"year\":2004,\"data\":117.69767},{\"year\":2005,\"data\":107.680664},{\"year\":2006,\"data\":89.107},{\"year\":2007,\"data\":97.072334},{\"year\":2008,\"data\":104.121666},{\"year\":2009,\"data\":104.67533},{\"year\":2010,\"data\":130.19028},{\"year\":2011,\"data\":78.031944},{\"year\":2012,\"data\":100.034256}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:27:59 GMT"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/month/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"month\":0,\"data\":68.93643},{\"month\":1,\"data\":64.23069},{\"month\":2,\"data\":81.098724},{\"month\":3,\"data\":102.28083},{\"month\":4,\"data\":110.0369},{\"month\":5,\"data\":127.69851},{\"month\":6,\"data\":118.47258},{\"month\":7,\"data\":120.37205},{\"month\":8,\"data\":121.70347},{\"month\":9,\"data\":135.76472},{\"month\":10,\"data\":130.21431},{\"month\":11,\"data\":94.149704}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:28:00 GMT"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/decade/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1900,\"data\":108.030556},{\"year\":1910,\"data\":118.98303},{\"year\":1920,\"data\":105.6005},{\"year\":1930,\"data\":111.9598},{\"year\":1940,\"data\":93.18727},{\"year\":1950,\"data\":103.59334},{\"year\":1960,\"data\":113.365005},{\"year\":1970,\"data\":106.44347},{\"year\":1980,\"data\":101.81243},{\"year\":1990,\"data\":105.21133},{\"year\":2000,\"data\":101.752335},{\"year\":2010,\"data\":102.75216}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:28:00 GMT"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/year/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1901,\"data\":18.808332},{\"year\":1902,\"data\":18.94543},{\"year\":1903,\"data\":18.41353},{\"year\":1904,\"data\":18.64059},{\"year\":1905,\"data\":18.40887},{\"year\":1906,\"data\":18.093369},{\"year\":1907,\"data\":18.370161},{\"year\":1908,\"data\":18.394176},{\"year\":1909,\"data\":18.44749},{\"year\":1910,\"data\":18.567204},{\"year\":1911,\"data\":19.166128},{\"year\":1912,\"data\":18.885843},{\"year\":1913,\"data\":19.022938},{\"year\":1914,\"data\":19.214516},{\"year\":1915,\"data\":18.676344},{\"year\":1916,\"data\":18.596775},{\"year\":1917,\"data\":18.580734},{\"year\":1918,\"data\":18.158781},{\"year\":1919,\"data\":18.617382},{\"year\":1920,\"data\":19.05466},{\"year\":1921,\"data\":18.653675},{\"year\":1922,\"data\":19.434677},{\"year\":1923,\"data\":18.271685},{\"year\":1924,\"data\":19.197311},{\"year\":1925,\"data\":18.475807},{\"year\":1926,\"data\":19.203854},{\"year\":1927,\"data\":19.23441},{\"year\":1928,\"data\":18.92007},{\"year\":1929,\"data\":18.225718},{\"year\":1930,\"data\":19.164606},{\"year\":1931,\"data\":19.78629},{\"year\":1932,\"data\":19.204033},{\"year\":1933,\"data\":19.17545},{\"year\":1934,\"data\":19.051523},{\"year\":1935,\"data\":19.037365},{\"year\":1936,\"data\":18.987186},{\"year\":1937,\"data\":19.42724},{\"year\":1938,\"data\":19.10027},{\"year\":1939,\"data\":19.13638},{\"year\":1940,\"data\":18.902958},{\"year\":1941,\"data\":19.127598},{\"year\":1942,\"data\":19.935932},{\"year\":1943,\"data\":20.20466},{\"year\":1944,\"data\":19.376614},{\"year\":1945,\"data\":19.735304},{\"year\":1946,\"data\":19.994534},{\"year\":1947,\"data\":20.457886},{\"year\":1948,\"data\":19.82455},{\"year\":1949,\"data\":19.596594},{\"year\":1950,\"data\":19.40905},{\"year\":1951,\"data\":19.084587},{\"year\":1952,\"data\":19.708155},{\"year\":1953,\"data\":19.002598},{\"year\":1954,\"data\":18.614069},{\"year\":1955,\"data\":19.961828},{\"year\":1956,\"data\":18.551075},{\"year\":1957,\"data\":18.87043},{\"year\":1958,\"data\":19.440413},{\"year\":1959,\"data\":19.340322},{\"year\":1960,\"data\":19.60224},{\"year\":1961,\"data\":19.562992},{\"year\":1962,\"data\":19.282528},{\"year\":1963,\"data\":19.289068},{\"year\":1964,\"data\":19.287006},{\"year\":1965,\"data\":19.212185},{\"year\":1966,\"data\":19.458782},{\"year\":1967,\"data\":19.190592},{\"year\":1968,\"data\":19.452688},{\"year\":1969,\"data\":19.087725},{\"year\":1970,\"data\":19.34767},{\"year\":1971,\"data\":19.02276},{\"year\":1972,\"data\":19.037098},{\"year\":1973,\"data\":19.179302},{\"year\":1974,\"data\":18.881361},{\"year\":1975,\"data\":18.995789},{\"year\":1976,\"data\":18.535305},{\"year\":1977,\"data\":19.85681},{\"year\":1978,\"data\":19.074192},{\"year\":1979,\"data\":19.572939},{\"year\":1980,\"data\":18.91801},{\"year\":1981,\"data\":19.63889},{\"year\":1982,\"data\":20.044712},{\"year\":1983,\"data\":19.727509},{\"year\":1984,\"data\":19.294981},{\"year\":1985,\"data\":19.848835},{\"year\":1986,\"data\":19.811829},{\"year\":1987,\"data\":20.133602},{\"year\":1988,\"data\":20.39803},{\"year\":1989,\"data\":20.11371},{\"year\":1990,\"data\":20.20233},{\"year\":1991,\"data\":19.255733},{\"year\":1992,\"data\":19.323029},{\"year\":1993,\"data\":19.898746},{\"year\":1994,\"data\":20.849014},{\"year\":1995,\"data\":20.103674},{\"year\":1996,\"data\":19.955555},{\"year\":1997,\"data\":20.595251},{\"year\":1998,\"data\":20.339336},{\"year\":1999,\"data\":20.903584},{\"year\":2000,\"data\":20.421595},{\"year\":2001,\"data\":20.963171},{\"year\":2002,\"data\":20.703316},{\"year\":2003,\"data\":20.928585},{\"year\":2004,\"data\":20.429928},{\"year\":2005,\"data\":20.342741},{\"year\":2006,\"data\":20.700985},{\"year\":2007,\"data\":20.667831},{\"year\":2008,\"data\":20.797132},{\"year\":2009,\"data\":20.698746},{\"year\":2010,\"data\":20.838593},{\"year\":2011,\"data\":20.450647},{\"year\":2012,\"data\":20.905338}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:28:01 GMT"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/month/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"month\":0,\"data\":10.239565},{\"month\":1,\"data\":11.576739},{\"month\":2,\"data\":14.459531},{\"month\":3,\"data\":17.687132},{\"month\":4,\"data\":21.670462},{\"month\":5,\"data\":26.041798},{\"month\":6,\"data\":28.633968},{\"month\":7,\"data\":28.749126},{\"month\":8,\"data\":25.875525},{\"month\":9,\"data\":21.04827},{\"month\":10,\"data\":15.643389},{\"month\":11,\"data\":11.627062}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:28:01 GMT"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/decade/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1900,\"data\":18.50244},{\"year\":1910,\"data\":18.748665},{\"year\":1920,\"data\":18.867186},{\"year\":1930,\"data\":19.207035},{\"year\":1940,\"data\":19.715664},{\"year\":1950,\"data\":19.198254},{\"year\":1960,\"data\":19.34258},{\"year\":1970,\"data\":19.150322},{\"year\":1980,\"data\":19.79301},{\"year\":1990,\"data\":20.142626},{\"year\":2000,\"data\":20.665403},{\"year\":2010,\"data\":20.731525}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:28:01 GMT"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/year/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1901,\"data\":20.656004},{\"year\":1902,\"data\":19.401165},{\"year\":1903,\"data\":21.191397},{\"year\":1904,\"data\":19.43414},{\"year\":1905,\"data\":18.11362},{\"year\":1906,\"data\":21.780197},{\"year\":1907,\"data\":17.986649},{\"year\":1908,\"data\":17.69749},{\"year\":1909,\"data\":19.160664},{\"year\":1910,\"data\":18.893908},{\"year\":1911,\"data\":23.62312},{\"year\":1912,\"data\":20.324642},{\"year\":1913,\"data\":16.569176},{\"year\":1914,\"data\":18.287457},{\"year\":1915,\"data\":23.548746},{\"year\":1916,\"data\":18.70923},{\"year\":1917,\"data\":17.248837},{\"year\":1918,\"data\":20.509409},{\"year\":1919,\"data\":19.971865},{\"year\":1920,\"data\":16.040592},{\"year\":1921,\"data\":22.280645},{\"year\":1922,\"data\":15.173746},{\"year\":1923,\"data\":19.910036},{\"year\":1924,\"data\":16.885216},{\"year\":1925,\"data\":18.708244},{\"year\":1926,\"data\":16.216667},{\"year\":1927,\"data\":18.67285},{\"year\":1928,\"data\":25.19785},{\"year\":1929,\"data\":19.959318},{\"year\":1930,\"data\":18.88414},{\"year\":1931,\"data\":22.257885},{\"year\":1932,\"data\":17.312725},{\"year\":1933,\"data\":19.73629},{\"year\":1934,\"data\":23.40672},{\"year\":1935,\"data\":17.65179},{\"year\":1936,\"data\":19.687098},{\"year\":1937,\"data\":14.64991},{\"year\":1938,\"data\":18.611649},{\"year\":1939,\"data\":20.374193},{\"year\":1940,\"data\":19.010036},{\"year\":1941,\"data\":19.382706},{\"year\":1942,\"data\":17.180555},{\"year\":1943,\"data\":17.889427},{\"year\":1944,\"data\":18.543728},{\"year\":1945,\"data\":14.082974},{\"year\":1946,\"data\":18.764696},{\"year\":1947,\"data\":12.468279},{\"year\":1948,\"data\":19.412186},{\"year\":1949,\"data\":18.346325},{\"year\":1950,\"data\":22.048029},{\"year\":1951,\"data\":19.222311},{\"year\":1952,\"data\":20.112276},{\"year\":1953,\"data\":25.191668},{\"year\":1954,\"data\":19.366577},{\"year\":1955,\"data\":17.254301},{\"year\":1956,\"data\":21.85905},{\"year\":1957,\"data\":24.28396},{\"year\":1958,\"data\":20.317831},{\"year\":1959,\"data\":22.01819},{\"year\":1960,\"data\":15.973387},{\"year\":1961,\"data\":15.962544},{\"year\":1962,\"data\":21.067114},{\"year\":1963,\"data\":23.523655},{\"year\":1964,\"data\":19.967564},{\"year\":1965,\"data\":21.74095},{\"year\":1966,\"data\":17.498837},{\"year\":1967,\"data\":16.023478},{\"year\":1968,\"data\":16.361828},{\"year\":1969,\"data\":24.318012},{\"year\":1970,\"data\":13.710304},{\"year\":1971,\"data\":21.583782},{\"year\":1972,\"data\":23.354748},{\"year\":1973,\"data\":22.427958},{\"year\":1974,\"data\":17.170252},{\"year\":1975,\"data\":21.108513},{\"year\":1976,\"data\":24.737904},{\"year\":1977,\"data\":15.002688},{\"year\":1978,\"data\":19.54543},{\"year\":1979,\"data\":20.863798},{\"year\":1980,\"data\":21.087276},{\"year\":1981,\"data\":13.572133},{\"year\":1982,\"data\":26.20448},{\"year\":1983,\"data\":17.457973},{\"year\":1984,\"data\":24.091755},{\"year\":1985,\"data\":17.123655},{\"year\":1986,\"data\":22.268639},{\"year\":1987,\"data\":16.00242},{\"year\":1988,\"data\":16.931004},{\"year\":1989,\"data\":16.318727},{\"year\":1990,\"data\":21.975178},{\"year\":1991,\"data\":22.57052},{\"year\":1992,\"data\":23.115591},{\"year\":1993,\"data\":16.431183},{\"year\":1994,\"data\":16.847134},{\"year\":1995,\"data\":22.79104},{\"year\":1996,\"data\":23.17509},{\"year\":1997,\"data\":20.513083},{\"year\":1998,\"data\":18.05009},{\"year\":1999,\"data\":19.112724},{\"year\":2000,\"data\":14.669981},{\"year\":2001,\"data\":17.230106},{\"year\":2002,\"data\":17.451077},{\"year\":2003,\"data\":28.808334},{\"year\":2004,\"data\":19.464336},{\"year\":2005,\"data\":20.352062},{\"year\":2006,\"data\":22.327688},{\"year\":2007,\"data\":18.752956},{\"year\":2008,\"data\":13.97491},{\"year\":2009,\"data\":21.287365},{\"year\":2010,\"data\":21.999838},{\"year\":2011,\"data\":26.42775},{\"year\":2012,\"data\":18.30259}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:28:02 GMT"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/month/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"month\":0,\"data\":30.95466},{\"month\":1,\"data\":27.744547},{\"month\":2,\"data\":25.907572},{\"month\":3,\"data\":20.267841},{\"month\":4,\"data\":13.014418},{\"month\":5,\"data\":5.8183227},{\"month\":6,\"data\":2.3155859},{\"month\":7,\"data\":4.0897865},{\"month\":8,\"data\":16.865564},{\"month\":9,\"data\":29.273123},{\"month\":10,\"data\":27.220123},{\"month\":11,\"data\":31.183294}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:28:02 GMT"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/decade/TUN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"year\":1900,\"data\":19.491259},{\"year\":1910,\"data\":19.768639},{\"year\":1920,\"data\":18.904516},{\"year\":1930,\"data\":19.25724},{\"year\":1940,\"data\":17.508091},{\"year\":1950,\"data\":21.16742},{\"year\":1960,\"data\":19.243736},{\"year\":1970,\"data\":19.950537},{\"year\":1980,\"data\":19.105806},{\"year\":1990,\"data\":20.458164},{\"year\":2000,\"data\":19.43188},{\"year\":2010,\"data\":22.243393}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:28:02 GMT"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
+                }
+            }
+        },
+        {
+            "request": {
+                "uri": "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/month/SVN",
+                "body": null,
+                "method": "GET",
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "User-Agent": [
+                        "python-requests/2.10.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ]
+                }
+            },
+            "response": {
+                "body": {
+                    "string": "[{\"month\":0,\"data\":68.93643},{\"month\":1,\"data\":64.23069},{\"month\":2,\"data\":81.098724},{\"month\":3,\"data\":102.28083},{\"month\":4,\"data\":110.0369},{\"month\":5,\"data\":127.69851},{\"month\":6,\"data\":118.47258},{\"month\":7,\"data\":120.37205},{\"month\":8,\"data\":121.70347},{\"month\":9,\"data\":135.76472},{\"month\":10,\"data\":130.21431},{\"month\":11,\"data\":94.149704}]"
+                },
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Date": [
+                        "Thu, 30 Jun 2016 22:28:03 GMT"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Server": [
+                        "Apache-Coyote/1.1"
+                    ]
                 }
             }
         }
-    ],
-    "version": 1
+    ]
 }
