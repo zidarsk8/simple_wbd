@@ -262,11 +262,11 @@ class TestIndicators(tests.TestCase):
         featured_codes = set(i.get("id").lower() for i in featured_indicators)
         common_codes = set(i.get("id").lower() for i in common_indicators)
 
-        self.assertLess(featured_codes, common_codes, "Wrong featured subset.")
+        self.assertLess(featured_codes, all_codes, "Wrong featured subset.")
         self.assertLess(common_codes, all_codes, "Wrong common subset.")
         self.assertIn("AG.LND.ARBL.HA.PC".lower(), featured_codes)
         self.assertNotIn("EG.ELC.ACCS.RU.ZS".lower(), featured_codes)
-        self.assertIn("EG.ELC.ACCS.RU.ZS".lower(), common_codes)
+        self.assertIn("AG.PRD.LVSK.XD".lower(), common_codes)
 
     @tests.MY_VCR.use_cassette("datasets.json")
     def test_get_dataset(self):
