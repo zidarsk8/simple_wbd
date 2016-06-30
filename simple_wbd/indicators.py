@@ -6,11 +6,11 @@ wbpy or wbdata packages.
 """
 import urllib
 import json
-import re
 import logging
 from collections import defaultdict
 
 from simple_wbd import utils
+from simple_wbd import filters
 
 logger = logging.getLogger(__name__)
 
@@ -207,17 +207,23 @@ class IndicatorAPI(object):
 
     @classmethod
     def _filter_indicators(cls, indicators, filter_):
+        """Filter indicators to common or featured.
 
-        if filter_.lower() == "featured":
-            code_matches = cls._featured
-        elif filter_.lower() == "common":
-            page = utils.fetch("http://data.worldbank.org/indicator/all")
-            codes = re.compile(r"\"([^\"?%`&$ <>=]{3,55})\"")
-            code_matches = set(code.lower() for code in codes.findall(page))
-        else:
-            return indicators
+        The common and featured lists are fetched from world bank data site.
 
-        return [i for i in indicators if i.get("id").lower() in code_matches]
+        Args:
+            indicators: list of dicts containing all indicator data.
+            filter_: either "common" or "featured" string.
+
+        Returns:
+            list of filtered indicators if the filter is valid or the entire
+            indicator list.
+        """
+        if filter_.lower() in filters.FILTER:
+            return [i for i in indicators if i.get("id").lower() in
+                    filters.FILTER.get(filter_.lower())]
+
+        return indicators
 
     def get_indicators(self, filter_="Common"):
         """Get a list of indicators.
