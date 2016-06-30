@@ -218,13 +218,13 @@ class TestIndicators(tests.TestCase):
         # pylint: disable=protected-access
         get().text = """
             <html>dummy html
-                <a href="http://data.worldbank.org/indicator/AG.YLD.CREL.KG">
+                <a href=http://data.worldbank.org/indicator/"AG.YLD.CREL.KG">
                     Cereal yield (kg per hectare)</a>
-                <a href="http://data.worldbank.org/indicator/2.0.hoi.Cel">
+                <a href=http://data.worldbank.org/indicator/"2.0.hoi.Cel">
                     Coverage: Water</a>
-                <a href="http://data.worldbank.org/indicator/4.4_BASIC.EDU">
+                <a href=http://data.worldbank.org/indicator/"4.4_BASIC.EDU">
                     Cereal cropland (% of land area)</a>
-                <a href="http://data.worldbank.org/indicator/A7iv">
+                <a href=http://data.worldbank.org/indicator/"A7iv">
                     14.Export Value per Entrant: First Quartile</a>
             </html>"""
 
