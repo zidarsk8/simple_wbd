@@ -212,21 +212,9 @@ class TestIndicators(tests.TestCase):
         alpha3_codes.add("KSV")  # Non standard code for Kosovo.
         self.assertLess(countries, alpha3_codes)
 
-    @mock.patch("requests.get")
-    def test_filter_indicators(self, get):
+    def test_filter_indicators(self):
         """Test _filter_indicators function."""
         # pylint: disable=protected-access
-        get().text = """
-            <html>dummy html
-                <a href=http://data.worldbank.org/indicator/"AG.YLD.CREL.KG">
-                    Cereal yield (kg per hectare)</a>
-                <a href=http://data.worldbank.org/indicator/"2.0.hoi.Cel">
-                    Coverage: Water</a>
-                <a href=http://data.worldbank.org/indicator/"4.4_BASIC.EDU">
-                    Cereal cropland (% of land area)</a>
-                <a href=http://data.worldbank.org/indicator/"A7iv">
-                    14.Export Value per Entrant: First Quartile</a>
-            </html>"""
 
         bad_indicators = [
             {"id": "bad indicator"},
@@ -237,10 +225,11 @@ class TestIndicators(tests.TestCase):
             {"id": "2.0.hoi."},
         ]
         good_indicators = [
-            {"id": "a7iv"},
-            {"id": "2.0.hoi.Cel"},
-            {"id": "2.0.HOI.cEL"},
-            {"id": "AG.YLD.CREL.KG"},
+            {"id": "ag.lnd.frst.k2"},
+            {"id": "ag.LND.FRst.zs"},
+            {"id": "AG.LND.FRST.ZS"},
+            {"id": "ag.lnd.irig.ag.zs"},
+            {"id": "ag.lnd.totl.k2"},
         ]
 
         all_indicators = bad_indicators + good_indicators
@@ -265,8 +254,8 @@ class TestIndicators(tests.TestCase):
         self.assertLess(featured_codes, all_codes, "Wrong featured subset.")
         self.assertLess(common_codes, all_codes, "Wrong common subset.")
         self.assertIn("AG.LND.ARBL.HA.PC".lower(), featured_codes)
-        self.assertNotIn("EG.ELC.ACCS.RU.ZS".lower(), featured_codes)
-        self.assertIn("AG.PRD.LVSK.XD".lower(), common_codes)
+        self.assertNotIn("ag.agr.trac.no".lower(), featured_codes)
+        self.assertIn("ag.agr.trac.no".lower(), common_codes)
 
     @tests.MY_VCR.use_cassette("datasets.json")
     def test_get_dataset(self):
