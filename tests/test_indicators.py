@@ -197,15 +197,24 @@ class TestIndicatorDataset(tests.TestCase):
 class TestIndicators(tests.TestCase):
     """Tests for functions in simple_wbd.utils module."""
 
+    NUM_OF_COUNTRIES = 264
+
     def setUp(self):
         super().setUp()
         self.api = simple_wbd.IndicatorAPI()
+
+    @tests.MY_VCR.use_cassette("country_list.json")
+    def test_get_country_list(self):
+        """Test fetching a 2D list of country and region codes."""
+        country_list = self.api.get_country_list()
+        # number of countries + one line for header
+        self.assertEqual(self.NUM_OF_COUNTRIES+1, len(country_list))
 
     @tests.MY_VCR.use_cassette("countries.json")
     def test_get_countries(self):
         """Test fetching all country and region codes."""
         all_codes = self.api.get_countries()
-        self.assertEqual(264, len(all_codes))
+        self.assertEqual(self.NUM_OF_COUNTRIES, len(all_codes))
         countries = set(c["id"] for c in all_codes if c["capitalCity"])
         alpha3_codes = set(c.alpha3 for c in pycountry.countries)
         alpha3_codes.add("KSV")  # Non standard code for Kosovo.
