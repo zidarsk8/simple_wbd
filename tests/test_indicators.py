@@ -203,6 +203,7 @@ class TestIndicators(tests.TestCase):
         super().setUp()
         self.api = simple_wbd.IndicatorAPI()
 
+
     @tests.MY_VCR.use_cassette("country_list.json")
     def test_get_country_list(self):
         """Test fetching a 2D list of country and region codes."""
@@ -247,6 +248,23 @@ class TestIndicators(tests.TestCase):
             set(i.get("id").lower() for i in good_indicators),
             set(i.get("id").lower() for i in filtered),
         )
+
+    def test_all_filter_indicators(self):
+        """Test common, featured and bad indicator filters."""
+        # pylint: disable=protected-access
+        indicators = [
+            {"id": "A7ivi"},  # none
+            {"id": "ag.srf.totl.k2dt.dod.mdri.cd"}, # common
+            {"id": "ag.LND.FRst.zs"},  # featured and common
+        ]
+        self.assertEqual(
+            len(self.api._filter_indicators(indicators, "common")), 2)
+        self.assertEqual(
+            len(self.api._filter_indicators(indicators, "featured")), 1)
+        self.assertEqual(
+            len(self.api._filter_indicators(indicators, None)), 3)
+        self.assertEqual(
+            len(self.api._filter_indicators(indicators, "bad")), 3)
 
     @tests.MY_VCR.use_cassette("indicators_list.json")
     def test_get_indicator_list(self):
