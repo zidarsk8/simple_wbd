@@ -24,7 +24,6 @@ class TestCase(unittest.TestCase):
 
     TEST_TEMP_DIR = os.path.join(CURRENT_DIR, "test_temp_folder")
 
-
     def setUp(self):
         self.clear_temp_dir()
         utils.remove_cache_dir()
@@ -39,4 +38,3 @@ class TestCase(unittest.TestCase):
     def remove_temp_dir(self):
         if os.path.exists(self.TEST_TEMP_DIR):
             shutil.rmtree(self.TEST_TEMP_DIR)
-
