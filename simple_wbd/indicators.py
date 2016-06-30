@@ -219,7 +219,7 @@ class IndicatorAPI(object):
             list of filtered indicators if the filter is valid or the entire
             indicator list.
         """
-        if filter_.lower() in filters.FILTER:
+        if hasattr(filter_, "lower") and filter_.lower() in filters.FILTER:
             return [i for i in indicators if i.get("id").lower() in
                     filters.FILTER.get(filter_.lower())]
 
