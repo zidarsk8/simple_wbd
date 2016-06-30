@@ -1,6 +1,5 @@
 """Unit tests for world bank data indicator API."""
 
-import mock
 import pycountry
 
 import simple_wbd
@@ -116,10 +115,10 @@ class TestIndicatorDataset(tests.TestCase):
         # pylint: disable=bad-whitespace,line-too-long
         # Disable bad formatting lint warnings for readability.
         expected_list = [
-            ['Country',            'ind 1 - 1998Q2', 'ind 1 - 2000Q1', 'ind 1 - 2015Q2', 'ind 1 - 2015Q3', 'ind 2 - 1970', 'ind 2 - 1971', 'ind 2 - 1972'],
-            ['Belgium',             0.0,              0.0,              126.0,            87.0,             0.0,            0.0,            0.0],
-            ['Brazil',              131.0,            97.0,             0.0,              0.0,              0.0,            0.0,            0.0],
-            ['Low & middle income', 0.0,              0.0,              0.0,              0.0,              None,           12.3,           1.23],
+            ['Country',            'ind 1 - 1998Q2', 'ind 1 - 2000Q1', 'ind 1 - 2015Q2', 'ind 1 - 2015Q3', 'ind 2 - 1970', 'ind 2 - 1971', 'ind 2 - 1972'],  # noqa
+            ['Belgium',             0.0,              0.0,              126.0,            87.0,             0.0,            0.0,            0.0],  # noqa
+            ['Brazil',              131.0,            97.0,             0.0,              0.0,              0.0,            0.0,            0.0],  # noqa
+            ['Low & middle income', 0.0,              0.0,              0.0,              0.0,              None,           12.3,           1.23],  # noqa
         ]
         self.assertEqual(
             expected_list,
@@ -239,6 +238,18 @@ class TestIndicators(tests.TestCase):
             set(i.get("id").lower() for i in good_indicators),
             set(i.get("id").lower() for i in filtered),
         )
+
+    @tests.MY_VCR.use_cassette("indicators_list.json")
+    def test_get_indicator_list(self):
+        """Test fetching indicators with and without filters."""
+        all_indicators = self.api.get_indicator_list(filter_=None)
+        common_indicators = self.api.get_indicator_list()
+        featured_indicators = self.api.get_indicator_list(filter_="featured")
+
+        self.assertEqual(all_indicators[0], common_indicators[0])
+        self.assertEqual(all_indicators[0], featured_indicators[0])
+        self.assertLess(len(featured_indicators), len(common_indicators))
+        self.assertLess(len(common_indicators), len(all_indicators))
 
     @tests.MY_VCR.use_cassette("indicators.json")
     def test_get_indicators(self):

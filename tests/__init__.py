@@ -13,7 +13,8 @@ VCR_CASSETTES = os.path.join(CURRENT_DIR, "vcr_cassettes")
 MY_VCR = vcr.VCR(
     serializer='json',
     cassette_library_dir=VCR_CASSETTES,
-    record_mode="none",  # none (testing), all (updating), new_episodes (dev)
+    # none (testing), all (updating), new_episodes (dev)
+    record_mode="new_episodes",
 )
 
 
