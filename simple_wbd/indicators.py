@@ -105,7 +105,8 @@ class IndicatorDataset(object):
                 data_map[country][date] for date in all_dates
             ])
         if timeseries:
-            response = list(map(list, zip(*response)))  # transpose 2D array
+            # transpose 2D array
+            response = list(list(i) for i in zip(*response))
 
         return response
 

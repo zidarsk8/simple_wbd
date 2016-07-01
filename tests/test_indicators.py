@@ -223,10 +223,19 @@ class TestIndicators(tests.TestCase):
         self.api = simple_wbd.IndicatorAPI()
 
     def test_init(self):
+        """Test Indicator api init function.
+
+        Test if the default response class gets set correctly if the given
+        class is a subclass of IndicatorDataset.
+        """
+        # pylint: disable=protected-access
+
         class Dummy(object):
+            # pylint: disable=too-few-public-methods
             pass
 
         class DummySubclass(simple_wbd.IndicatorDataset):
+            # pylint: disable=too-few-public-methods
             pass
 
         api = simple_wbd.IndicatorAPI()
