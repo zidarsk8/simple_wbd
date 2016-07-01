@@ -90,9 +90,9 @@ class IndicatorDataset(object):
     def _get_all_countries(data_map):
         return sorted(data_map.keys())
 
-    def _get_single_response_list(self, data):
+    def _get_single_response_list(self, data, timeseries=False):
         """Get list data for a single indicator."""
-        headers = ["Country"]
+        headers = ["Date"] if timeseries else ["Country"]
         data_map = self._get_data_map(data)
 
         all_dates = self._get_all_dates(data_map)
@@ -104,6 +104,8 @@ class IndicatorDataset(object):
             response.append([country] + [
                 data_map[country][date] for date in all_dates
             ])
+        if timeseries:
+            response = list(map(list, zip(*response)))  # transpose 2D array
 
         return response
 
@@ -130,16 +132,24 @@ class IndicatorDataset(object):
 
         return response
 
-    def as_list(self):
+    def as_list(self, timeseries=False):
         """Get data as 2D list.
 
         This function returns data as a 2D list where rows contain country and
         all data related to that country, and columns contain indicator and
         dates.
+
+        Args:
+            timeseries: Boolean indicating if the list should be a timeseries.
+                That means that the first column would contain dates instead of
+                countries and countries would be in columns.
+
+        Returns:
+            2D Array of response data, where first row is the data headers.
         """
         if len(self.api_responses) == 1:
             value = next(iter(self.api_responses.values()))
-            return self._get_single_response_list(value)
+            return self._get_single_response_list(value, timeseries)
 
         if len(self.api_responses) > 1:
             return self._get_responses_list(self.api_responses)
