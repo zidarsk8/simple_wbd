@@ -5,6 +5,8 @@
 # python cache files
 __pycache__
 *.pyc
+.ropeproject
+dist
 
 # Python code coverage report file
 .coverage
