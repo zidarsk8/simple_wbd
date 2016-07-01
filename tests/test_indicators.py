@@ -110,6 +110,26 @@ class TestIndicatorDataset(tests.TestCase):
             self.dataset._get_all_countries(data_map)
         )
 
+    def test_as_list_multiple_transpose(self):
+        """Test as_list function for multiple indicators."""
+        # pylint: disable=bad-whitespace,line-too-long
+        # Disable bad formatting lint warnings for readability.
+        expected_list = [
+            ['Date',  'ind 1 - Belgium', 'ind 1 - Brazil', 'ind 2 - Low & middle income'],  # noqa
+            ['1970',   0.0,               0.0,              None],
+            ['1971',   0.0,               0.0,              12.3],
+            ['1972',   0.0,               0.0,              1.23],
+            ['1998Q2', 0.0,               131.0,            0.0],
+            ['2000Q1', 0.0,               97.0,             0.0],
+            ['2015Q2', 126.0,             0.0,              0.0],
+            ['2015Q3', 87.0,              0.0,              0.0],
+        ]
+
+        self.assertEqual(
+            expected_list,
+            self.dataset.as_list(timeseries=True)
+        )
+
     def test_as_list_multiple(self):
         """Test as_list function for multiple indicators."""
         # pylint: disable=bad-whitespace,line-too-long
@@ -250,13 +270,12 @@ class TestIndicators(tests.TestCase):
         api = simple_wbd.IndicatorAPI(DummySubclass)
         self.assertEqual(api._dataset_class, DummySubclass)
 
-
     @tests.MY_VCR.use_cassette("country_list.json")
     def test_get_country_list(self):
         """Test fetching a 2D list of country and region codes."""
         country_list = self.api.get_country_list()
         # number of countries + one line for header
-        self.assertEqual(self.NUM_OF_COUNTRIES+1, len(country_list))
+        self.assertEqual(self.NUM_OF_COUNTRIES + 1, len(country_list))
 
     @tests.MY_VCR.use_cassette("countries.json")
     def test_get_countries(self):
@@ -301,7 +320,7 @@ class TestIndicators(tests.TestCase):
         # pylint: disable=protected-access
         indicators = [
             {"id": "A7ivi"},  # none
-            {"id": "ag.srf.totl.k2dt.dod.mdri.cd"}, # common
+            {"id": "ag.srf.totl.k2dt.dod.mdri.cd"},  # common
             {"id": "ag.LND.FRst.zs"},  # featured and common
         ]
         self.assertEqual(
