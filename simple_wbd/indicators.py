@@ -110,15 +110,18 @@ class IndicatorDataset(object):
 
         return response
 
-    def _get_responses_list(self, response_data):
+    def _get_responses_list(self, response_data, timeseries=False):
         """Get list data for multiple indicators."""
-        headers = ["Country"]
+        headers = ["Date"] if timeseries else ["Country"]
         data_map = None
+
         for indicator, indicator_data in response_data.items():
+            prefix = indicator + " - "
             data_map = self._get_data_map(
                 indicator_data,
                 data_map=data_map,
-                date_prefix=indicator + " - "
+                country_prefix=prefix if timeseries else "",
+                date_prefix="" if timeseries else prefix,
             )
 
         all_dates = self._get_all_dates(data_map)
@@ -130,6 +133,10 @@ class IndicatorDataset(object):
             response.append([country] + [
                 data_map[country][date] for date in all_dates
             ])
+
+        if timeseries:
+            # transpose 2D array
+            response = list(list(i) for i in zip(*response))
 
         return response
 
@@ -153,7 +160,7 @@ class IndicatorDataset(object):
             return self._get_single_response_list(value, timeseries)
 
         if len(self.api_responses) > 1:
-            return self._get_responses_list(self.api_responses)
+            return self._get_responses_list(self.api_responses, timeseries)
 
         return []
 
