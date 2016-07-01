@@ -31,7 +31,7 @@ if __name__ == "__main__":
                      "and Climate APIs"),
         long_description=get_description(),
         url="https://github.com/zidarsk8/simple_wbd",
-        download_url="https://github.com/zidarsk8/simple_wbd/tarball/0.2.1",
+        download_url="https://github.com/zidarsk8/simple_wbd/tarball/0.3.1",
         packages=["simple_wbd"],
         provides=["simple_wbd"],
         install_requires=["pycountry"],
