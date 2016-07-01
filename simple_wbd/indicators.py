@@ -164,6 +164,20 @@ class IndicatorAPI(object):
         "incomeLevel_text": "Income Level",
     }
 
+    def __init__(self, dataset_class=None):
+        """Initialize indicator api.
+
+        Args:
+            dataset_class: A subclass of IdicatorDataset. This is used for
+                easier extending the functionality of the indicator dataset.
+        """
+        self._dataset_class = IndicatorDataset
+        try:
+            if dataset_class and issubclass(dataset_class, IndicatorDataset):
+                self._dataset_class = dataset_class
+        except TypeError:
+            logger.error("Could not use extended dataset class.")
+
     def get_countries(self):
         """Get a list of countries and regions.
 
@@ -353,6 +367,6 @@ class IndicatorAPI(object):
                 logger.warning(
                     "Failed to fetch indicator: %s", indicator, exc_info=True)
 
-        return IndicatorDataset(responses)
+        return self._dataset_class(responses)
 
     # Set of featured indicators as of 2016-06-30.
