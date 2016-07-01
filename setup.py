@@ -23,7 +23,7 @@ def get_description():
 if __name__ == "__main__":
     setup(
         name="simple_wbd",
-        version="0.2.1",
+        version="0.3.1",
         license="MIT",
         author="Miha Zidar",
         author_email="zidarsk8@gmail.com",
