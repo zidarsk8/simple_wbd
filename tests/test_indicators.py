@@ -203,6 +203,25 @@ class TestIndicators(tests.TestCase):
         super().setUp()
         self.api = simple_wbd.IndicatorAPI()
 
+    def test_init(self):
+        class Dummy(object):
+            pass
+
+        class DummySubclass(simple_wbd.IndicatorDataset):
+            pass
+
+        api = simple_wbd.IndicatorAPI()
+        self.assertEqual(api._dataset_class, simple_wbd.IndicatorDataset)
+
+        api = simple_wbd.IndicatorAPI(Dummy)
+        self.assertEqual(api._dataset_class, simple_wbd.IndicatorDataset)
+
+        api = simple_wbd.IndicatorAPI("bad data")
+        self.assertEqual(api._dataset_class, simple_wbd.IndicatorDataset)
+
+        api = simple_wbd.IndicatorAPI(DummySubclass)
+        self.assertEqual(api._dataset_class, DummySubclass)
+
 
     @tests.MY_VCR.use_cassette("country_list.json")
     def test_get_country_list(self):
