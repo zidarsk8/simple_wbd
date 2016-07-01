@@ -141,6 +141,25 @@ class TestIndicatorDataset(tests.TestCase):
             self.dataset.as_list()
         )
 
+    def test_as_list_single_transpose(self):
+        """Test as_list function for a single indicator."""
+        # pylint: disable=bad-whitespace
+        # Disable bad formatting lint warnings for readability.
+
+        self.dataset.api_responses = {"ind 1": self.dummy_response["ind 1"]}
+        expected_list = [
+            ['Date',   'Belgium', 'Brazil'],
+            ['1998Q2',  0.0,       131.0],
+            ['2000Q1',  0.0,       97.0],
+            ['2015Q2',  126.0,       0.0],
+            ['2015Q3',  87.0,       0.0],
+        ]
+
+        self.assertEqual(
+            expected_list,
+            self.dataset.as_list(timeseries=True)
+        )
+
     def test_as_list_empty(self):
         """Test as_list function for empty dataset."""
         self.dataset.api_responses = {}
