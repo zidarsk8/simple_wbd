@@ -23,7 +23,7 @@ def get_description():
 if __name__ == "__main__":
     setup(
         name="simple_wbd",
-        version="0.2.0",
+        version="0.2.1",
         license="MIT",
         author="Miha Zidar",
         author_email="zidarsk8@gmail.com",
@@ -31,7 +31,7 @@ if __name__ == "__main__":
                      "and Climate APIs"),
         long_description=get_description(),
         url="https://github.com/zidarsk8/simple_wbd",
-        download_url="https://github.com/zidarsk8/simple_wbd/tarball/0.2.0",
+        download_url="https://github.com/zidarsk8/simple_wbd/tarball/0.2.1",
         packages=["simple_wbd"],
         provides=["simple_wbd"],
         install_requires=["pycountry"],
