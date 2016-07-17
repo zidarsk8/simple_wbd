@@ -341,7 +341,14 @@ class IndicatorAPI(object):
         )
 
         url = urllib.parse.urljoin(self.BASE_URL, query)
-        header, indicator_data = json.loads(utils.fetch(url))
+        fetch_response = utils.fetch(url)
+        response_json = json.loads(fetch_response)
+        header = {}
+        indicator_data = []
+        if len(response_json) > 0:
+            header = response_json[0]
+        if len(response_json) > 1:
+            indicator_data = response_json[1]
 
         # loop through the rest of the pages if they exist
         for page in range(2, header.get("pages", 1) + 1):
