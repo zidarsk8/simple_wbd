@@ -189,12 +189,22 @@ class IndicatorAPI(object):
             dataset_class: A subclass of IdicatorDataset. This is used for
                 easier extending the functionality of the indicator dataset.
         """
+        self.progress = None
+        self._reset_progress()
         self._dataset_class = IndicatorDataset
         try:
             if dataset_class and issubclass(dataset_class, IndicatorDataset):
                 self._dataset_class = dataset_class
         except TypeError:
             logger.error("Could not use extended dataset class.")
+
+    def _reset_progress(self):
+        self.progress = {
+            "indicators": 0,
+            "current_indicator": 0,
+            "indicator_pages": 0,
+            "current_page": 0,
+        }
 
     def get_countries(self):
         """Get a list of countries and regions.
@@ -350,8 +360,11 @@ class IndicatorAPI(object):
         if len(response_json) > 1:
             indicator_data = response_json[1]
 
+        self.progress["indicator_pages"] = header.get("pages", 1)
+        self.progress["current_page"] = 1
         # loop through the rest of the pages if they exist
         for page in range(2, header.get("pages", 1) + 1):
+            self.progress["current_page"] = page
             page_url = "{url}&page={page}".format(url=url, page=page)
             indicator_data += json.loads(utils.fetch(page_url))[1]
 
@@ -369,6 +382,7 @@ class IndicatorAPI(object):
         Returns:
             IndicatorDataset: all datasets for the requested indicators.
         """
+        self._reset_progress()
         if isinstance(indicators, str):
             indicators = [indicators]
 
@@ -382,8 +396,10 @@ class IndicatorAPI(object):
 
         responses = {}
         # pylint: disable=broad-except
-        for indicator in indicators_set:
+        self.progress["indicators"] = len(indicators_set)
+        for index, indicator in enumerate(indicators_set):
             try:
+                self.progress["current_indicator"] = index
                 responses[indicator] = self._get_indicator_data(
                     alpha3_text, indicator)
             except Exception:
