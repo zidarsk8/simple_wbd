@@ -399,7 +399,7 @@ class IndicatorAPI(object):
         self.progress["indicators"] = len(indicators_set)
         for index, indicator in enumerate(indicators_set):
             try:
-                self.progress["current_indicator"] = index
+                self.progress["current_indicator"] = index + 1
                 responses[indicator] = self._get_indicator_data(
                     alpha3_text, indicator)
             except Exception:
