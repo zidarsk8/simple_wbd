@@ -347,7 +347,7 @@ class IndicatorAPI(object):
         query = "countries/{countries}/indicators/{indicator}{params}".format(
             countries=alpha3_text,
             indicator=indicator,
-            params="?format=json&per_page=1000",  # lower limit
+            params="?format=json&per_page=5000",  # lower limit
         )
 
         url = urllib.parse.urljoin(self.BASE_URL, query)
