@@ -155,14 +155,15 @@ class IndicatorDataset(object):
         Returns:
             2D Array of response data, where first row is the data headers.
         """
+        result = []
         if len(self.api_responses) == 1:
             value = next(iter(self.api_responses.values()))
-            return self._get_single_response_list(value, timeseries)
+            result = self._get_single_response_list(value, timeseries)
 
         if len(self.api_responses) > 1:
-            return self._get_responses_list(self.api_responses, timeseries)
+            result = self._get_responses_list(self.api_responses, timeseries)
 
-        return []
+        return result
 
 
 class IndicatorAPI(object):
