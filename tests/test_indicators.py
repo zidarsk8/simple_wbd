@@ -171,8 +171,8 @@ class TestIndicatorDataset(tests.TestCase):
             ['Date',   'Belgium', 'Brazil'],
             ['1998Q2',  0.0,       131.0],
             ['2000Q1',  0.0,       97.0],
-            ['2015Q2',  126.0,       0.0],
-            ['2015Q3',  87.0,       0.0],
+            ['2015Q2',  126.0,     0.0],
+            ['2015Q3',  87.0,      0.0],
         ]
 
         self.assertEqual(

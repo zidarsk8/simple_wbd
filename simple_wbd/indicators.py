@@ -8,6 +8,7 @@ import urllib
 import json
 import logging
 from collections import defaultdict
+from collections import OrderedDict
 
 from simple_wbd import utils
 from simple_wbd import filters
@@ -22,8 +23,9 @@ class IndicatorDataset(object):
     """
     # pylint: disable=too-few-public-methods
 
-    def __init__(self, api_responses):
+    def __init__(self, api_responses, countries=None):
         self.api_responses = api_responses
+        self.countries = {country.get("name"): country for country in countries}
 
     @staticmethod
     def _get_dates(data):
@@ -90,9 +92,9 @@ class IndicatorDataset(object):
     def _get_all_countries(data_map):
         return sorted(data_map.keys())
 
-    def _get_single_response_list(self, data, timeseries=False):
+    def _get_single_response_list(self, data, time_series=False):
         """Get list data for a single indicator."""
-        headers = ["Date"] if timeseries else ["Country"]
+        headers = ["Date"] if time_series else ["Country"]
         data_map = self._get_data_map(data)
 
         all_dates = self._get_all_dates(data_map)
@@ -104,15 +106,15 @@ class IndicatorDataset(object):
             response.append([country] + [
                 data_map[country][date] for date in all_dates
             ])
-        if timeseries:
+        if time_series:
             # transpose 2D array
             response = list(list(i) for i in zip(*response))
 
         return response
 
-    def _get_responses_list(self, response_data, timeseries=False):
+    def _get_responses_list(self, response_data, time_series=False):
         """Get list data for multiple indicators."""
-        headers = ["Date"] if timeseries else ["Country"]
+        headers = ["Date"] if time_series else ["Country"]
         data_map = None
 
         for indicator, indicator_data in response_data.items():
@@ -120,8 +122,8 @@ class IndicatorDataset(object):
             data_map = self._get_data_map(
                 indicator_data,
                 data_map=data_map,
-                country_prefix=prefix if timeseries else "",
-                date_prefix="" if timeseries else prefix,
+                country_prefix=prefix if time_series else "",
+                date_prefix="" if time_series else prefix,
             )
 
         all_dates = self._get_all_dates(data_map)
@@ -134,13 +136,37 @@ class IndicatorDataset(object):
                 data_map[country][date] for date in all_dates
             ])
 
-        if timeseries:
+        if time_series:
             # transpose 2D array
             response = list(list(i) for i in zip(*response))
 
         return response
 
-    def as_list(self, timeseries=False):
+    METADATA_MAP = OrderedDict([
+        ('name', "Country"),
+        ("region", "Region"),
+        ("adminregion", "Admin region"),
+        ("incomeLevel", "Income level"),
+        ("longitude", "Longitude"),
+        ("latitude", "Latitude"),
+        ("lendingType", "Lending type"),
+    ])
+
+    def _add_country_metadata(self, line, headers=False):
+        """Attach country metedata to row list."""
+        if headers:
+            return list(self.METADATA_MAP.values()) + line[1:]
+
+        country_name = line[0]
+
+        line = [self.countries.get(country_name, {}).get(key)
+                for key in self.METADATA_MAP] + line[1:]
+
+        line = [i.get("value") if isinstance(i, dict) else i for i in line]
+
+        return line
+
+    def as_list(self, time_series=False, add_metadata=False):
         """Get data as 2D list.
 
         This function returns data as a 2D list where rows contain country and
@@ -148,7 +174,7 @@ class IndicatorDataset(object):
         dates.
 
         Args:
-            timeseries: Boolean indicating if the list should be a timeseries.
+            time_series: Boolean indicating if the list should be a time_series.
                 That means that the first column would contain dates instead of
                 countries and countries would be in columns.
 
@@ -158,10 +184,24 @@ class IndicatorDataset(object):
         result = []
         if len(self.api_responses) == 1:
             value = next(iter(self.api_responses.values()))
-            result = self._get_single_response_list(value, timeseries)
+            result = self._get_single_response_list(value, time_series)
 
         if len(self.api_responses) > 1:
-            result = self._get_responses_list(self.api_responses, timeseries)
+            result = self._get_responses_list(self.api_responses, time_series)
+
+        if add_metadata and time_series:
+            logger.info("Cannot add metadata to time series")
+            return result
+
+        if add_metadata:
+            result = ([self._add_country_metadata(result[0], headers=True)] +
+                      [self._add_country_metadata(row) for row in result[1:]])
+
+        if time_series:
+            for row in result:
+                if row[0] == "Date":
+                    continue
+                row[0] = utils.parse_wb_date(row[0])
 
         return result
 
@@ -410,6 +450,6 @@ class IndicatorAPI(object):
                 logger.warning(
                     "Failed to fetch indicator: %s", indicator, exc_info=True)
 
-        return self._dataset_class(responses)
+        return self._dataset_class(responses, self.get_countries())
 
     # Set of featured indicators as of 2016-06-30.

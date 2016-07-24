@@ -5,6 +5,7 @@ import os
 import tempfile
 import time
 import shutil
+import datetime
 
 import requests
 from pycountry import countries
@@ -105,3 +106,19 @@ def to_alpha3(country, code_map={}):
         raise ValueError("`country` is not a valid country name or alpha-2 or "
                          "alpha-3 code")
     return alpha3
+
+
+def parse_wb_date(date_string):
+    try:
+        date_string = date_string.upper()
+        year = int(date_string[:4])
+        if len(date_string) == 4:
+            month = 1
+        elif date_string[4] == "Q":
+            month = int(date_string[5]) * 3 - 2
+        elif date_string[4] == "M":
+            month = int(date_string[5:7])
+        return datetime.date(year, month, 1)
+    except:
+        logger.warning("Error parsing wb date: %s", date_string)
+        return None
