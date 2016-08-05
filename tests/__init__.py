@@ -14,7 +14,7 @@ MY_VCR = vcr.VCR(
     serializer='json',
     cassette_library_dir=VCR_CASSETTES,
     # none (testing), all (updating), new_episodes (dev)
-    record_mode="new_episodes",
+    record_mode="none",
 )
 
 
