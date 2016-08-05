@@ -13,7 +13,7 @@ VCR_CASSETTES = os.path.join(CURRENT_DIR, "vcr_cassettes")
 MY_VCR = vcr.VCR(
     cassette_library_dir=VCR_CASSETTES,
     # none (testing), all (updating), new_episodes (dev)
-    record_mode="none",
+    record_mode="new_episodes",
 )
 
 
