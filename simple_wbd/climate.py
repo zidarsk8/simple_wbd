@@ -104,7 +104,7 @@ class ClimateAPI(object):
             intervals = self._default_intervals
 
         api_responses = defaultdict(lambda: defaultdict(dict))
-        parameters = itertools.product(locations, data_types, intervals)
+        parameters = list(itertools.product(locations, data_types, intervals))
         self.progress["pages"] = len(parameters)
         self.progress["current_page"] = 0
         for location, data_type, interval in parameters:
