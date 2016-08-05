@@ -235,6 +235,17 @@ class TestIndicatorDataset(tests.TestCase):
         }],
     }
 
+    def test_bad_as_list_request(self):
+        """Test invalid as_list request.
+
+        Requesting data list as time series with metadata does not make sense
+        since there is no country to append the metadata to.
+        """
+        self.assertEqual(
+            (self.dataset.as_list(time_series=True, add_metadata=True)),
+            []
+        )
+
 
 class TestIndicators(tests.TestCase):
     """Tests for functions in simple_wbd.utils module."""
