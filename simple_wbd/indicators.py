@@ -28,7 +28,7 @@ class IndicatorDataset(object):
         if countries:
             self.countries = {country.get("name"): country
                               for country in countries}
-        else
+        else:
             self.countries = {}
 
     @staticmethod
