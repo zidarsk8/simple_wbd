@@ -40,18 +40,36 @@ class ClimateAPI(object):
         "decade",
     ]
 
+    _default_intervals = [
+        "year",
+        "month",
+    ]
+
     BASE_URL = "http://climatedataapi.worldbank.org/climateweb/rest/"
     INSTRUMENTAL_QUERY = "v1/{loc_type}/cru/{data_type}/{interval}/{location}"
     MAX_BASSIN_ID = 468
 
-    def __init__(self, dataset_class):
+    def __init__(self, dataset_class=None):
+        """Initialize climate api.
 
-        self._dataset_class = IndicatorDataset
+        Args:
+            dataset_class: A subclass of ClimateDataset. This is used for
+                easier extending the functionality of the indicator dataset.
+        """
+        self.progress = None
+        self._reset_progress()
+        self._dataset_class = ClimateDataset
         try:
-            if dataset_class and issubclass(dataset_class, IndicatorDataset):
+            if dataset_class and issubclass(dataset_class, ClimateDataset):
                 self._dataset_class = dataset_class
         except TypeError:
             logger.error("Could not use extended dataset class.")
+
+    def _reset_progress(self):
+        self.progress = {
+            "pages": 0,
+            "current_page": 0,
+        }
 
     def _get_location(self, location):
         if location.isdigit():
@@ -83,11 +101,14 @@ class ClimateAPI(object):
         if not data_types:
             data_types = self.INSTRUMENTAL_TYPES
         if not intervals:
-            intervals = self.INSTRUMENTAL_INTERVALS
+            intervals = self._default_intervals
 
         api_responses = defaultdict(lambda: defaultdict(dict))
         parameters = itertools.product(locations, data_types, intervals)
+        self.progress["pages"] = len(parameters)
+        self.progress["current_page"] = 0
         for location, data_type, interval in parameters:
+            self.progress["current_page"] += 1
             loc_type, location = self._get_location(location)
             query = self.INSTRUMENTAL_QUERY.format(
                 loc_type=loc_type,
