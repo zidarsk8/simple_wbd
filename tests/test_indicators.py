@@ -201,6 +201,11 @@ class TestIndicatorDataset(tests.TestCase):
         )
 
     def test_with_metadata(self):
+        """Test fetching a list with metadata.
+
+        Metadata adds a few more columns with extra country data. We just check
+        if any extra columns have been set.
+        """
         self.assertEqual(
             len(self.dataset.as_list(add_metadata=True)),
             4
@@ -210,64 +215,67 @@ class TestIndicatorDataset(tests.TestCase):
             14
         )
 
-    dummy_countries = [
-        {'adminregion': {'id': '', 'value': ''},
-         'adminregion_text': ' ()',
-         'capitalCity': '',
-         'id': 'WLD',
-         'incomeLevel': {'id': 'NA', 'value': 'Aggregates'},
-         'incomeLevel_text': 'Aggregates (NA)',
-         'iso2Code': '1W',
-         'latitude': '',
-         'lendingType': {'id': '', 'value': 'Aggregates'},
-         'lendingType_text': 'Aggregates ()',
-         'longitude': '',
-         'name': 'World',
-         'region': {'id': 'NA', 'value': 'Aggregates'},
-         'region_text': 'Aggregates (NA)'},
-        {'adminregion': {'id': 'MNA', 'value': 'Middle '},
-         'adminregion_text': 'Middle (MNA)',
-         'capitalCity': "Sana'a",
-          'id': 'YEM',
-          'incomeLevel': {'id': 'LMC', 'value': 'income'},
-          'incomeLevel_text': 'Lower middle income (LMC)',
-          'iso2Code': 'YE',
-          'latitude': '15.352',
-          'lendingType': {'id': 'IDX', 'value': 'IDA'},
-          'lendingType_text': 'IDA (IDX)',
-          'longitude': '44.2075',
-          'name': 'Yemen, Rep.',
-          'region': {'id': 'MEA', 'value': 'Middle Africa'},
-          'region_text': 'Middle East & North Africa (MEA)'},
-        {'adminregion': {'id': 'SSA', 'value': 'Sub-income)'},
-         'adminregion_text': 'Sub-Saharan Africa (SSA)',
-         'capitalCity': 'Lusaka',
-         'id': 'ZMB',
-         'incomeLevel': {'id': 'LMC', 'value': 'middle income'},
-         'incomeLevel_text': 'Lower (LMC)',
-         'iso2Code': 'ZM',
-         'latitude': '-15.3982',
-         'lendingType': {'id': 'IDX', 'value': 'IDA'},
-         'lendingType_text': 'IDA (IDX)',
-         'longitude': '28.2937',
-         'name': 'Zambia',
-         'region': {'id': 'SSF', 'value': 'Sub-Saharan Africa '},
-         'region_text': 'Sub-Saharan Africa  (SSF)'},
-        {'adminregion': {'id': 'SSA', 'value': 'income)'},
-         'adminregion_text': 'Sub-high income) (SSA)',
-         'capitalCity': 'Harare',
-         'id': 'ZWE',
-         'incomeLevel': {'id': 'LIC', 'value': 'Low income'},
-         'incomeLevel_text': 'Low income (LIC)',
-         'iso2Code': 'ZW',
-         'latitude': '-17.8312',
-         'lendingType': {'id': 'IDB', 'value': 'Blend'},
-         'lendingType_text': 'Blend (IDB)',
-         'longitude': '31.0672',
-         'name': 'Zimbabwe',
-         'region': {'id': 'SSF', 'value': 'Sub-Saharan Africa '},
-         'region_text': 'Sub-Saharan Africa  (SSF)'}
-    ]
+    dummy_countries = [{
+        'adminregion': {'id': '', 'value': ''},
+        'adminregion_text': ' ()',
+        'capitalCity': '',
+        'id': 'WLD',
+        'incomeLevel': {'id': 'NA', 'value': 'Aggregates'},
+        'incomeLevel_text': 'Aggregates (NA)',
+        'iso2Code': '1W',
+        'latitude': '',
+        'lendingType': {'id': '', 'value': 'Aggregates'},
+        'lendingType_text': 'Aggregates ()',
+        'longitude': '',
+        'name': 'World',
+        'region': {'id': 'NA', 'value': 'Aggregates'},
+        'region_text': 'Aggregates (NA)'
+    }, {
+        'adminregion': {'id': 'MNA', 'value': 'Middle '},
+        'adminregion_text': 'Middle (MNA)',
+        'capitalCity': "Sana'a",
+        'id': 'YEM',
+        'incomeLevel': {'id': 'LMC', 'value': 'income'},
+        'incomeLevel_text': 'Lower middle income (LMC)',
+        'iso2Code': 'YE',
+        'latitude': '15.352',
+        'lendingType': {'id': 'IDX', 'value': 'IDA'},
+        'lendingType_text': 'IDA (IDX)',
+        'longitude': '44.2075',
+        'name': 'Yemen, Rep.',
+        'region': {'id': 'MEA', 'value': 'Middle Africa'},
+        'region_text': 'Middle East & North Africa (MEA)'
+    }, {
+        'adminregion': {'id': 'SSA', 'value': 'Sub-income)'},
+        'adminregion_text': 'Sub-Saharan Africa (SSA)',
+        'capitalCity': 'Lusaka',
+        'id': 'ZMB',
+        'incomeLevel': {'id': 'LMC', 'value': 'middle income'},
+        'incomeLevel_text': 'Lower (LMC)',
+        'iso2Code': 'ZM',
+        'latitude': '-15.3982',
+        'lendingType': {'id': 'IDX', 'value': 'IDA'},
+        'lendingType_text': 'IDA (IDX)',
+        'longitude': '28.2937',
+        'name': 'Zambia',
+        'region': {'id': 'SSF', 'value': 'Sub-Saharan Africa '},
+        'region_text': 'Sub-Saharan Africa  (SSF)'
+    }, {
+        'adminregion': {'id': 'SSA', 'value': 'income)'},
+        'adminregion_text': 'Sub-high income) (SSA)',
+        'capitalCity': 'Harare',
+        'id': 'ZWE',
+        'incomeLevel': {'id': 'LIC', 'value': 'Low income'},
+        'incomeLevel_text': 'Low income (LIC)',
+        'iso2Code': 'ZW',
+        'latitude': '-17.8312',
+        'lendingType': {'id': 'IDB', 'value': 'Blend'},
+        'lendingType_text': 'Blend (IDB)',
+        'longitude': '31.0672',
+        'name': 'Zimbabwe',
+        'region': {'id': 'SSF', 'value': 'Sub-Saharan Africa '},
+        'region_text': 'Sub-Saharan Africa  (SSF)'
+    }]
 
     dummy_response = {
         "ind 1": [{
