@@ -28,7 +28,7 @@ class TestUtils(tests.TestCase):
         self.assertEqual(set(locations), set(response.api_responses))
         self.assertEqual(set(self.api.INSTRUMENTAL_TYPES),
                          set(response.api_responses["SVN"]))
-        self.assertEqual(set(self.api.INSTRUMENTAL_INTERVALS),
+        self.assertEqual(set(self.api._default_intervals),
                          set(response.api_responses["SVN"]["pr"]))
 
     def test_get_location_good(self):

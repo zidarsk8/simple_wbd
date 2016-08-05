@@ -4,6 +4,7 @@ import pycountry
 
 import simple_wbd
 import tests
+from simple_wbd import utils
 
 
 class TestIndicatorDataset(tests.TestCase):
@@ -115,19 +116,19 @@ class TestIndicatorDataset(tests.TestCase):
         # pylint: disable=bad-whitespace,line-too-long
         # Disable bad formatting lint warnings for readability.
         expected_list = [
-            ['Date',  'ind 1 - Belgium', 'ind 1 - Brazil', 'ind 2 - Low & middle income'],  # noqa
-            ['1970',   0.0,               0.0,              None],
-            ['1971',   0.0,               0.0,              12.3],
-            ['1972',   0.0,               0.0,              1.23],
-            ['1998Q2', 0.0,               131.0,            0.0],
-            ['2000Q1', 0.0,               97.0,             0.0],
-            ['2015Q2', 126.0,             0.0,              0.0],
-            ['2015Q3', 87.0,              0.0,              0.0],
+            ['Date',                        'ind 1 - Belgium', 'ind 1 - Brazil', 'ind 2 - Low & middle income'],  # noqa
+            [utils.parse_wb_date('1970'),   0.0,               0.0,              None],  # noqa
+            [utils.parse_wb_date('1971'),   0.0,               0.0,              12.3],  # noqa
+            [utils.parse_wb_date('1972'),   0.0,               0.0,              1.23],  # noqa
+            [utils.parse_wb_date('1998Q2'), 0.0,               131.0,            0.0],  # noqa
+            [utils.parse_wb_date('2000Q1'), 0.0,               97.0,             0.0],  # noqa
+            [utils.parse_wb_date('2015Q2'), 126.0,             0.0,              0.0],  # noqa
+            [utils.parse_wb_date('2015Q3'), 87.0,              0.0,              0.0],  # noqa
         ]
 
         self.assertEqual(
             expected_list,
-            self.dataset.as_list(timeseries=True)
+            self.dataset.as_list(time_series=True)
         )
 
     def test_as_list_multiple(self):
@@ -168,16 +169,16 @@ class TestIndicatorDataset(tests.TestCase):
 
         self.dataset.api_responses = {"ind 1": self.dummy_response["ind 1"]}
         expected_list = [
-            ['Date',   'Belgium', 'Brazil'],
-            ['1998Q2',  0.0,       131.0],
-            ['2000Q1',  0.0,       97.0],
-            ['2015Q2',  126.0,     0.0],
-            ['2015Q3',  87.0,      0.0],
+            ['Date',                        'Belgium', 'Brazil'],
+            [utils.parse_wb_date('1998Q2'),  0.0,       131.0],
+            [utils.parse_wb_date('2000Q1'),  0.0,       97.0],
+            [utils.parse_wb_date('2015Q2'),  126.0,     0.0],
+            [utils.parse_wb_date('2015Q3'),  87.0,      0.0],
         ]
 
         self.assertEqual(
             expected_list,
-            self.dataset.as_list(timeseries=True)
+            self.dataset.as_list(time_series=True)
         )
 
     def test_as_list_empty(self):
@@ -236,7 +237,7 @@ class TestIndicatorDataset(tests.TestCase):
 class TestIndicators(tests.TestCase):
     """Tests for functions in simple_wbd.utils module."""
 
-    NUM_OF_COUNTRIES = 264
+    NUM_OF_COUNTRIES = 304
 
     def setUp(self):
         super().setUp()
@@ -390,7 +391,8 @@ class TestIndicators(tests.TestCase):
             countries=["Svn", "us", "bad country"]
         )
         self.assertIn("SL.MNF.0714.FE.ZS".lower(), res.api_responses)
-        self.assertNotIn("BAD Indicator".lower(), res.api_responses)
+        self.assertIn("BAD Indicator".lower(), res.api_responses)
+        self.assertEqual(res.api_responses["BAD Indicator".lower()], [])
 
         ind_data = res.api_responses["SL.MNF.0714.FE.ZS".lower()]
         response_countries = set(i["country"]["value"] for i in ind_data)
