@@ -96,11 +96,8 @@ class IndicatorDataset(object):
     def _get_all_countries(data_map):
         return sorted(data_map.keys())
 
-    def _get_single_response_list(self, data, time_series=False):
-        """Get list data for a single indicator."""
-        headers = ["Date"] if time_series else ["Country"]
-        data_map = self._get_data_map(data)
-
+    def _make_response(self, data_map, headers, time_series):
+        """Generate response object."""
         all_dates = self._get_all_dates(data_map)
         all_countries = self._get_all_countries(data_map)
 
@@ -113,8 +110,15 @@ class IndicatorDataset(object):
         if time_series:
             # transpose 2D array
             response = list(list(i) for i in zip(*response))
-
         return response
+
+
+    def _get_single_response_list(self, data, time_series=False):
+        """Get list data for a single indicator."""
+        headers = ["Date"] if time_series else ["Country"]
+        data_map = self._get_data_map(data)
+
+        return self._make_response(data_map, headers, time_series)
 
     def _get_responses_list(self, response_data, time_series=False):
         """Get list data for multiple indicators."""
@@ -130,21 +134,7 @@ class IndicatorDataset(object):
                 date_prefix="" if time_series else prefix,
             )
 
-        all_dates = self._get_all_dates(data_map)
-        all_countries = self._get_all_countries(data_map)
-
-        headers.extend(all_dates)
-        response = [headers]
-        for country in all_countries:
-            response.append([country] + [
-                data_map[country][date] for date in all_dates
-            ])
-
-        if time_series:
-            # transpose 2D array
-            response = list(list(i) for i in zip(*response))
-
-        return response
+        return self._make_response(data_map, headers, time_series)
 
     METADATA_MAP = OrderedDict([
         ('name', "Country"),
