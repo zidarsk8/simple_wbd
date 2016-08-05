@@ -23,6 +23,8 @@ class TestUtils(tests.TestCase):
     @tests.MY_VCR.use_cassette("climate.json")
     def test_get_instrumental_generic(self):
         """Test generic instrumental data query."""
+        # pylint: disable=protected-access
+        # We need access to api protected members for testing
         locations = ["SVN", "TUN"]
         response = self.api.get_instrumental(locations)
         self.assertEqual(set(locations), set(response.api_responses))

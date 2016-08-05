@@ -2,8 +2,8 @@
 
 import pycountry
 
-import simple_wbd
 import tests
+import simple_wbd
 from simple_wbd import utils
 
 
