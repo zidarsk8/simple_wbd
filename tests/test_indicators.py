@@ -188,6 +188,17 @@ class TestIndicatorDataset(tests.TestCase):
         self.dataset.api_responses = {}
         self.assertEqual([], self.dataset.as_list())
 
+    def test_bad_as_list_request(self):
+        """Test invalid as_list request.
+
+        Requesting data list as time series with metadata does not make sense
+        since there is no country to append the metadata to.
+        """
+        self.assertEqual(
+            (self.dataset.as_list(time_series=True, add_metadata=True)),
+            []
+        )
+
     dummy_response = {
         "ind 1": [{
             'country': {'id': 'BR', 'value': 'Brazil'},
@@ -234,17 +245,6 @@ class TestIndicatorDataset(tests.TestCase):
             'value': None
         }],
     }
-
-    def test_bad_as_list_request(self):
-        """Test invalid as_list request.
-
-        Requesting data list as time series with metadata does not make sense
-        since there is no country to append the metadata to.
-        """
-        self.assertEqual(
-            (self.dataset.as_list(time_series=True, add_metadata=True)),
-            []
-        )
 
 
 class TestIndicators(tests.TestCase):
