@@ -44,6 +44,15 @@ class ClimateAPI(object):
     INSTRUMENTAL_QUERY = "v1/{loc_type}/cru/{data_type}/{interval}/{location}"
     MAX_BASSIN_ID = 468
 
+    def __init__(self, dataset_class):
+
+        self._dataset_class = IndicatorDataset
+        try:
+            if dataset_class and issubclass(dataset_class, IndicatorDataset):
+                self._dataset_class = dataset_class
+        except TypeError:
+            logger.error("Could not use extended dataset class.")
+
     def _get_location(self, location):
         if location.isdigit():
             if 1 <= int(location) <= self.MAX_BASSIN_ID:
@@ -92,4 +101,4 @@ class ClimateAPI(object):
                 "response": json.loads(utils.fetch(url))
             }
 
-        return ClimateDataset(api_responses)
+        return self._dataset_class(api_responses)
