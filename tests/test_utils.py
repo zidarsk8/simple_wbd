@@ -2,6 +2,7 @@
 
 import os
 import time
+from datetime import date
 
 import mock
 import pycountry
@@ -85,3 +86,13 @@ class TestUtils(tests.TestCase):
             self.assertEqual(country.alpha3, utils.to_alpha3(country.alpha2))
 
         self.assertRaises(ValueError, lambda: utils.to_alpha3("NOT EXISTING"))
+
+    def test_parse_wb_date(self):
+        """Test parse_wb_date function."""
+        self.assertEqual(utils.parse_wb_date("2002"), date(2002, 1, 1))
+        self.assertEqual(utils.parse_wb_date("2000M5"), date(2000, 5, 1))
+        self.assertEqual(utils.parse_wb_date("2000Q1"), date(2000, 1, 1))
+        self.assertEqual(utils.parse_wb_date("2000Q3"), date(2000, 7, 1))
+        self.assertIs(utils.parse_wb_date("2000Q6"), None)
+        self.assertIs(utils.parse_wb_date("200- 0Q6"), None)
+        self.assertIs(utils.parse_wb_date(""), None)
