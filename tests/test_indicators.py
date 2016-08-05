@@ -1,6 +1,8 @@
 """Unit tests for world bank data indicator API."""
 
+import mock
 import pycountry
+from requests.exceptions import RequestException
 
 import tests
 import simple_wbd
@@ -270,6 +272,16 @@ class TestIndicators(tests.TestCase):
 
         api = simple_wbd.IndicatorAPI(DummySubclass)
         self.assertEqual(api._dataset_class, DummySubclass)
+
+    def test_bad_request(self):
+        """Test failed data fetch requests."""
+        # pylint: disable=protected-access
+        self.api._get_indicator_data = mock.Mock()
+        self.api._get_indicator_data.side_effect = RequestException("Bam!")
+        self.api.get_countries = mock.Mock()
+        self.api.get_countries.return_value = []
+        res = self.api.get_dataset("SL.MNF.0714.FE.ZS")
+        self.assertEqual(res.api_responses, {})
 
     @tests.MY_VCR.use_cassette("country_list.json")
     def test_get_country_list(self):
