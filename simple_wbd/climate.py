@@ -6,11 +6,13 @@ wbdata packages.
 """
 import itertools
 import json
+import logging
 
 from collections import defaultdict
 
 from simple_wbd import utils
 
+logger = logging.getLogger(__name__)
 
 class ClimateDataset(object):
     """Clime API response object.
@@ -63,7 +65,7 @@ class ClimateAPI(object):
             if dataset_class and issubclass(dataset_class, ClimateDataset):
                 self._dataset_class = dataset_class
         except TypeError:
-            logger.error("Could not use extended dataset class.")
+            logger.error("Could not use extended climate dataset class.")
 
     def _reset_progress(self):
         self.progress = {

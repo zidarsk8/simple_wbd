@@ -109,6 +109,17 @@ def to_alpha3(country, code_map={}):
 
 
 def parse_wb_date(date_string):
+    """Parse world bank date format.
+
+    Change strings of type 2001Q1 or 2007M5 or 2005 into their closest date.
+
+    Args:
+        date_string: String representation of world bank date.
+    Returns:
+        parsed date value if the input is a valid date representation.
+    """
+    # pylint: disable=bare-except
+    # We do not care why the parsing failed.
     try:
         date_string = date_string.upper()
         year = int(date_string[:4])

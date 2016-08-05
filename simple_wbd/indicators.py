@@ -26,8 +26,8 @@ class IndicatorDataset(object):
     def __init__(self, api_responses, countries=None):
         self.api_responses = api_responses
         if countries:
-          self.countries = {country.get("name"): country
-                            for country in countries}
+            self.countries = {country.get("name"): country
+                              for country in countries}
 
     @staticmethod
     def _get_dates(data):
@@ -239,7 +239,7 @@ class IndicatorAPI(object):
             if dataset_class and issubclass(dataset_class, IndicatorDataset):
                 self._dataset_class = dataset_class
         except TypeError:
-            logger.error("Could not use extended dataset class.")
+            logger.error("Could not use extended indicator dataset class.")
 
     def _reset_progress(self):
         self.progress = {
