@@ -184,16 +184,17 @@ class IndicatorDataset(object):
             2D Array of response data, where first row is the data headers.
         """
         result = []
+
+        if add_metadata and time_series:
+            logger.info("Cannot add metadata to time series")
+            return result
+
         if len(self.api_responses) == 1:
             value = next(iter(self.api_responses.values()))
             result = self._get_single_response_list(value, time_series)
 
         if len(self.api_responses) > 1:
             result = self._get_responses_list(self.api_responses, time_series)
-
-        if add_metadata and time_series:
-            logger.info("Cannot add metadata to time series")
-            return result
 
         if add_metadata:
             result = ([self._add_country_metadata(result[0], headers=True)] +
