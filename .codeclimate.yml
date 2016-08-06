@@ -5,6 +5,8 @@ engines:
     config:
       languages:
       - python
+    exclude_paths:
+      - "tests/"
   fixme:
     enabled: true
   radon:
