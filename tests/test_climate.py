@@ -4,7 +4,7 @@ import simple_wbd
 import tests
 
 
-class TestUtils(tests.TestCase):
+class TestClimateAPI(tests.TestCase):
     """Tests for functions in simple_wbd.utils module."""
 
     def setUp(self):
