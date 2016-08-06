@@ -27,6 +27,36 @@ class TestClimateDataset(tests.TestCase):
         self.assertIn(1990, tas["decade"])
         self.assertNotIn("url", tas["year"])
 
+    def test_as_list_arguments(self):
+        """Test arguments for as_list method."""
+        self.dataset.as_list()
+        self.assertEqual(self.dataset.columns, ["type", "interval", "data"])
+        self.assertEqual(self.dataset.rows, ["country"])
+
+        self.dataset.as_list(columns=[])
+        self.assertEqual(self.dataset.columns, ["type", "interval", "data"])
+        self.assertEqual(self.dataset.rows, ["country"])
+
+        self.dataset.as_list(columns=["type"])
+        self.assertEqual(self.dataset.columns, ["type"])
+        self.assertEqual(self.dataset.rows, ["country", "interval", "data"])
+
+        self.dataset.as_list(columns=["country", "data"])
+        self.assertEqual(self.dataset.columns, ["country", "data"])
+        self.assertEqual(self.dataset.rows, ["type", "interval"])
+
+        with self.assertRaises(TypeError):
+            self.dataset.as_list(columns=["AAAA"])
+
+    def test_gather_keys_by_level(self):
+        """Test gather keys function."""
+        # pylint: disable=protected-access
+        # we must access protected members for testing
+        keys = self.dataset._gather_key_by_level(self.dummy_response)
+        self.assertEqual(keys[0], {"SVN", "USA"})
+        self.assertEqual(keys[1], {"pr", "tas"})
+        self.assertEqual(keys[2], {"month", "year", "decade"})
+        self.assertEqual(keys[3], {"response", "url"})
 
     # dummy response for:
     # api.get_instrumental(["SVN", "US"], intervals=api.INSTRUMENTAL_INTERVALS)
