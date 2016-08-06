@@ -25,6 +25,8 @@ class ClimateDataset(object):
 
     _time_key_map = {"decade": "year"}
 
+    KEYS = {"country", "type", "interval", "data"}
+
     def __init__(self, api_responses):
         self.api_responses = api_responses
 
@@ -59,7 +61,7 @@ class ClimateDataset(object):
         return result
 
 
-class ClimateAPI(object):
+class ClimateAPI(utils.ApiBase):
     """Request data from the World Bank Climate API."""
     # pylint: disable=too-few-public-methods
 
@@ -88,23 +90,14 @@ class ClimateAPI(object):
         """Initialize climate api.
 
         Args:
-            dataset_class: A subclass of ClimateDataset. This is used for
-                easier extending the functionality of the indicator dataset.
+            dataset_class: Optional subclass of ClimateData.
         """
-        self.progress = None
-        self._reset_progress()
-        self._dataset_class = ClimateDataset
-        try:
-            if dataset_class and issubclass(dataset_class, ClimateDataset):
-                self._dataset_class = dataset_class
-        except TypeError:
-            logger.error("Could not use extended climate dataset class.")
-
-    def _reset_progress(self):
         self.progress = {
             "pages": 0,
             "current_page": 0,
         }
+        self._dataset_class = ClimateDataset
+        super().__init__(dataset_class)
 
     def _get_location(self, location):
         if location.isdigit():

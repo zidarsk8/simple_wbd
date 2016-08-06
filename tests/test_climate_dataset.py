@@ -27,6 +27,7 @@ class TestClimateDataset(tests.TestCase):
         self.assertIn(1990, tas["decade"])
         self.assertNotIn("url", tas["year"])
 
+
     # dummy response for:
     # api.get_instrumental(["SVN", "US"], intervals=api.INSTRUMENTAL_INTERVALS)
     dummy_response = {

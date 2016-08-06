@@ -201,7 +201,7 @@ class IndicatorDataset(object):
         return result
 
 
-class IndicatorAPI(object):
+class IndicatorAPI(utils.ApiBase):
     """Request data from the World Bank Indicator API."""
 
     BASE_URL = "http://api.worldbank.org/"
@@ -219,28 +219,19 @@ class IndicatorAPI(object):
     }
 
     def __init__(self, dataset_class=None):
-        """Initialize indicator api.
+        """Initialize climate api.
 
         Args:
-            dataset_class: A subclass of IdicatorDataset. This is used for
-                easier extending the functionality of the indicator dataset.
+            dataset_class: Optional subclass of ClimateData.
         """
-        self.progress = None
-        self._reset_progress()
-        self._dataset_class = IndicatorDataset
-        try:
-            if dataset_class and issubclass(dataset_class, IndicatorDataset):
-                self._dataset_class = dataset_class
-        except TypeError:
-            logger.error("Could not use extended indicator dataset class.")
-
-    def _reset_progress(self):
         self.progress = {
             "indicators": 0,
             "current_indicator": 0,
             "indicator_pages": 0,
             "current_page": 0,
         }
+        self._dataset_class = IndicatorDataset
+        super().__init__(dataset_class)
 
     def get_countries(self):
         """Get a list of countries and regions.

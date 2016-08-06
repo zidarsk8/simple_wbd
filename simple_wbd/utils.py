@@ -16,6 +16,25 @@ CACHE_TIME = 60 * 60 * 24  # one day in seconds
 CACHE_DIR_NAME = "simple_wbd_cache"
 
 
+class ApiBase(object):
+    """Base class for indicator and climate APIs."""
+    # pylint: disable=too-few-public-methods
+    # This is just a base class and does not need public methods
+
+    def __init__(self, class_=None):
+        self._reset_progress()
+        try:
+            dataset_class = getattr(self, "_dataset_class", object)
+            if class_ and issubclass(class_, dataset_class):
+                self._dataset_class = class_
+        except TypeError:
+            logger.error("Could not use extended climate dataset class.")
+
+    def _reset_progress(self):
+        progress = getattr(self, "progress", {})
+        for key in progress:
+            progress[key] = 0
+
 def _get_cache_dir():
     """Get the temporary cache directory.
 
