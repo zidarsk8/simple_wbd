@@ -11,6 +11,34 @@ class TestUtils(tests.TestCase):
         super().setUp()
         self.api = simple_wbd.ClimateAPI()
 
+    def test_init(self):
+        """Test Climate api init function.
+
+        Test if the default response class gets set correctly if the given
+        class is a subclass of ClimateDataset.
+        """
+        # pylint: disable=protected-access
+
+        class Dummy(object):
+            # pylint: disable=too-few-public-methods
+            pass
+
+        class DummyClimateSubclass(simple_wbd.ClimateDataset):
+            # pylint: disable=too-few-public-methods
+            pass
+
+        api = simple_wbd.ClimateAPI()
+        self.assertEqual(api._dataset_class, simple_wbd.ClimateDataset)
+
+        api = simple_wbd.ClimateAPI(Dummy)
+        self.assertEqual(api._dataset_class, simple_wbd.ClimateDataset)
+
+        api = simple_wbd.ClimateAPI("bad data")
+        self.assertEqual(api._dataset_class, simple_wbd.ClimateDataset)
+
+        api = simple_wbd.ClimateAPI(DummyClimateSubclass)
+        self.assertEqual(api._dataset_class, DummyClimateSubclass)
+
     @tests.MY_VCR.use_cassette("climate.json")
     def test_get_instrumental_specific(self):
         """Test specific instrumental data query."""
