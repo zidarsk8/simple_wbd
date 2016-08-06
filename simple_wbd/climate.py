@@ -14,6 +14,7 @@ from simple_wbd import utils
 
 logger = logging.getLogger(__name__)
 
+
 class ClimateDataset(object):
     """Clime API response object.
 
@@ -22,8 +23,40 @@ class ClimateDataset(object):
     """
     # pylint: disable=too-few-public-methods
 
+    _time_key_map = {"decade": "year"}
+
     def __init__(self, api_responses):
         self.api_responses = api_responses
+
+    def as_dict(self):
+        """Return api responses as nested dictionary.
+
+        Resulting dict looks like
+        result = {
+            alpha3-country-code: {
+                data-type: {
+                    interval:{
+                        interval-start: value
+                    }
+                }
+            }
+        }
+        data-type: "pr" for precipitation and "tas" for temperature.
+        interval: decade, year, month
+        interval-start: year, starting year of a decade, 0 base indexed month.
+        """
+        result = defaultdict(
+            lambda: defaultdict(
+                lambda: defaultdict(
+                    lambda: defaultdict(dict))))
+        for country, country_dict in self.api_responses.items():
+            for type_, type_dict in country_dict.items():
+                for interval, interval_dict in type_dict.items():
+                    data = result[country][type_][interval]
+                    for value in interval_dict.get("response", []):
+                        time_key = self._time_key_map.get(interval, interval)
+                        data[value[time_key]] = value["data"]
+        return result
 
 
 class ClimateAPI(object):
