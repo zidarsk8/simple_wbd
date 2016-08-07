@@ -3,6 +3,8 @@
 # pylint: disable=protected-access
 # we must access protected members for testing
 
+import datetime
+
 import mock
 import tests
 import simple_wbd
@@ -109,6 +111,44 @@ class TestClimateDataset(tests.TestCase):
             'month - 0', 1, 9, 17, 25
         ], [
             'month - 1', 2, 10, 18, 26
+        ], [
+            'year - 2008', 3, 11, 19, 27
+        ], [
+            'year - 2009', 4, 12, 20, 28
+        ], [
+            'year - 2010', 5, 13, 21, 29
+        ]]
+        self.assertEqual(expected, array)
+
+    def test_as_list_yearly_dates(self):
+        """Test default as_list function."""
+        dataset = simple_wbd.ClimateDataset(self.dummy_yearly_response)
+        array = dataset.as_list(columns=["country", "type"], use_dates=True)
+        self.assertEqual(len(array), 4)
+        for row in array:
+            self.assertEqual(len(array[0]), len(row))
+
+        expected = [[
+            'interval', 'SVN - pr', 'SVN - tas', 'USA - pr', 'USA - tas'
+        ], [
+            datetime.date(2008, 1, 1), 3, 11, 19, 27
+        ], [
+            datetime.date(2009, 1, 1), 4, 12, 20, 28
+        ], [
+            datetime.date(2010, 1, 1), 5, 13, 21, 29
+        ]]
+        self.assertEqual(expected, array)
+
+    def test_as_list_yearly(self):
+        """Test default as_list function."""
+        dataset = simple_wbd.ClimateDataset(self.dummy_yearly_response)
+        array = dataset.as_list(columns=["country", "type"])
+        self.assertEqual(len(array), 4)
+        for row in array:
+            self.assertEqual(len(array[0]), len(row))
+
+        expected = [[
+            'interval', 'SVN - pr', 'SVN - tas', 'USA - pr', 'USA - tas'
         ], [
             'year - 2008', 3, 11, 19, 27
         ], [
@@ -260,6 +300,58 @@ class TestClimateDataset(tests.TestCase):
                     ],
                     "url": "http://climatedataapi.worldbank.org/climateweb/"
                            "rest/v1/country/cru/tas/decade/SVN"
+                },
+            },
+        },
+    }
+
+    # Year only data
+    dummy_yearly_response = {
+        "SVN": {
+            "pr": {
+                "year": {
+                    "response": [
+                        {"data": 3, "year": 2008},
+                        {"data": 4, "year": 2009},
+                        {"data": 5, "year": 2010},
+                    ],
+                    "url": "http://climatedataapi.worldbank.org/climateweb/"
+                           "rest/v1/country/cru/tas/year/SVN"
+                },
+            },
+            "tas": {
+                "year": {
+                    "response": [
+                        {"data": 11, "year": 2008},
+                        {"data": 12, "year": 2009},
+                        {"data": 13, "year": 2010},
+                    ],
+                    "url": "http://climatedataapi.worldbank.org/climateweb/"
+                           "rest/v1/country/cru/tas/year/SVN"
+                },
+            },
+        },
+        "USA": {
+            "pr": {
+                "year": {
+                    "response": [
+                        {"data": 19, "year": 2008},
+                        {"data": 20, "year": 2009},
+                        {"data": 21, "year": 2010},
+                    ],
+                    "url": "http://climatedataapi.worldbank.org/climateweb/"
+                           "rest/v1/country/cru/pr/year/USA"
+                },
+            },
+            "tas": {
+                "year": {
+                    "response": [
+                        {"data": 27, "year": 2008},
+                        {"data": 28, "year": 2009},
+                        {"data": 29, "year": 2010},
+                    ],
+                    "url": "http://climatedataapi.worldbank.org/climateweb/"
+                           "rest/v1/country/cru/tas/year/USA"
                 },
             },
         },
