@@ -90,6 +90,34 @@ class TestClimateDataset(tests.TestCase):
         ]]
         self.assertEqual(expected, array)
 
+    def test_as_list_timeseries(self):
+        """Test default as_list function."""
+        array = self.dataset.as_list(columns=["country", "type"])
+        self.assertEqual(len(array), 9)
+        for row in array:
+            self.assertEqual(len(array[0]), len(row))
+
+        expected = [[
+            'interval', 'SVN - pr', 'SVN - tas', 'USA - pr', 'USA - tas'
+        ], [
+            'decade - 1970', 6, 14, 22, 30
+        ], [
+            'decade - 1980', 7, 15, 23, 31
+        ], [
+            'decade - 1990', 8, 16, 24, 32
+        ], [
+            'month - 0', 1, 9, 17, 25
+        ], [
+            'month - 1', 2, 10, 18, 26
+        ], [
+            'year - 2008', 3, 11, 19, 27
+        ], [
+            'year - 2009', 4, 12, 20, 28
+        ], [
+            'year - 2010', 5, 13, 21, 29
+        ]]
+        self.assertEqual(expected, array)
+
     def test_gather_keys(self):
         """Test gather keys function."""
         data = self.dataset.as_dict()
