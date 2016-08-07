@@ -1,6 +1,7 @@
-# vim cache files
+# Editor files
 .*.swp
 .*.swo
+.idea
 
 # python cache files
 __pycache__
