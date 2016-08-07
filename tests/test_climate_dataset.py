@@ -1,5 +1,8 @@
 """Unit tests for wbd climate api."""
 
+# pylint: disable=protected-access
+# we must access protected members for testing
+
 import mock
 import tests
 import simple_wbd
@@ -55,8 +58,7 @@ class TestClimateDataset(tests.TestCase):
             self.dataset.as_list(columns=["AAAA"])
 
     def test_as_list(self):
-        # pylint: disable=bad-whitespace,line-too-long
-        # Disable bad formatting lint warnings for readability.
+        """Test default as_list function."""
         array = self.dataset.as_list()
         self.assertEqual(len(array), 3)
         self.assertEqual(len(array[0]), len(array[1]))
@@ -79,29 +81,35 @@ class TestClimateDataset(tests.TestCase):
             'tas - month - 1',
             'tas - year - 2008',
             'tas - year - 2009',
-            'tas - year - 2010'],
-            ['SVN', 6, 7, 8, 1, 2, 3, 4, 5, 14, 15, 16, 9, 10, 11, 12, 13],
-            ['USA', 22, 23, 24, 17, 18, 19, 20, 21, 30, 31, 32, 25, 26, 27, 28,
-             29],
-        ]
+            'tas - year - 2010'
+        ], [
+            'SVN', 6, 7, 8, 1, 2, 3, 4, 5, 14, 15, 16, 9, 10, 11, 12, 13
+        ], [
+            'USA', 22, 23, 24, 17, 18, 19, 20, 21, 30, 31, 32, 25, 26, 27, 28,
+            29
+        ]]
         self.assertEqual(expected, array)
 
-    def test_gather_keys_by_level(self):
+    def test_gather_keys(self):
         """Test gather keys function."""
-        # pylint: disable=protected-access
-        # we must access protected members for testing
         data = self.dataset.as_dict()
         keys = self.dataset._gather_keys(data)
 
         self.assertEqual(keys[0], {"SVN", "USA"})
         self.assertEqual(keys[1], {"pr", "tas"})
-        self.assertEqual(keys[2], {"month", "year", "decade"})
-        self.assertEqual(keys[3], {0, 1, 1970, 1980, 1990, 2010, 2009, 2008})
+        self.assertEqual(keys[2], {
+            ('month', 0),
+            ('month', 1),
+            ('year', 2009),
+            ('year', 2008),
+            ('year', 2010),
+            ('decade', 1970),
+            ('decade', 1990),
+            ('decade', 1980),
+        })
 
     def test_gather_keys_by_level(self):
         """Test gather keys function."""
-        # pylint: disable=protected-access
-        # we must access protected members for testing
         keys = self.dataset._gather_keys_by_level(self.dummy_response)
         self.assertEqual(keys[0], {"SVN", "USA"})
         self.assertEqual(keys[1], {"pr", "tas"})
