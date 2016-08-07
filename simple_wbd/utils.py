@@ -152,3 +152,8 @@ def parse_wb_date(date_string):
     except:
         logger.warning("Error parsing wb date: %s", date_string)
         return None
+
+
+def flaten(data):
+    list_ = [[d] if isinstance(d, (str, int)) else flaten(d) for d in data]
+    return sum(list_, [])

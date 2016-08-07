@@ -76,7 +76,8 @@ class ClimateDataset(object):
 
         return accomulator
 
-    def _gather_keys(self, data):
+    @staticmethod
+    def _gather_keys(data):
         countries = set()
         types = set()
         intervals = set()
@@ -103,10 +104,8 @@ class ClimateDataset(object):
     def _join(strings):
         if isinstance(strings, (str, int)):
             return str(strings)
-        return " - ".join(str(s) if isinstance(s, (str, int)) else self._join(s) for s in strings)
 
-    def _flaten(self, data):
-        return sum([[d] if isinstance(d, (str, int)) else self._flaten(d) for d in data], [])
+        return " - ".join(str(s) for s in utils.flaten(strings))
 
     def _get_level_key(self, row, column, key_name):
         if key_name in self.rows:
@@ -119,30 +118,45 @@ class ClimateDataset(object):
             return column[self.columns.index(key_name)]
         return None
 
-    def _generate_list(self):
-        """Generate 2D array."""
-        dict_ = self.as_dict()
+    def _generate_empty_array(self, dict_):
+        """Generate empty array grid.
+
+        This array will contain first line with headers and first column with
+        row descriptions. All data fields will be empty.
+
+        Returns:
+            List of lists.
+        """
         all_keys = self._get_all_keys(dict_)
         row_items = product(*[all_keys[row] for row in self.rows])
-        row_items = sorted([self._flaten(item) for item in row_items])
+        row_items = sorted([utils.flaten(item) for item in row_items])
         column_items = product(*[all_keys[c] for c in self.columns])
-        column_items = sorted([self._flaten(item) for item in column_items])
+        column_items = sorted([utils.flaten(item) for item in column_items])
 
         array = [[self.rows] + [col for col in column_items]]
         column_count = len(column_items) + 1
-        row_count = len(row_items) + 1
         for row in row_items:
-            array.append([row] + [None] * (column_count-1))
+            array.append([row] + [None] * (column_count - 1))
+        return array
 
-        for row, column in product(range(1, row_count), range(1, column_count)):
-            interval, interval_key = self._get_level_key(array[row][0], array[0][column], "interval")
-            country = self._get_level_key(array[row][0], array[0][column], "country")
-            type_ = self._get_level_key(array[row][0], array[0][column], "type")
+    def _generate_list(self):
+        """Generate 2D array."""
+        dict_ = self.as_dict()
+        array = self._generate_empty_array(dict_)
+
+        traversal = product(range(1, len(array)), range(1, len(array[0])))
+        for row, column in traversal:
+            interval, interval_key = self._get_level_key(
+                array[row][0], array[0][column], "interval")
+            country = self._get_level_key(
+                array[row][0], array[0][column], "country")
+            type_ = self._get_level_key(
+                array[row][0], array[0][column], "type")
             array[row][column] = dict_[country][type_][interval][interval_key]
 
         # turn first column and row into strings
-        for i in range(len(array)):
-            array[i][0] = self._join(array[i][0])
+        for i, row in enumerate(array):
+            row[0] = self._join(row[0])
         for i in range(len(array[0])):
             array[0][i] = self._join(array[0][i])
 
