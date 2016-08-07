@@ -112,11 +112,10 @@ class ClimateDataset(object):
             if key_name == "interval":
                 return row[-2:]
             return row[self.rows.index(key_name)]
-        elif key_name in self.columns:
+        else:
             if key_name == "interval":
                 return column[-2:]
             return column[self.columns.index(key_name)]
-        return None
 
     def _generate_empty_array(self, dict_):
         """Generate empty array grid.
