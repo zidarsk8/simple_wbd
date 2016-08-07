@@ -6,6 +6,7 @@ wbdata packages.
 """
 import json
 import logging
+import datetime
 from itertools import product
 
 from collections import defaultdict
@@ -138,7 +139,7 @@ class ClimateDataset(object):
             array.append([row] + [None] * (column_count - 1))
         return array
 
-    def _generate_list(self):
+    def _generate_list(self, use_dates=False):
         """Generate 2D array."""
         dict_ = self.as_dict()
         array = self._generate_empty_array(dict_)
@@ -155,13 +156,16 @@ class ClimateDataset(object):
 
         # turn first column and row into strings
         for i, row in enumerate(array):
-            row[0] = self._join(row[0])
+            if use_dates and row[0][0] == "year":
+                row[0] = datetime.date(row[0][1], 1, 1)
+            else:
+                row[0] = self._join(row[0])
         for i in range(len(array[0])):
             array[0][i] = self._join(array[0][i])
 
         return array
 
-    def as_list(self, columns=None):
+    def as_list(self, columns=None, use_dates=False):
         """Get a 2D array data representation.
 
         Note: if your data contains same decades and years the year collisions
@@ -177,7 +181,7 @@ class ClimateDataset(object):
         if not set(self.columns) < set(self.KEYS):
             raise TypeError("Columns argument contains invalid data")
 
-        return self._generate_list()
+        return self._generate_list(use_dates)
 
 
 class ClimateAPI(utils.ApiBase):
