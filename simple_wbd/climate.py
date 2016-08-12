@@ -53,7 +53,7 @@ class ClimateDataset(object):
         result = defaultdict(
             lambda: defaultdict(
                 lambda: defaultdict(
-                    lambda: defaultdict(dict))))
+                    lambda: defaultdict(float))))
         for country, country_dict in self.api_responses.items():
             for type_, type_dict in country_dict.items():
                 for interval, interval_dict in type_dict.items():
