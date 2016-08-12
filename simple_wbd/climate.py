@@ -139,7 +139,7 @@ class ClimateDataset(object):
             array.append([row] + [None] * (column_count - 1))
         return array
 
-    def _generate_list(self, use_dates=False):
+    def _generate_list(self, use_dates=False, use_names=False):
         """Generate 2D array."""
         dict_ = self.as_dict()
         array = self._generate_empty_array(dict_)
@@ -155,17 +155,30 @@ class ClimateDataset(object):
             array[row][column] = dict_[country][type_][interval][interval_key]
 
         # turn first column and row into strings
+        from orangecontrib.wbd import countries
+        map_ = countries.get_alpha3_map()
+        country_column_index = -1
+        if "country" in self.columns and use_names:
+            country_column_index = self.columns.index("country")
+        country_row_index = -1
+        if "country" in self.rows and use_names:
+            country_row_index = self.rows.index("country")
         for i, row in enumerate(array):
             if use_dates and row[0][0] == "year":
                 row[0] = datetime.date(row[0][1], 1, 1)
             else:
+                if country_row_index > -1:
+                    row[0][country_row_index] = map_.get(row[0][country_row_index])
                 row[0] = self._join(row[0])
-        for i in range(len(array[0])):
+        for i in range(1, len(array[0])):
+            if country_column_index > -1:
+                array[0][i][country_column_index] = map_.get(array[0][i][country_column_index])
+
             array[0][i] = self._join(array[0][i])
 
         return array
 
-    def as_list(self, columns=None, use_dates=False):
+    def as_list(self, columns=None, use_dates=False, use_names=False):
         """Get a 2D array data representation.
 
         Note: if your data contains same decades and years the year collisions
@@ -181,7 +194,7 @@ class ClimateDataset(object):
         if not set(self.columns) < set(self.KEYS):
             raise TypeError("Columns argument contains invalid data")
 
-        return self._generate_list(use_dates)
+        return self._generate_list(use_dates, use_names)
 
 
 class ClimateAPI(utils.ApiBase):

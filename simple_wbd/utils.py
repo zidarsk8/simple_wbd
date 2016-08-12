@@ -155,5 +155,7 @@ def parse_wb_date(date_string):
 
 
 def flaten(data):
+    if not data:
+        return []
     list_ = [[d] if isinstance(d, (str, int)) else flaten(d) for d in data]
     return sum(list_, [])
