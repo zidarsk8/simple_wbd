@@ -7,6 +7,7 @@ import time
 import shutil
 import datetime
 
+import pycountry
 import requests
 from pycountry import countries
 
@@ -14,6 +15,52 @@ logger = logging.getLogger(__name__)
 
 CACHE_TIME = 60 * 60 * 24  # one day in seconds
 CACHE_DIR_NAME = "simple_wbd_cache"
+
+# Mapping from normal country names to pycountry names
+MAPPINGS = {
+    # Africa
+    "Democratic Republic of the Congo": ("Congo, The Democratic Republic of "
+                                         "the"),
+    "Ivory Coast": "Côte d'Ivoire",
+    "Tanzania": "Tanzania, United Republic of",
+    "Iran": "Iran, Islamic Republic of",
+
+    # Asia
+    "Macau": "Macao",
+    "Northern Cyprus": "Cyprus",
+    "South Korea": "Korea, Republic of",
+    "North Korea": "Korea, Democratic People's Republic of",
+    "Vietnam": "Viet Nam",
+    "Palestine": "Palestine, State of",
+    "Taiwan": "Taiwan, Province of China",
+    "Syria": "Syrian Arab Republic",
+
+    # Europe
+    "Macedonia": "Macedonia, Republic of",
+    "Moldova": "Moldova, Republic of",
+    "Russia": "Russian Federation",
+    "Vatican City/Holy See": "Holy See (Vatican City State)",
+
+    # North America
+    "Bonaire": "Bonaire, Sint Eustatius and Saba",
+    "British Virgin Islands": "Virgin Islands, British",
+    "Saint Martin": "Saint Martin (French part)",
+    "Sint Maarten": "Sint Maarten (Dutch part)",
+    "United States of America": "United States",
+    "United States Virgin Islands": "Virgin Islands, U.S.",
+
+    # South America
+    "Bolivia": "Bolivia, Plurinational State of",
+    "Falkland Islands": "Falkland Islands (Malvinas)",
+    "Venezuela": "Venezuela, Bolivarian Republic of",
+
+    # Oceania
+    "Pitcairn Islands": "Pitcairn",
+    "Micronesia": "Micronesia, Federated States of",
+
+    # Antartica
+    "French Southern and Antarctic Lands": "French Southern Territories",
+}
 
 
 class ApiBase(object):
@@ -34,6 +81,7 @@ class ApiBase(object):
         progress = getattr(self, "progress", {})
         for key in progress:
             progress[key] = 0
+
 
 def _get_cache_dir():
     """Get the temporary cache directory.
@@ -65,6 +113,7 @@ def remove_cache_dir():
     if os.path.exists(cache_dir):
         shutil.rmtree(cache_dir)
         logger.debug("Removed cache directory: %s", cache_dir)
+
 
 def fetch(url, use_cache=True):
     """Return response from a URL, and cache results for CACHE_TIME.
@@ -159,3 +208,10 @@ def flaten(data):
         return []
     list_ = [[d] if isinstance(d, (str, int)) else flaten(d) for d in data]
     return sum(list_, [])
+
+
+def get_alpha3_map():
+    """Get mappings from alpha3 codes to country names."""
+    name_map = {v: k for k, v in MAPPINGS.items()}
+    return {c.alpha3: name_map.get(c.name, c.name)
+            for c in pycountry.countries}
