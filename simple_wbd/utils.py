@@ -7,7 +7,6 @@ import time
 import shutil
 import datetime
 
-import pycountry
 import requests
 from pycountry import countries
 
@@ -204,6 +203,7 @@ def parse_wb_date(date_string):
 
 
 def flaten(data):
+    """Flatten multi dimensional arrays."""
     if not data:
         return []
     list_ = [[d] if isinstance(d, (str, int)) else flaten(d) for d in data]
@@ -214,4 +214,4 @@ def get_alpha3_map():
     """Get mappings from alpha3 codes to country names."""
     name_map = {v: k for k, v in MAPPINGS.items()}
     return {c.alpha3: name_map.get(c.name, c.name)
-            for c in pycountry.countries}
+            for c in countries}
