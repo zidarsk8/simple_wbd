@@ -139,22 +139,8 @@ class ClimateDataset(object):
             array.append([row] + [None] * (column_count - 1))
         return array
 
-    def _generate_list(self, use_dates=False, use_names=False):
-        """Generate 2D array."""
-        dict_ = self.as_dict()
-        array = self._generate_empty_array(dict_)
-
-        traversal = product(range(1, len(array)), range(1, len(array[0])))
-        for row, column in traversal:
-            interval, interval_key = self._get_level_key(
-                array[row][0], array[0][column], "interval")
-            country = self._get_level_key(
-                array[row][0], array[0][column], "country")
-            type_ = self._get_level_key(
-                array[row][0], array[0][column], "type")
-            array[row][column] = dict_[country][type_][interval][interval_key]
-
-        # turn first column and row into strings
+    def _clean_string_columns(self, array, use_dates=False, use_names=False):
+        """Turn first column and row into strings."""
         map_ = utils.get_alpha3_map()
         country_column_index = -1
         if "country" in self.columns and use_names:
@@ -176,8 +162,25 @@ class ClimateDataset(object):
                     array[0][i][country_column_index])
 
             array[0][i] = self._join(array[0][i])
-
         return array
+
+
+    def _generate_list(self, use_dates=False, use_names=False):
+        """Generate 2D array."""
+        dict_ = self.as_dict()
+        array = self._generate_empty_array(dict_)
+
+        traversal = product(range(1, len(array)), range(1, len(array[0])))
+        for row, column in traversal:
+            interval, interval_key = self._get_level_key(
+                array[row][0], array[0][column], "interval")
+            country = self._get_level_key(
+                array[row][0], array[0][column], "country")
+            type_ = self._get_level_key(
+                array[row][0], array[0][column], "type")
+            array[row][column] = dict_[country][type_][interval][interval_key]
+
+        return self._clean_string_columns(array, use_dates, use_names)
 
     def as_list(self, columns=None, use_dates=False, use_names=False):
         """Get a 2D array data representation.
