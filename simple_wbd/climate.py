@@ -155,8 +155,7 @@ class ClimateDataset(object):
             array[row][column] = dict_[country][type_][interval][interval_key]
 
         # turn first column and row into strings
-        from orangecontrib.wbd import countries
-        map_ = countries.get_alpha3_map()
+        map_ = utils.get_alpha3_map()
         country_column_index = -1
         if "country" in self.columns and use_names:
             country_column_index = self.columns.index("country")
@@ -168,11 +167,13 @@ class ClimateDataset(object):
                 row[0] = datetime.date(row[0][1], 1, 1)
             else:
                 if country_row_index > -1:
-                    row[0][country_row_index] = map_.get(row[0][country_row_index])
+                    row[0][country_row_index] = map_.get(
+                        row[0][country_row_index])
                 row[0] = self._join(row[0])
         for i in range(1, len(array[0])):
             if country_column_index > -1:
-                array[0][i][country_column_index] = map_.get(array[0][i][country_column_index])
+                array[0][i][country_column_index] = map_.get(
+                    array[0][i][country_column_index])
 
             array[0][i] = self._join(array[0][i])
 
