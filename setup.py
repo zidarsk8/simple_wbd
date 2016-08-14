@@ -34,9 +34,13 @@ if __name__ == "__main__":
         download_url="https://github.com/zidarsk8/simple_wbd/tarball/0.5.0",
         packages=["simple_wbd"],
         provides=["simple_wbd"],
-        install_requires=["pycountry"],
+        install_requires=[
+            "pycountry"
+        ],
         extras_require={
-            "dev": ["pylint"],
+            "dev": [
+                "pylint"
+            ],
             "test": [
                 "codecov",
                 "coverage",
